@@ -8,7 +8,7 @@ I'm attending an event as part of {% client_name %}'s
 "{{ event.campaign.local_title }}" campaign.  It's at 
 {{ event.address1 }} {% if event.venue %}({{ event.venue }}){% endif %}
 in {{ event.city }}, {{ event.region }} 
-on {{ event.starts_at|date:"l, F j" }} at {{ event.starts_at|date:"f A" }}.
+on March 11 at 4:30pm ET/3:30pm CT/2:30pm MT/1:30pm PT.
 {% endfilter %}
 
 RSVP here to join me:
