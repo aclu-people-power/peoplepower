@@ -3,7 +3,6 @@
 <html lang="{{page.lang.iso_code|default:'en'}}"{% if page.lang.is_rtl %} dir="rtl"{% endif %}>
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}{{ page.title }} | {% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}{% endblock %}</title>
     <script>startTime=new Date()</script>
 <link rel="shortcut icon" type="image/x-icon" href="https://s3.amazonaws.com/middleseat.co/aclu/favicon.ico" />
 <link rel="icon" type="image/png" href="https://s3.amazonaws.com/middleseat.co/aclu/favicon-196x196.png" sizes="196x196" />
@@ -14,16 +13,22 @@
 <meta name="application-name" content="People Power"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    {{ page.followup.share_title_tag }}
-    {% if form.id %}<meta name="description" property="og:description" content="{% block description %}{{ page.followup.share_description_value }}{% endblock %}">{% endif %}
-    {{ page.followup.share_image_tag }}
-    {{ page.followup.share_url_tag }}
-    <meta property="og:site_name" content="{% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}">
-    <meta property="og:type" content="article">
-    <meta name="twitter:card" value="summary_large_image">
-    {% if event.is_open_for_signup %}
-    	<meta property="og:image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/peoplepower-rsvpsocial.png" />
+	{% if event.is_open_for_signup %}
+		<title>People Power Action Event in {{ event.city_etc_no_postal }}</title>
+		<meta property="og:image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/peoplepower-rsvpsocial.png" />
+		<meta property="og:title" content="Join a People Power Action Event on March 11" />
+		<meta name="description" property="og:description" content="We're organizing grassroots volunteers to fight against the worst abuses of the Trump administration.">
+		<meta property="og:site_name" content="PeoplePower.org">
+		<meta name="twitter:card" value="summary_large_image">
+    {% else %}
+		<title>{% block title %}{{ page.title }} | {% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}{% endblock %}</title>
+		{{ page.followup.share_title_tag }}
+		{% if form.id %}<meta name="description" property="og:description" content="{% block description %}{{ page.followup.share_description_value }}{% endblock %}">{% endif %}
+		{{ page.followup.share_image_tag }}
+		{{ page.followup.share_url_tag }}
+		<meta property="og:site_name" content="{% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}">
+		<meta property="og:type" content="article">
+		<meta name="twitter:card" value="summary_large_image">    	
     {% endif %}
     <meta name="twitter:site" content="@ACLU">
     <meta name="twitter:creator" content="@ACLU">
