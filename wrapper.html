@@ -71,9 +71,7 @@
 </a>
 				
 <span>{% ifequal page.type "Unsubscribe" %}By submitting this form, you will be unsubscribed from People Power.{% else %}
-				   {% if filename|split:'.'|nth:0 = "thanks" %}
-				   		Thank you!
-				   {% else %}
+				   {% if not filename|split:'.'|nth:0 = "thanks" %}
 				   		By submitting this form, you are agreeing to receive periodic updates from People Power and other ACLU channels.
 				   {% endif %}
                {% endifequal %}</span>
