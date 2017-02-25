@@ -22,6 +22,9 @@
     <meta property="og:site_name" content="{% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}">
     <meta property="og:type" content="article">
     <meta name="twitter:card" value="summary_large_image">
+    {% if event.is_active %}
+    	<meta property="og:image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/peoplepower-rsvpsocial.png" />
+    {% endif %}
     <meta name="twitter:site" content="@ACLU">
     <meta name="twitter:creator" content="@ACLU">
     {% block meta_additions %}{% endblock %}
