@@ -1,0 +1,61 @@
+{% extends "./wrapper.html" %}{% load actionkit_tags %}
+
+{% block description %}{{ form.search_page_text|striptags }}{% endblock %}
+
+{% block css_additions %}
+{% endblock %}
+
+{% block content %}
+
+<div class="event-search ak-search-area">
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <h2>{{ page.title }} - Find an Event</h2>
+        </div>
+    </div>
+
+    <!-- no class=ak-form because we don't need to wait for context to show this -->
+    <form name="act" method="GET" action="" accept-charset="utf-8" onsubmit="actionkit.forms.eventSearch(this); return false;" class="ak-styled-fields">
+        <input type="hidden" name="page" value="{{ page.name }}">
+        <input type="hidden" name="template" value="event_search.html">
+        <input type="hidden" name="akid" value="{{ args.akid }}">
+        <input type="hidden" name="distance" value="50">
+        <input type="hidden" name="limit" value="10">
+        
+        <div class="ak-grid-row">
+            <div class="ak-grid-col ak-grid-col-12-of-12">
+                {% if form.search_page_text %}
+                    <div class="area">{{ form.search_page_text|safe }}</div>
+                {% endif %}
+
+                <ul class="compact" id="ak-errors"></ul>
+
+                <div class="ak-event-search">
+                    <div class="ak-display-inline-block">
+                        <label for="id_zip">{% if form.templateset.is_intl %}Postcode{% else %}ZIP{% endif %} or City:</label>
+                        <input type="text" name="place" value="{% if args.place %}{{args.place}}{% else %}{{args.zip}}{% endif %}">
+                    </div>
+                    {% if form.templateset.is_intl %}
+                        <div class="ak-display-inline-block">
+                        <label for="id_country">Country:</label>
+                        {% include "./country_select.html" %}
+                        </div>
+                    {% endif %}
+                    <button type="submit" class="ak-event-search">Search</button>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <div id="event-search-results">
+                {% if args.page %}
+                    {% include "./event_search_results.html" %}
+                {% endif %}
+                </div>
+            </div>
+       </div>
+</div>
+
+{% endblock %}

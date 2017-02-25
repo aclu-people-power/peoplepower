@@ -1,0 +1,42 @@
+{% load actionkit_tags %}
+
+{% if page.followup.send_taf %}
+
+    <div class="ak-inline-taf">
+
+        <div id="ak-fieldbox-taf_emails" class="ak-field">
+            <label for="id_taf_emails">
+                {% filter ak_text:"inline_taf_ask" %}Optional: enter friends' email addresses to send them this page{% endfilter %}
+            </label> 
+            <textarea id="id_taf_emails" name="taf_emails" style="margin-bottom: 0px;"></textarea>
+        </div>
+
+        <div id="ak-inline-taf-link">
+            <a href="#" onclick="$('#ak-inline-taf-link').hide(); $('#ak-inline-taf-label, ak-inline-taf-preview').show(); return false;">{% filter ak_text:"taf_preview_link" %} + Preview message to friends/add note{% endfilter %}</a>
+        </div>
+
+        <div id="ak-inline-taf-label" class="ak-nodisplay">
+            {% filter ak_field_label:"taf_preview" %}Message to friends{% endfilter %}
+        </div>
+
+        <div id="ak-inline-taf-preview" class="ak-field ak-nodisplay">
+            <div class="taf_subject">
+                <strong>{{ "Subject"|ak_field_label:"subject"|capfirst }}:</strong> 
+                {% include_tmpl page.followup.taf_subject escaped %}
+            </div>
+
+            <div>
+                <label for="id_taf_note">
+                    {% filter ak_field_label:"taf_note" %}Optional: Add a short note to the message{% endfilter %}
+                </label>
+                <textarea id="id_taf_note" name="taf_note"></textarea>
+            </div>
+            
+            <div>
+            {% filter referring_akid:akid|tag_links:"source=taf"|linebreaksbr %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}
+            </div>
+        </div>
+
+    </div>
+
+{% endif %}

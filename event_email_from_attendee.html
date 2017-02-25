@@ -1,0 +1,16 @@
+Subject: Your "{{campaign_title}}" attendee sent you a message
+
+{% load actionkit_tags %}
+<p>Here's a message from a {{ sender_signup.role }} of your {{ campaign.local_title }} event:</p>
+
+<blockquote>
+{{ message|linebreaksbr }}
+</blockquote>
+
+<p>To use your event tools, visit https://{% client_ssl_domain %}{{ signup.url }}</p>
+
+<!-- Replacement for unsubscribe. -->
+<p><small>
+    You're receiving this message because you're signed up for an event.  
+    You can use the link above to cancel your signup and quit receiving these messages.
+</small></p>

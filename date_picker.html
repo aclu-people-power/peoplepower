@@ -1,0 +1,31 @@
+<span class="ak-datetime">
+    {% if date_field.hidden_date %}
+        <input type="hidden" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}">
+    {% else %}
+        {% if date_field.static_date %}
+            <input type="hidden" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}">
+            {{ date_field.default_date }}
+        {% else %}
+            <input type="text" placeholder="mm/dd/yyyy" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}" format="date">
+        {% endif %} 
+        {% if not date_field.hidden_time %}
+            at
+        {% endif %}
+    {% endif %}
+
+    {% if date_field.hidden_time %}
+        <input type="hidden" name="{{ date_field.name }}_time" id="id_{{ date_field.name }}_time" value="{{ date_field.default_time }}">
+    {% else %} 
+        {% if date_field.static_time %}
+            <input type="hidden" name="{{ date_field.name }}_time" id="id_{{ date_field.name }}_time" format="time" value="{{ date_field.default_time }}">
+            <input type="hidden" name="{{ date_field.name }}_ampm" id="id_{{ date_field.name }}_ampm" value="{{ date_field.default_ampm }}">
+            {{ date_field.default_time }} {{ date_field.default_ampm }}
+        {% else %}
+            <input type="text" placeholder="hh:mm" size="8" name="{{ date_field.name }}_time" id="id_{{ date_field.name }}_time" value="{{ date_field.default_time }}" format="time">
+            <select name="{{ date_field.name }}_ampm" id="id_{{ date_field.name }}_ampm">
+                <option {% if date_field.default_ampm == 'AM' %}selected{% endif %} value="AM">AM</option>
+                <option {% if date_field.default_ampm == 'PM' %}selected{% endif %} value="PM">PM</option>
+            </select>
+        {% endif %}
+    {% endif %}
+</span>

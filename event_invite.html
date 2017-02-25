@@ -1,0 +1,102 @@
+{% load actionkit_tags %}
+
+{% autoescape off %}
+
+{% if page.pagefollowup.send_taf %}
+
+    <a name="invite-friends"></a>
+
+    <form name="taf" method="POST" action="/update_action/" accept-charset="utf-8">
+        <input type="hidden" name="page" value="{{ page.name }}">
+        <input type="hidden" name="action_id" value="{{ action.id }}">
+        <input type="hidden" name="taf_only" value="1">
+        <input type="hidden" name="required" value="taf_emails">
+
+        <div class="ak-styled-fields {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}} ak-field-box">
+        
+            <h3>Invite friends</h3>
+
+            <p id="taf-confirmation" class="ak-confirmation">
+                Sent!  If you like, you can send more messages below.
+            </p>
+    
+            <ul id="ak-errors"></ul>
+            
+
+            <table class="ak-clearfix ak-message-form">
+                <tr>
+                    <th>
+                        <label for="id_taf_emails">To*</label>
+                    </th>
+                    <td>
+                        <textarea id="id_taf_emails" name="taf_emails" placeholder="Enter email addresses separated by commas"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                        <th>
+                            <label>&nbsp;</label>
+                        </th>
+                        <td><input class="ak-btn-short" type="submit" value="Send invitations"></td>
+                </tr>
+            </table>
+    
+            <div id="ak-taf-form">
+
+                <table class="ak-nodisplay-if-js ak-message-form" id="taf_preview">
+                    <tr>
+                        <th>
+                            <label for="id_taf_subject">Subject</label>
+                        </th>
+                        <td><div class="ak-readonly-value taf_subject">{% include_tmpl page.followup.taf_subject escaped %}</div></td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <label for="id_taf_note">Your note</label>
+                        </th>
+                        <td><textarea id="id_taf_note" name="taf_note" class="wide" style="height: 75px;" placeholder="Optionally add a personal comment"></textarea></td>
+                    </tr>
+
+                    <tr>
+                        <th>
+                            <label for="id_taf_body">Message</label>
+                        </th>
+                        <td><div class="ak-readonly-value">    {% filter referring_akid:akid|tag_links:"source=taf"|strip|linebreaksbr %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}</div></td>
+                    </tr>
+
+
+                </table>
+            </div>
+            <p>
+                <a class="if-js ak-emailalt" id="ak_hide_message_note" href="#" style="display: none;" onclick="$('#taf_preview').fadeOut(); $(this).hide(); $('#ak_view_message_note').show(); return false;">Hide message/note</a>
+            </p>
+            <p class="ak-clearfix">
+                <a class="if-js ak-emailalt" id="ak_view_message_note" href="#" onclick="$('#taf_preview').fadeIn(); $('#ak_hide_message_note').show(); $(this).hide(); return false;">View message/add note</a>
+            </p>
+
+            <p class="ak-clearfix">You can also <a href="mailto:?subject={% filter referring_akid:akid|strip|urlencode %}
+                {% include_tmpl page.followup.taf_subject %}
+                {% endfilter %}&amp;body={% filter referring_akid:akid|strip|urlencode %}
+                {% include_tmpl page.followup.taf_body %}
+                {% endfilter %}">mail friends through your email program</a>.
+            </p>
+
+        </div>
+    </form>
+
+    {% block script_additions %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.ak-emailalt').on('click', function() {
+                $('#ak-taf-form').slideToggle(function() {
+                    $('#taf_form').toggleClass('ak-closed');
+                });
+                $('#copy-and-paste').slideToggle();
+            });
+        });
+    </script>
+    {% endblock %}
+
+{% endif %}
+
+{% endautoescape %}

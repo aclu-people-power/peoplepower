@@ -1,0 +1,13 @@
+{% comment %}
+    Like user_form, but doesn't let user change email; 
+    used for updating event host/attendee signups.
+{% endcomment %}
+
+<div class="gridded">
+    <p><label for="id_name">Name:</label> <input id="id_name" type="text" name="name"></p>
+    <p><label for="id_address1">Street address:</label> <input id="id_address1" type="text" name="address1">
+    <p><label for="id_city">City:</label> <input id="id_city" type="text" name="city"></p>
+    <p><label for="id_state">State:</label>{% include "./state_select.html" %}</p>
+    <p><label for="id_zip">ZIP:</label> <input id="id_zip"  type="text" name="zip" size="5"></p>
+    <input type="hidden" name="country" value="United States">
+</div>

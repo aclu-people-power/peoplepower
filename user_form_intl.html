@@ -1,0 +1,52 @@
+{% comment %}
+
+This is a sample of an international-friendly user form. If you're using the
+latest user_form.html as a base, you don't need this! Just add 'country' to
+your page's list of required fields, or remove 'country' from the {%
+hide_by_default %} tag in your user_form.html, and you're done.
+
+{% endcomment %}
+
+<div id="ak-fieldbox-name">
+    <label for="id_name">Name</label>
+    <input name="name" id="id_name" type="text">
+</div>
+<div id="ak-fieldbox-email">
+    <label for="id_email">Email</label>
+    <input name="email" id="id_email" type="text">
+</div>
+<div id="ak-fieldbox-address1">
+    <label for="id_address1">Address</label>
+    <input name="address1" id="id_address1" type="text">
+</div>
+<div id="ak-fieldbox-city">
+    <label for="id_city">City</label>
+    <input name="city" id="id_city" type="text">
+</div>
+<div id="ak-fieldbox-country">
+    <label for="id_country">Country</label>
+    {% include "./country_select.html" %}
+</div>  
+<div id="ak-fieldbox-state">
+    <label for="id_state">State</label>
+    {% include "./state_select.html" %}
+</div>  
+<div id="ak-fieldbox-zip">
+    <label for="id_zip">Zip</label>
+    <input name="zip" id="id_zip" type="text">
+</div>
+<div id="ak-fieldbox-region">
+    <label for="id_region">Region</label>
+    <input name="region" id="id_region" type="text">
+</div>  
+<div id="ak-fieldbox-postal">
+    <label for="id_postal">Postal</label>
+    <input name="postal" id="id_postal" type="text">
+</div>
+
+<input type="hidden" name="auto_country" value="1">
+<style type="text/css">
+    /* Ensure that, if there's no JavaScript, the global-friendly fields show
+    * rather than the US-only ones */
+    #ak-fieldbox-state, #ak-fieldbox-zip { display: none; }
+</style>

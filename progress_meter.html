@@ -1,0 +1,39 @@
+{% if page.goal %}
+
+    <!-- Begin progress meter code.-->
+    <div id="progress" class="ak-progress-meter"></div>
+
+    <script type="text/ak-template" for="progress">
+        [% with (progress) { %]
+            [% if ( goal && total ) { %]
+                [% progress.current = goal_type == 'dollars' ? total.dollars : total.actions; %]
+                [% progress.percent = parseInt(progress.current/goal*100); %]
+                <div class="ak-progress-holder">
+                    <div class="ak-progress-meter-border">
+                        <div class="ak-progress-bar" style="width: [%= progress.current > goal ? 100 : progress.percent %]%;">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="ak-clearfix">
+                    <span class="ak-progress-percent">[%= progress.percent %]%</span>
+                    <div class="ak-progress-goals">
+                        [% if (goal_type == "dollars") { %]
+                            <span class="ak-progress-actions">
+                                {{ page.currency_sym|default:"$" }}[%= add_commas(total.dollars) %] raised so far 
+                            </span> <br> 
+                            of our goal of {{ page.currency_sym|default:"$" }}[%= add_commas(goal)  %]!
+                        [% } else { %]  
+                            <span class="ak-progress-actions">
+                                [%= add_commas(total.actions) %] [%= total.actions != 1 ? 'actions' : 'action' %] taken so far 
+                            </span> <br> 
+                            of our goal of [%= add_commas(goal) %]!
+                        [% } %]
+                    </div>
+                </div>
+            [% } %]
+        [% } %]
+    </script>
+
+    <input type="hidden" name="want_progress" value="1">
+    <!-- End progress meter code -->
+
+{% endif %}

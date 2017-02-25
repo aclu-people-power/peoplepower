@@ -1,0 +1,7 @@
+{% load actionkit_tags %}
+<div class="social-links">
+    <iframe class="facebook-share-button" src="//www.facebook.com/plugins/like.php?href={{page.canonical_url}}&amp;send=false&amp;layout=button_count&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;appId={% facebook_app %}" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ page.canonical_url }}" data-text="{{ page.title }}">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+

@@ -1,0 +1,57 @@
+{% extends "./wrapper.html" %}
+{% load actionkit_tags %}
+
+{% block content %}
+
+{% load_remember_me %}
+
+<form class="ak-form" name="act" method="POST" action="/act/" accept-charset="utf-8">
+    <input type="hidden" name="page" value="{{ page.name }}">
+
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <h2>{{ page.title }}</h2>
+
+            <div class="ak-mobile-padding ak-text-expander">
+                {% include_tmpl form.introduction_text %}
+            </div>
+            <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
+        </div>
+    </div>
+
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-4-of-12">
+            
+            {% if page.custom_fields.featured_image %}
+            <img class="ak-featured-img" src="{{page.custom_fields.featured_image}}">
+            {% endif %}
+            
+            <div id="survey-contact" class="ak-styled-fields {{templateset.custom_fields.field_labels_class|default:"ak-labels-overlaid"}} {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+                {% include "./user_form_wrapper.html" %}
+            </div>
+            
+            {% include "./progress_meter.html" %}
+            
+        </div>
+        <div id="ak-survey-questions" class="ak-grid-col ak-grid-col-8-of-12">
+            <div class="ak-field-box ak-field-box-padded ak-styled-fields ak-labels-above {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+
+                {% autoescape off %}
+                    {% for question in form.surveyquestion_set.all %}
+                    <div>
+                        <label class="ak-survey-question-label">
+                            {{ question.question_label }}
+                        </label>
+                        {{ question.input_html }}
+                    </div>
+                    {% endfor %}
+                {% endautoescape %}
+
+                <button type="submit" class="ak-submit-button">Submit Survey</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+{% endblock %}

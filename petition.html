@@ -1,0 +1,82 @@
+{% extends "./wrapper.html" %}{% load actionkit_tags %}
+
+{% block content %}
+
+{% load_remember_me %}
+
+<form class="ak-form" name="act" method="POST" action="/act/" accept-charset="utf-8">
+    <input type="hidden" name="page" value="{{ page.name }}">
+
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <h2>{{ page.title }}</h2>
+        </div>
+    </div>
+
+    <div class="ak-grid-row">
+        
+        <div class="ak-grid-col ak-grid-col-7-of-12">
+            {% if page.custom_fields.featured_image or form.about_text %}
+            <div id="ak-petition-story">
+                {% if page.custom_fields.featured_image %}
+                <img class="ak-featured-img {% if page.goal %}ak-margin-top-1{% endif %}" src="{{page.custom_fields.featured_image}}">
+                {% endif %}
+                {% autoescape off %}
+                    <div class="ak-text-expander">{% include_tmpl form.about_text %}</div>
+                    <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
+                {% endautoescape %}
+            </div>
+             {% else %}
+                 {% if form.statement_leadin %}
+                    <p class="ak-petition-leadin">
+                        {% include_tmpl form.statement_leadin %}
+                    </p>
+                {% endif %}
+                
+                <div class="ak-margin-bottom-1 ak-text-expander">
+                    {% include_tmpl form.statement_text %}
+                </div>
+                <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
+            {% endif %}
+        </div>
+        <div class="ak-grid-col ak-grid-col-5-of-12">
+
+            {% include "./progress_meter.html" %}
+
+            <div class="statement-text-wrapper ak-field-box ak-field-box-borderless">
+            
+                <h3>Sign the petition</h3>
+                
+                {% if page.custom_fields.featured_image or form.about_text %}
+                           {% if form.statement_leadin %}
+                            <p class="ak-petition-leadin">
+                                {% include_tmpl form.statement_leadin %}
+                                </p>
+                        {% endif %}
+                
+                        <div class="ak-margin-bottom-1">
+                            {% include_tmpl form.statement_text %}
+                        </div>
+                {% endif %}
+                
+                <div id="petition-form" class="ak-styled-fields {{templateset.custom_fields.field_labels_class|default:"ak-labels-overlaid"}} {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+                    {% include "./user_form_wrapper.html" %}
+                    <div class="ak-field">
+                        <label for="id_comment">Comment</label>
+                        <textarea id="id_comment" name="action_comment"></textarea>
+                    </div>
+
+                    {# Optional TAF {% include "./inline_tellafriend.html" %} #}
+
+                    <button type="submit" class="ak-submit-button">Sign</button>
+                </div>
+
+            </div>  
+
+        </div>
+
+    </div><!--gridrow-->
+
+</form>
+
+{% endblock %}

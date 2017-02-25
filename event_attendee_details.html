@@ -1,0 +1,54 @@
+{% load actionkit_tags %}
+
+{% filter collapse_spaces %}
+
+<div class="ak-field-box">
+
+    {% if campaign.use_title and campaign.show_title %}
+        <p class="ak-event-title"><a href="/event/{{ campaign.local_name }}/{{event.id}}/signup/?akid={{args.akid}}&amp;zip={{args.zip}}">{{ event.title }}</a></p>
+    {% endif %}
+
+    {% if event.venue %}
+        <span class="ak-event-venue">{{ event.venue }}</span>
+    {% endif %}
+
+    <div class="ak-event-address1">{{ event.address1 }}</div>
+    <div class="ak-event-city-etc">{{ event.city_etc }}</div>
+
+    <table class="ak-event-table">
+    {% if event.get_starts_at_display %}
+        <tr class="ak-event-time">
+            <th>When:</th>
+            <td>
+                {{ event.get_starts_at_display }}
+                {% if event.is_in_past %}
+                    <span class="ak-error ak-event-over-notice">
+                        (event is now over)
+                    </span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endif %}
+    {% if event.directions %}
+        <tr class="ak-event-directions">
+            <th>Directions to event:</th>
+            <td>{{ event.directions }}</td>
+        </tr>
+    {% endif %}
+    {% if event.note_to_attendees %}
+        <tr class="ak-event-note-to-attendees">
+            <th>Your host says:</th>
+            <td>{{ event.note_to_attendees }}</td>
+        </tr>
+    {% endif %}
+    </table>
+
+    {% if event.public_description %}
+        <p class="ak-event-description">
+            {{ event.public_description }}
+        </p>
+    {% endif %}
+
+</div>
+
+{% endfilter %}

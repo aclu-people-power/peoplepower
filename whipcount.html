@@ -1,0 +1,178 @@
+{% extends "./wrapper.html" %}
+{% load actionkit_tags %}
+
+{% block content %}
+
+{% load_remember_me %}
+
+<form class="ak-form whipcount" name="act" method="POST" action="/act/" accept-charset="utf-8">
+    <input type="hidden" name="page" value="{{ page.name }}">
+
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <h2>{{ page.title }}</h2>
+        </div>
+    </div>
+
+    {% if action %}
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <h3 class="thanks">Thanks for making a whipcount call!</h3>
+            <p>We've noted that {% for contact in action.called.all %}{{ contact.target.title_last }} is {{ contact.response }}{% endfor %}!</p>
+            <div>
+                {% include_tmpl form.thank_you_text %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="ak-grid-row ak-grid-row-inverted">
+        {% if page.custom_fields.featured_image or page.goal %}
+        <div class="ak-grid-col ak-grid-col-4-of-12">
+            {% if page.custom_fields.featured_image %}
+            <img class="ak-featured-img" src="{{page.custom_fields.featured_image}}">
+            {% endif %}
+            {% include "./progress_meter.html" %}
+        </div>
+        {% endif %}
+        <div class="ak-grid-col {% if page.custom_fields.featured_image or page.goal %}ak-grid-col-8-of-12{% else %}ak-grid-col-12-of-12{% endif %} ak-styled-description">
+            <div class="ak-text-expander">
+                {% autoescape off %}
+                {% include_tmpl form.introduction_text %}
+                {% endautoescape %}
+            </div>
+            <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
+        </div>
+    </div>
+
+    {% if not target %}
+        <div class="ak-grid-row">
+            <div class="ak-grid-col ak-grid-col-12-of-12">
+                {% include "./whipcount_results.html" %}
+            </div>
+        </div>
+    {% else %}
+
+        <div class="ak-grid-row ak-steps-area">
+            <ul id="ak-errors"></ul>
+
+            <div id="who_to_call" class="ak-grid-col ak-grid-col-4-of-12">
+                <div>
+                    <h3>
+                        <label class="ak-step-label" for="{{ target.id }}">
+                            <div class="ak-step-number">1</div>
+                            Review Script
+                        </label>
+                        <span class="ak-arrow-holder"><span class="ak-arrow"></span></span>
+                    </h3>
+
+                    <div id="what_to_say" class="ak-field-box ak-field-box-borderless"></div>
+                    <script type="text/ak-template" for="what_to_say">
+
+
+                            {% include_tmpl form.script_text %}
+
+                    </script>
+                </div>
+            </div>
+
+            <div id="response" class="ak-styled-fields ak-grid-col ak-grid-col-4-of-12">
+                <h3>
+                    <label class="ak-step-label">
+                        <div class="ak-step-number">2</div>
+                        Make the call
+                    </label>
+                    <span class="ak-arrow-holder"><span class="ak-arrow"></span></span>
+                </h3>
+                <div class="ak-whipcount-callbox">
+                    <div class="ak-whipcount-boxhead">
+                        <div class="ak-target-name">{{ target.title_full }}:</div>
+                        <div class="ak-target-phone">{{ target.phone }}</div>
+                    </div>
+                    <div class="ak-whipcount-boxbody">
+                        <label for="response-{{target.id}}">What is {{ target.title_full }}'s stance on this issue?</label>
+                        <ul class="ak-errs-below ak-err-below">
+                            <li>
+                                <label for="uncommitted-{{ target.id }}"><input type="radio" name="response-{{ target.id }}" value="uncommitted" id="uncommitted-{{ target.id }}"> Uncommitted/Did not answer</label>
+                            </li>
+                            <li>
+                                <label for="supportive-{{ target.id }}"><input type="radio" name="response-{{ target.id }}" value="supportive" id="supportive-{{ target.id }}"> Supportive of our position</label>
+                            </li>
+                            <li>
+                                <label for="opposed-{{ target.id }}"><input type="radio" name="response-{{ target.id }}" value="opposed" id="opposed-{{ target.id }}"> Opposed to our position</label>
+                            </li>
+                            <li>
+                                <label for="message-{{ target.id }}"><input type="radio" name="response-{{ target.id }}" value="message" id="message-{{ target.id }}"> Left a message</label>
+                            </li>
+                        </ul>
+                        <input type="hidden" name="required" value="response-{{ target.id }}">
+                        <input type="hidden" name="error_response-{{target.id}}:missing" value="Please let us know what {{ target.title_last }} responded!">
+                    </div>
+                </div>
+            </div>
+
+            <div class="ak-grid-col ak-grid-col-4-of-12">
+                <h3>
+                    <label class="ak-step-label">
+                        <div class="ak-step-number">3</div>
+                        Report the call
+                    </label>
+                    <span class="ak-arrow-holder"><span class="ak-arrow"></span></span>
+                </h3>
+                <div class="ak-styled-fields {{templateset.custom_fields.field_labels_class|default:'ak-labels-overlaid'}} {{templateset.custom_fields.field_errors_class|default:'ak-errs-below'}}" id="ak-report-call">
+                    {% include "./user_form_wrapper.html" %}
+
+                    <div id="ak-survey_question"></div>
+
+                    {% if form.survey_question_text %}
+                    <script type="text/ak-template" for="ak-survey_question">
+                        {% autoescape off %}
+                        <label for="id_action_survey">{% filter striptags %}{% include_tmpl form.survey_question_text %}{% endfilter %}</label>
+                        {% endautoescape %}
+                        <textarea id="id_action_survey" name="action_survey" style="height: 100px"></textarea></p>
+                    </script>
+                    {% endif %}
+                </div>
+
+                <div style="clear: both;">
+                    <button type="submit" class="ak-submit-button">Submit</button>
+                </div>
+            </div>
+
+            <input type="hidden" name="status" value="whipcount">
+        </div>
+    {% endif %}
+
+</form>
+
+{% endblock %}
+
+{% block script_additions %}
+<script type="text/javascript">
+$(window).load(function() {
+
+    var $window = $(window);
+    function call_page_steps_mobile() {
+        var windowSize = $window.width();
+        if (windowSize < 480) {
+               $('.ak-steps-area h3').addClass('clickable');
+        } else {
+            $('.ak-steps-area h3').removeClass('clickable');
+            $('.ak-steps-area h3').each( function () {
+                $(this).siblings('div').show();
+            });
+        }
+    }
+
+       $('.ak-steps-area').on('click', 'h3.clickable', function(e) {
+        e.stopPropagation();
+        $(this).toggleClass('active');
+        $(this).siblings('div').stop().slideToggle('fast');
+    });
+
+    $(window).on('resize', call_page_steps_mobile);
+    call_page_steps_mobile();
+
+});
+</script>
+{% endblock %}

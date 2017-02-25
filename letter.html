@@ -1,0 +1,67 @@
+{% extends "./wrapper.html" %}{% load actionkit_tags %}
+
+{% block content %}
+
+{% load_remember_me %}
+
+<form class="ak-form" name="act" method="POST" action="/act/" accept-charset="utf-8">
+    <input type="hidden" name="page" value="{{ page.name }}">
+
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <h2>{{ page.title }}</h2>
+        </div>
+    </div>
+
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-8-of-12">
+
+            <div id="letter-story">
+
+                {% autoescape off %}
+                <div class="ak-text-expander">{% include_tmpl form.about_text %}</div>
+                <a href="#" class="ak-read-more ak-mobile" data-lines="10">Read more</a>
+                {% endautoescape %}
+
+                {% if form.statement_leadin %}
+                {% autoescape off %}
+                <div class="ak-p-before-textarea ak-margin-top-3">
+                    {% include_tmpl form.statement_leadin %}
+                </div>
+                {% endautoescape %}
+                {% endif %}
+
+                <div class="ak-margin-bottom-1 ak-styled-fields">
+                <textarea id="id_comment" name="action_comment" class="ak-letter-text ">{% include_tmpl form.letter_text escaped %}</textarea>
+                </div>
+
+            </div>
+
+        </div> 
+
+        <div class="ak-grid-col ak-grid-col-4-of-12">
+            {% include "./progress_meter.html" %}
+
+            {% if page.custom_fields.featured_image %}
+            <img class="ak-featured-img" src="{{page.custom_fields.featured_image}}">
+            {% endif %}
+
+            <h3>Send the letter</h3>
+
+            <div id="letter-form" class="ak-field-box ak-styled-fields {{templateset.custom_fields.field_labels_class|default:"ak-labels-overlaid"}} {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+
+                {% include "./user_form_wrapper.html" %}
+
+                {# Optional TAF {% include "./inline_tellafriend.html" %} #}
+
+                <button type="submit" class="ak-submit-button">Send Letter</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>
+
+{% endblock %}

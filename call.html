@@ -1,0 +1,169 @@
+{% extends "./wrapper.html" %}{% load actionkit_tags %}
+{% block content %}
+{% load_remember_me %}
+
+<div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+        <h2>{{ page.title }}</h2>
+    </div>
+</div>
+
+<form class="ak-form ak-styled-fields" name="act" method="POST" action="/act/" accept-charset="utf-8">
+  <input type="hidden" name="page" value="{{ page.name }}">
+
+  <div class="ak-grid-row">
+    <div>
+        <div class="ak-grid-col ak-grid-col-8-of-12">
+
+            <div id="call-story" class="ak-text-expander">
+                {% autoescape off %}
+                       {% include_tmpl form.introduction_text %}
+                {% endautoescape %}
+            </div>
+            <a href="#" class="ak-read-more ak-mobile">Read more</a>
+
+        </div>
+        <div class="ak-grid-col ak-grid-col-4-of-12">
+
+            {% if page.custom_fields.featured_image %}
+                <img class="ak-featured-img" src="{{page.custom_fields.featured_image}}">
+            {% endif %}
+
+            {% include "./progress_meter.html" %}
+
+            <div id="call-form" class="ak-styled-fields {{templateset.custom_fields.field_labels_class|default:"ak-labels-overlaid"}} {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+
+                <div id="ak-need-contact-info"></div>
+                <script type="text/ak-template" for="ak-need-contact-info">
+                    [% if (incomplete) { %]
+                        <div class="ak-instructions ak-faded-text">
+                            {% filter ak_text:"call_needs_contact_info" %}
+                                Fill out the form below so we can find the number for you to call.
+                            {% endfilter %}
+                        </div>
+                    [% } %]
+                </script>
+
+                {% include "./user_form_wrapper.html" %}
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="ak-steps-area">
+        <div class="ak-grid-col ak-grid-col-4-of-12">
+
+            <div id="what_to_say"></div>
+            <script type="text/ak-template" for="what_to_say">
+
+                [% if (!incomplete) { %]
+                    <h3>
+                        <label class="ak-step-label">
+                            <div class="ak-step-number">1</div>
+                            Review Script
+                        </label>
+                        <span class="ak-arrow-holder"><span class="ak-arrow"></span></span>
+                    </h3>
+
+                <div class="ak-field-box ak-field-box-borderless">{% include_tmpl form.script_text %}</div>
+                [% }
+                %]
+
+                <style>
+                [% if (incomplete) { %]
+                    #what_to_say { display: none; }
+                [% } else { %]
+                    .ak-steps-area { clear: both; }
+                [% } %]
+                </style>
+
+            </script>
+        </div>
+        <div class="ak-grid-col ak-grid-col-4-of-12">
+
+            <div id="who_called"></div>
+            <script type="text/ak-template" for="who_called">
+                [% if (!incomplete) { %]
+                    <h3>
+                        <label class="ak-step-label">
+                            <div class="ak-step-number">2</div>
+                            Make the Call
+                        </label>
+                        <span class="ak-arrow-holder"><span class="ak-arrow"></span></span>
+                    </h3>
+              
+                    <div class="ak-margin-top-1">Who did you call?</div>
+
+                [% } %]
+            </script>
+            <div id="target_checkboxes" class="ak-margin-bottom-1"></div>
+                    
+        </div>
+        <div class="ak-grid-col ak-grid-col-4-of-12">
+
+            <div id="ak-survey_question"></div>
+            {% if form.survey_question_text %}
+            <script type="text/ak-template" for="ak-survey_question">
+                [% if (!incomplete) { %]
+                     <h3 id="ak-report-call">
+                        <label class="ak-step-label">
+                            <div class="ak-step-number">3</div>
+                            Report the Call
+                        </label>
+                        <span class="ak-arrow-holder"><span class="ak-arrow"></span></span>
+                    </h3>
+                    <div class="ak-labels-overlaid ak-margin-top-1">
+                        {% autoescape off %}
+                        <label for="id_action_survey">{% include_tmpl form.survey_question_text %}</label>
+                        {% endautoescape %}
+                        <textarea id="id_action_survey" name="action_survey" class="ak-large-message"></textarea>
+                        </div>
+                [% } %]
+            </script>
+
+            {% endif %}
+             
+        </div>
+    </div>
+
+    <div class="ak-grid-col ak-grid-col-4-of-12 ak-pull-right">
+        <button type="submit" class="ak-submit-button">Submit</button>
+    </div>
+
+  </div>
+</form>
+
+{% endblock %}
+
+{% block script_additions %}
+<script type="text/javascript">
+$(window).load(function() {
+    $('#target_checkboxes').appendTo('div#who_called');
+
+    var $window = $(window);
+    function call_page_steps_mobile() {
+        var windowSize = $window.width();
+        if (windowSize < 480) {
+               $('.ak-steps-area h3').addClass('clickable');
+        } else {
+            $('.ak-steps-area h3').removeClass('clickable');
+            $('.ak-steps-area h3').each( function () {
+              $(this).siblings('div').show();
+            });
+        }
+
+    }
+       $('.ak-steps-area').on('click', 'h3.clickable', function(e) {
+        e.stopPropagation();
+        $(this).toggleClass('active');
+        $(this).siblings('div').stop().slideToggle('fast');
+    });
+
+    $(window).on('resize', call_page_steps_mobile);
+    call_page_steps_mobile();
+
+});
+</script>
+{% endblock %}

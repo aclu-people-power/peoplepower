@@ -1,0 +1,68 @@
+{% extends "./wrapper.html" %}
+
+{% block content %}
+
+<div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-4-of-12 ak-grid-centered">
+        <h2>Log In</h2>
+
+        <div class="area">
+            {% if error_message %}
+                <p class="errornote">{{ error_message }}</p>
+            {% endif %}
+            {% if invalid %}
+                <p class="errornote">Incorrect email or password.  Try again, or <a href="{% url 'user_password_forgot' %}?next={{ next }}&email={{ email }}">we can email you a link to reset your password</a>.</p>
+            {% endif %}
+
+            <div id="content-main">
+                {% if no_password %}
+                    <p>It looks like you've never logged in before. <a href="{% url 'user_password_forgot' %}?email={{ email }}">Click here to set up a password.</a>.</p>
+                {% endif %}
+                {% if wrong_account %}
+                    <p>It looks like you may need another email address to view that page, or the page may no longer be accessible.</p>
+                {% endif %}
+                <form action="{{ app_path }}" method="post" id="login-form" name="login-form">
+                    <input type="hidden" name="this_is_the_login_form" value="1">
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <input type="hidden" name="required" value="password">
+                    
+                    <div class="ak-styled-fields ak-labels-above ak-errs-below ak-clearfix">
+                    
+                        <div>
+                            <label for="id_email">Email</label>
+                            <input type="text" name="email" value="{{ email }}" id="id_email" class="ak-full-width">
+                        </div>
+                        <div>
+                            <label for="id_password">Password</label>
+                            <input type="password" name="password" id="id_password" class="ak-full-width">
+                        </div>
+                        
+                        <button type="submit" class="ak-submit-button">Log In</button>
+
+                    </div>
+
+                    <div>
+                        <a href="{% url 'user_password_forgot' %}?next={{ next }}&amp;email={{ email }}">Forgot your password?</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'user_password_forgot' %}?next={{ next }}&amp;first=1&amp;email={{ email }}">Never logged in before?</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block below_form %}
+
+<script>
+    actionkit.forms.contextRoot = '/context/';
+    actionkit.forms.initValidation('login-form');
+    
+    document.getElementById('id_{% if email %}password{% else %}email{% endif %}').focus()
+</script>
+
+{% endblock %}

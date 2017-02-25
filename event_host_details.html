@@ -1,0 +1,56 @@
+{% load actionkit_tags %}
+{% filter collapse_spaces %}
+
+{% if event.venue %}
+    <div class="event-venue">
+        {{ event.venue }}
+    </div>
+{% endif %}
+
+<div class="event-address clearfix">
+    <div class="event-address-content">
+        <div class="event-address1">{{ event.address1 }}</div>
+        <div class="event-city-etc">{{ event.city_etc }}</div>
+    </div>
+</div>
+
+<table class="ak-event-table">
+{% if event.get_starts_at_display %}
+    <tr class="ak-event-time">
+        <th>When:</th>
+        <td>{{ event.get_starts_at_display }}{% if event.is_in_past %} <span class="ak-error ak-event-over-notice">(event is now over)</span>{% endif %}</td>
+    </tr>
+{% endif %}
+{% if event.directions %}
+    <tr class="ak-event-directions">
+        <th>Directions to event:</th>
+        <td>{{ event.directions }}</td>
+    </tr>
+{% endif %}
+{% if event.note_to_attendees %}
+    <tr class="ak-event-note-to-attendees">
+        <th>Note to attendees:</th>
+        <td>{{ event.note_to_attendees }}</td>
+    </tr>
+{% endif %}
+{% if event.campaign.allow_private %}
+    <tr class="ak-event-privacy">
+        <th></th>
+        <td>
+            <label>Event is {% if event.is_private %}private{% else %}public{% endif %}.</label>
+        </td>
+    </tr>
+{% endif %}
+    <tr class="ak-event-signup-link">
+        <th>Signup link:</th>
+        <td> <a href="http://{% client_domain %}{{ event.public_url }}">http://{% client_domain %}{{ event.public_url }}</a></td>
+    </tr>
+</table>
+
+{% if event.public_description %}
+    <p class="ak-event-description">
+        {{ event.public_description }}
+    </p>
+{% endif %}
+
+{% endfilter %}

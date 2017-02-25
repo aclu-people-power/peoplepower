@@ -1,0 +1,46 @@
+{% extends "./wrapper.html" %}
+{% load actionkit_tags %}
+
+{% block content %}
+
+<div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-4-of-12 ak-grid-centered">
+        <p>Fill out the form below and we'll set your password.</p>
+        {% if message %}
+            <p class="ak-large-text">{{ message }}</p>
+        {% endif %}
+        <form action="{{ app_path }}" method="post" id="login-form" name="login-form" class="ak-styled-fields ak-labels-above {{page.custom_fields.field_errors_class}}">
+            
+            {{ form.non_field_errors }}
+
+            {% for field in form.visible_fields %}
+                <div>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+            
+            {% for field in form.hidden_fields %}
+                {{ field }}
+            {% endfor %}
+            
+            <div class="submit-row">
+                <button type="submit" class="ak-submit-button">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block below_form %}
+
+<script>
+    actionkit.forms.contextRoot = '/context/';
+    actionkit.forms.initValidation('login-form');
+</script>
+
+{% endblock %}

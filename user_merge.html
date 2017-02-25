@@ -1,0 +1,25 @@
+{% extends "./wrapper.html" %}
+
+{% block content %}
+
+<div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+        {% if sent %}
+            <h2>Sent!</h2>
+        {% else %}
+            <h2>Almost Done! One More Step!</h2>
+            <p>
+                We already have another user account with the email <b>{{ target }}</b>. Maybe you already took an action with that email?
+            </p>
+            <p>
+                If you'd like to consolidate your two accounts, we'll send an email to <b>{{ target }}</b> to confirm it's your email. Once you click the link in the email, we'll change your email address from <b>{{ actionkit_user.email }}</b> to <b>{{ target }}</b>.
+            </p>
+            <form name="merge" method="POST">
+                <input type="hidden" name="target" value="{{ target }}">
+                <input type="submit" value="Okay, send me the email!">
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

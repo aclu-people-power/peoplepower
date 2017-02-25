@@ -1,0 +1,112 @@
+{% extends "./wrapper.html" %}{% load actionkit_tags %}
+
+{% block content %}
+
+<div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+        <h2>{{ page.title }}</h2>
+    </div>
+    <div>
+        <p id="unknown_user"></p>
+        <p id="known_user"></p>
+        <p>Logged in as {{ logged_in_user.name }}. <a href="/logout/">Log out</a></p>
+     </div>
+</div>
+
+<div class="ak-grid-row ak-grid-row-inverted">
+
+    {% if page.custom_fields.featured_image %}
+    <div class="ak-grid-col ak-grid-col-3-of-12">
+        <img class="ak-featured-img" src="{{page.custom_fields.featured_image}}">
+    </div>
+    {% endif %}
+
+    <div class="ak-grid-col {% if page.custom_fields.featured_image %}ak-grid-col-9-of-12{% else %}ak-grid-col-12-of-12{% endif %}">
+
+        {% if not active %}
+
+            <p>You don't have any active recurring donations.</p>
+
+            {# We have to have a form, or the JavaScript doesn't work. #}
+            <form class="action_form" name="act" method="POST" action="/act/" accept-charset="utf-8">
+                <ul class="compact" id="ak-errors"></ul>
+                <input type="hidden" name="page" value="{{ page.name }}">
+            </form>
+
+        {% else %}
+
+            {% autoescape off %}
+            <p>{% include_tmpl form.please_stay_text %}</p>
+            {% endautoescape %}
+
+            {% for profile in active %}
+
+                <div class="ak-field-box ak-styled-fields ak-labels-before">
+
+                    <form class="action_form" name="act" method="POST" action="/act/" accept-charset="utf-8">
+                        <input type="hidden" name="akid" value="{{ logged_in_user.token }}">
+                        <input type="hidden" name="page" value="{{ page.name }}">
+                        <input type="hidden" name="profile_id" value="{{ profile.id }}">
+        
+                        <div>
+                            <label>
+                                Next Payment
+                            </label>
+                            <div class="ak-readonly-value">
+                                <div>
+                                    {{ profile.next_payment_date|date }}
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="ak-show-amount">
+                            <label>
+                                Monthly Amount
+                            </label>
+                            <div class="ak-readonly-value">
+                                <div>
+                                    {{ profile.amt }}
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div>
+                            <label>
+                                First Payment
+                            </label>
+                            <div class="ak-readonly-value">
+                                <div>
+                                    {{ profile.created_at|date }}
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if profile.order.payment_method == "cc" %}
+                        <div class="ak-show-cc">
+                            <label>
+                                Credit Card
+                            </label>
+                            <div class="ak-readonly-value">
+                                <div>
+                                    Card ending in {{ profile.card_num }}
+                                    <br>
+                                    Expiration {{ profile.display_expiration_date }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div><button type="submit" class="ak-normal">Cancel Donation</button></div>
+
+                    </form>
+
+                </div>
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

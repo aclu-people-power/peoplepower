@@ -1,0 +1,60 @@
+<div id="ak-whipcount-targets">
+    {% for group in target_groups %}
+    <h3>{{ group.name }}</h3>
+    <table class="ak-whipcount-listing">
+        <thead>
+            <th>Name</th>
+            <th>Seat</th>
+            <th>Calls <span class="ak-hide-under-750">Reported</span></th>
+            <th>Stance</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for target in group.targets %}
+            <tr class="ak-target-{{ target.stance.view }}">
+                <td>
+                    <a class="ak-target-name ak-highlight-on-hover" href="?target={{ target.resource_uri }}&amp;akid={{ user.token }}&amp;source={{ args.source }}&amp;referring_akid={{ args.referring_akid }}">{{ target.title_last }}</a>
+                </td>
+                <td>
+                    {% if target.us_district %}
+                        {{ target.us_district }}
+                    {% elif target.seat %}
+                        {{ target.seat }}
+                    {% else %}
+                        {{ target.state }}
+                    {% endif %}
+                </td>
+                <td>
+                    {{ target.stance.calls }}
+                </td>
+                <td>
+                    {% if not target.stance.view %}
+                        <div class="ak-whipcount-icon">
+                            <img src="/media/modern/stance-unknown.svg">
+                        </div>
+                        <span class="ak-target-stance">Unknown</span>
+                    {% elif target.stance.view == 'supportive' %}
+                        <div class="ak-whipcount-icon">
+                            <img src="/media/modern/stance-supportive.svg">
+                        </div>
+                        <span class="ak-target-stance">{{ target.stance.view|title}}</span>
+                    {% elif target.stance.view == 'opposed' %}
+                        <div class="ak-whipcount-icon">
+                            <img src="/media/modern/stance-opposed.svg">
+                        </div>
+                        <span class="ak-target-stance">{{ target.stance.view|title}}</span>
+                    {% elif target.stance.view == 'uncommitted' %}
+                       <span class="ak-target-stance">{{ target.stance.view|title}}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if not target.stance.view %}
+                    <a href="?target={{ target.resource_uri }}&amp;akid={{ user.token }}&amp;source={{ args.source }}&amp;referring_akid={{ args.referring_akid }}" class="ak-button">Call</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+</div>

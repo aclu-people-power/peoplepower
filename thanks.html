@@ -1,0 +1,179 @@
+{% extends "./wrapper.html" %}
+{% load actionkit_tags %}
+
+{% block content %}
+{% autoescape off %}
+
+<form name="taf" method="POST" action="/update_action/" accept-charset="utf-8" class="ak-thanks ak-styled-fields">
+    <input type="hidden" name="page" value="{{ page.name }}">
+
+{% if actionkit_user %}
+    {% if recurring_update or recurring_cancel %}
+        <div class="ak-grid-row">
+            <div class="ak-grid-col ak-grid-col-12-of-12">
+                <p>
+                    {% filter ak_text:"logged_in_as" %}You are logged in as{% endfilter %} {{ actionkit_user.name }}.
+                    <a href="/logout">{% filter ak_text:"logout" %}Click to log out.{% endfilter %}</a>
+                </p>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% if page.SUPPRESS_SHARING %}
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <h2>
+                <img src="/media/modern/stance-supportive.svg" width="34" class="ak-checkmark-icon" alt="&#10003;">
+                {% filter ak_text:"noshare_thanks_banner" %}
+                Thanks!
+                {% endfilter %}
+            </h2>
+            <div>
+                {% include_tmpl form.thank_you_text %}
+            </div>
+        </div>
+    </div>
+{% else %}
+
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-6-of-12">
+            <h2>
+                {% if page.followup.send_taf and args.taf %}
+                    {% filter ak_text:"tell_your_friends_banner" %}
+                    Now take the next step.
+                    {% endfilter %}
+                {% else %}
+                    {% filter ak_text:"notaf_thanks_banner" %}
+                    Now take the next step.
+                    {% endfilter %}
+                {% endif %}
+            </h2>
+            <div>
+                {% include_tmpl form.thank_you_text %}
+            </div>
+            {% include "./progress_meter.html" %}
+        </div>
+
+        <div class="ak-grid-col ak-grid-col-6-of-12 ak-margin-top-2">
+            <div>
+                <a class="ak-button ak-share-button ak-facebook" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank">Post to Facebook</a>
+            </div>
+
+            <div>
+                <a class="ak-button ak-share-button ak-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank">Share on Twitter</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+
+            {% if page.followup.send_taf and args.taf %}
+                <div>
+                    <a class="ak-button ak-share-button ak-email" href="mailto:?subject={{ page.followup.taf_subject|urlencode }}&amp;body={% filter referring_akid:akid|tag_links:"source=mailto"|urlencode %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}" target="_blank">{% filter ak_text:"taf_mailto_ask" %}Send an email now {% endfilter %}</a>
+                </div>
+
+                <div id="copy-and-paste">
+                    <p class="ak-normal">Or copy and paste the text below into an email message:</p>
+                    <textarea class="ak-share-message" readonly>Subject: {{ page.title }}
+{% filter referring_akid:akid|tag_links:"source=taf" %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}
+                    </textarea>
+                </div>
+                <input type="hidden" value="{{ page.canonical_url }}"> <a href="/share/link?as_text=1&amp;type=ot&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank" style="display: none"></a>
+
+                <div id="ak-confirmation">
+                    {% filter ak_text:"taf_confirmation" %}Sent!  If you like, you can send more messages below.{% endfilter %}
+                </div><!--akconfirmation-->
+
+                <div id="taf-preview" class="taf-preview last ak-percent-full ak-padding-left-none ak-hidden-mobile">
+
+                    <p class="ak-normal ak-align-right">
+                        <a class="ak-emailalt ak-underline-on-hover" href="#" for="id_taf_body">{% filter ak_field_label:"taf_preview" %}<span>Or, send a message using our site</span>{% endfilter %} &nbsp; <span class="ak-arrow-holder"><span class="ak-arrow-inline"></span></span></a>
+                    </p>
+
+                    <div id="ak-taf-form" class="ak-field-box">
+                        <div class="ak-pull-right" style="margin-bottom: -30px">
+                            <a class="ak-emailalt ak-sendemail-opened">&times;</a>
+                        </div>
+
+                        <table class="ak-message-form ak-hide ak-errs-below">
+                            <tr>
+                                <th>
+                                    <label for="id_taf_emails">
+                                        To
+                                    </label>
+                                </th>
+                                <td style="padding-right: 30px">
+                                    <textarea id="id_taf_emails" name="taf_emails" placeholder="{% filter ak_text:"taf_ask" %}Enter email addresses separated by commas{% endfilter %} "></textarea>
+                                    <input type="hidden" name="required" value="taf_emails">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label id="lbl_taf_subject" for="id_taf_subject">Subject</label>
+                                </th>
+                                <td>
+                                    <div id="id_taf_subject" class="ak-readonly-value ak-sharebox-tafsubject">{% include_tmpl page.followup.taf_subject escaped %}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label for="id_taf_note">Your Note</label>
+                                </th>
+                                <td>
+                                    <textarea id="id_taf_note" name="taf_note" placeholder="Optionally add a personal comment"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label for="id_taf_body">Message</label>
+                                </th>
+                                <td>
+                                    <div id="id_taf_body" name="taf_body" class="ak-readonly-value">{% filter referring_akid:akid|tag_links:"source=taf" %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                </th>
+                                <td>
+                                    <button type="submit" class="ak-sendmessage ak-btn-short">{% filter ak_text:"taf_send_messages" %}Send{% endfilter %}</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endif %}
+
+</form>
+
+{% endautoescape %}
+{% endblock %}
+
+{% block script_additions %}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.ak-emailalt').on('click', function() {
+            $(this).parent('p').toggleClass('active');
+            $('#ak-taf-form').slideToggle(function() {
+                $('#taf_form').toggleClass('ak-closed');
+            });
+            $('#copy-and-paste').slideToggle();
+            return false;
+        });
+    });
+</script>
+{% endblock %}
+
+{% block below_form %}
+
+<script type="text/javascript">
+    actionkit.forms.contextRoot = '/context/';
+    actionkit.forms.initTafForm('taf');
+    actionkit.sharing.initShareTools();
+</script>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% load actionkit_tags %}
+
+<!-- event_roster.html: Cohost/attendee roster for host page -->
+<style type="text/css">
+    .{{signups.role}}-list .toggle-col { width: 1% }
+    .{{signups.role}}-list-holder button { margin-top: 0; margin-bottom: 0; }
+    fieldset.{{signups.role}}-list-holder { clear: both; }
+</style>
+
+<div class="signup-list {{signups.role}}-list ak-clearfix">
+    <h3>
+        {% if signups.role == 'host' %}Cohost{% else %}Attendee{% endif %}{{ signups|length|pluralize }} ({{ signups|length }}  total)
+    </h3>
+    <form id="manage-{{signups.role}}" onvalidate="return validateRoster(this)" onconfirm="return confirmRoster(this)" name="manage-{{signups.role}}" method="post" action="/event/{{campaign.local_name}}/{{event.id}}/manage_signups" accept-charset="utf-8">
+
+        <ul class="compact" id="ak-errors"></ul>
+
+        <input type="hidden" name="page" value="{{ page.name }}">
+        <input type="hidden" name="event_id" value="{{ event.id }}">
+        <input type="hidden" name="akid" value="{{ args.akid }}">
+        <input type="hidden" name="role" value="{{ signups.role }}">
+        <input type="hidden" name="action" value="">
+        <input type="hidden" name="form_name" value="manage-{{signups.role}}">
+
+        <table class="signup-tbl {{signups.role}}-tbl ak-data-table">
+            <thead>
+                <th class="toggle-col"><input type="checkbox" class="if-js toggle-all"></th>
+                <th class="name-col">Name</th>
+                <th class="phone-col">Phone</th>
+                {% if event.is_in_past and signups.role == 'attendee' %}
+                    <th class="attended-col">Attended</th>
+                {% endif %}
+            </thead>
+            <tbody>
+                {% for signup in signups %}
+                <tr class="{% cycle even,odd %}">
+                    <td class="toggle-col">
+                        <input type="checkbox" class="toggle" name="user_id" value="{{ signup.user.id }}">
+                    </td>
+                    <td class="name-col">{{ signup.user }}</td>
+                    <td class="phone-col">{{ signup.user.phone }}</td>
+                    {% if event.is_in_past and signups.role == 'attendee' %}
+                        <td class="attended-col"> 
+                            {% if signup.attended %}yes{% else %}no{% endif %} 
+                        </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="signup-list-controls ak-clearfix">
+            <input type="submit" class="email if-js ak-btn-short" value="Email">
+            {% if signups.role == 'attendee' %}
+                <input type="submit" confirm-message="Really remove attendee? This can't be undone." name="remove" value="Remove" class="remove ak-btn-short">
+                {% if event.is_in_past %}
+                    <input type="submit" name="change-attended" value="Change Attendance" class="change-attended ak-btn-short">
+                {% endif %}
+            {% endif %}
+            <input type="submit" name="change-role" value="Make {% if signups.role == 'host' %}attendee{% else %}co-host{% endif %}" class="change-role ak-btn-short">
+        </div>
+
+        {% with 'no' as need_form %}
+            {% if signups.role == 'host' %}
+                {% with 'cohosts' as to %}
+                    {% include "./event_contact.html" %}
+                {% endwith %}
+            {% else %}
+                {% with 'attendees' as to %}
+                    {% include "./event_contact.html" %}
+                {% endwith %}
+            {% endif %}
+        {% endwith %}
+    </form>
+</div>
+<!-- End event_roster.html -->

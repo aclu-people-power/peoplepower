@@ -1,0 +1,12 @@
+Subject: You are now a {{new_role}} of your "{{campaign_title}}" event
+
+{% load actionkit_tags %}
+<p>You are now a {{ signup.role }} of your "{{ campaign.local_title }}" event.</p>
+
+<p>To use your event tools, visit <a href="https://{% client_ssl_domain %}{{ signup.url }}">https://{% client_ssl_domain %}{{ signup.url }}</a></p>
+
+<!-- Replacement for unsubscribe. -->
+<p><small>
+    You're receiving this message because you're signed up for an event.  
+    You can use your event tools, linked above, to cancel your signup and quit receiving these messages.
+</small></p>

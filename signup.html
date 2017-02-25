@@ -1,0 +1,45 @@
+{% extends "./wrapper.html" %}{% load actionkit_tags %}
+
+{% block content %}
+
+{% load_remember_me %}
+
+<div class="ak-grid-row titlerow">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+        <h2>{{ page.title }}</h2>
+    </div>
+</div>
+
+<form class="action_form" name="act" method="POST" action="/act/" accept-charset="utf-8">
+    
+    <div class="ak-grid-row">
+        <div id="signup-story" class="ak-grid-col ak-grid-col-6-of-12">
+
+            {% if page.custom_fields.featured_image %}
+            <img class="ak-featured-img" src="{{page.custom_fields.featured_image}}">
+            {% endif %}
+
+            {% autoescape off %}
+                <div class="ak-abovefold">
+                    {% include_tmpl form.introduction_text %}
+                </div>
+            {% endautoescape %}
+
+            <div class="ak-mobile-lead"></div>
+
+            {% include "./progress_meter.html" %}
+        </div>
+
+        <div id="signup-form" class="ak-grid-col ak-grid-col-6-of-12 ak-styled-fields {{templateset.custom_fields.field_labels_class|default:"ak-labels-overlaid"}} {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+
+            {% include "./user_form_wrapper.html" %}
+
+            <button type="submit" class="full">Sign Up</button>
+
+        </div>
+    </div>
+    
+    <input type="hidden" name="page" value="{{ page.name }}">
+</form>
+
+{% endblock %}

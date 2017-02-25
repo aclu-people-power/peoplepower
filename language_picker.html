@@ -1,0 +1,18 @@
+{% if can_switch_lang %}
+    {% with page.translations as translations %}
+        <!-- Remove this if you don't want popins like "This page also in English" -->
+        <span style="ak-lang-popin"></span>
+        <span style="display: block; float: right;" class="ak-language-list">      
+            {% for translated_page in translations %}
+                {% if translated_page.id == page.id %}
+                    <span class="disabled-lang">{{ translated_page.lang.name|default:"English" }}</span>
+                {% else %}
+                    <a class="lang" href="/act/{{ translated_page.name }}/">{{ translated_page.lang.name|default:"English" }}</a>
+                {% endif %}
+                {% if not forloop.last %}
+                    &bull;
+                {% endif %}
+            {% endfor %}
+        </span>
+    {% endwith %}
+{% endif %}

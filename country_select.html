@@ -1,0 +1,57 @@
+{% load actionkit_tags %}
+
+<select name="{{ input_name_prefix }}country" id="id_{{ input_name_prefix }}country" {% if onchange %}onchange="{{ onchange }}" onblur="{{ onchange }}"{% endif %}>
+    {% if page.lang_or_en.country_names_us_first %}
+        {% for std_name,name in page.lang_or_en.country_names_us_first %}
+            <option value="{{ std_name|escapeall }}">{{ name|escapeall }}</option>
+        {% endfor %}
+    {% else %}
+        <option selected value="United States">United States</option>
+        {% for std_name,name in page.lang_or_en.country_names %}
+            <option value="{{ std_name|escapeall }}">{{ name|escapeall }}</option>
+        {% endfor %}
+    {% endif %}
+</select>
+
+{% if not input_name_prefix %}
+    {% if filename != "event_search.html" and filename != "recurring_update.html" %}
+        <!-- Canada explicit opt-in box -->
+        <div id="ak-fieldbox-subscription_consent">
+            <input type="hidden" id="id_suppress_subscribe" name="suppress_subscribe" value="">
+            <input class="no-overlay" type="checkbox" id="id_subscription_consent" name="subscription_consent" value="1">
+            <label for="id_subscription_consent">Subscribe me to email updates</label>
+            <span id="id_subscription_consent_more_lnk">(<a href="#">details</a>)</span>
+            <div id="id_subscription_consent_more">
+                If you don't subscribe, you might miss news on this campaign 
+                or future opportunities to act. (If you're already subscribed, 
+                leaving this box unchecked won't remove you.)
+            </div>
+
+            <script>
+            $('#id_subscription_consent_more_lnk a').click(function() {
+                $('#id_subscription_consent_more_lnk').hide(); 
+                $('#id_subscription_consent_more').show(); 
+                return false;
+            })
+            $('#id_subscription_consent').change(function() {
+                $('#id_suppress_subscribe').val(this.checked ? '' : '1')}
+            );
+            $('#id_{{ input_name_prefix }}country').change(function() {
+                var country = $(this).val();
+                if (country == 'Canada') {
+                    $('#id_suppress_subscribe').val('1')
+                    $('#id_subscription_consent').attr('checked', false)
+                    $('#ak-fieldbox-subscription_consent').show()
+                } 
+                else {
+                    $('#id_suppress_subscribe').val('')
+                    $('#ak-fieldbox-subscription_consent').hide()
+                }
+            });
+            </script>
+
+            <!-- With JavaScript off, we can't show a consent box -->
+            <noscript><input type="hidden" name="suppress_subscribe_in" value="Canada"></noscript>
+        </div>
+    {% endif %}
+{% endif %}

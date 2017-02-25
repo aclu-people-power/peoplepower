@@ -1,0 +1,16 @@
+Subject: Confirm your "{{ action.event.campaign.local_title }}" event
+
+{% load actionkit_tags %}
+<!-- event_email_created.html in the templateset contains the default
+     confirmation email for hosts -->
+
+<p>Thanks for setting up a "{{ action.event.campaign.local_title }}" event.  <b>Before anyone can sign up for your event, you must confirm it by clicking below to {% if not user.password %}set a password and{% endif %} log in to your host tools:</b></p>
+
+<p><a href="https://{% client_ssl_domain %}/event/{{ action.event.campaign.local_name }}/{{ action.event.id }}/host/?i={{ user.password_change_token }}">https://{% client_ssl_domain %}/event/{{ action.event.campaign.local_name }}/{{ action.event.id }}/host/?i={{ user.password_change_token }}</a></p>
+
+<p>Please <b>don't forward this email</b>: the link above is personalized, and can be used to manage your event or change your account password.</p>
+
+<p>Thanks again!</p>
+
+<!-- Replacement for unsubscribe -->
+<p><small>You're receiving this message because you set up a "{{ action.event.campaign.local_title }}" event.  If you don't want to receive further emails about this event, you can cancel the event using the host tools linked above.</small></p>

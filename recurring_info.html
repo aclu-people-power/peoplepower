@@ -1,0 +1,199 @@
+{% with profile.payment_processor_information as pp %}
+<form id="change_profile_{{ profile.id }}" {% if pp.processor == "stripe" %}data-stripe-pub-key="{{ pp.pub_key }}"{% endif %} class="action_form" name="act" method="POST" action="/act/" accept-charset="utf-8">
+    <input type="hidden" name="page" value="{{ page.name }}">
+    <input type="hidden" name="profile_id" value="{{ profile.id }}">
+    {% comment %} akid is needed to tell javascript required field checking we have a user, but the view requires a user to be logged in. {% endcomment %}
+    <input type="hidden" name="akid" value="{{ logged_in_user.token }}">
+
+    <div class="ak-field-box">
+        <div class="ak-styled-fields ak-labels-before {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+        
+        <div>
+            <label>
+                Next Payment
+            </label>
+            <div class="ak-readonly-value">
+                <div>
+                    {{ profile.next_payment_date|date }}
+                </div>
+                <div>
+                    <a href = "/cms/pledge/cancel/monthly/">Cancel donation</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ak-show-amount">
+            <label>
+                Monthly Amount
+            </label>
+            <div class="ak-readonly-value">
+                <div>
+                    {{ profile.amt }}
+                </div>
+                <div>
+                    <a href="#" onclick="return ak_recurring_change_amount('{{ profile.id }}');" class="ak-change-amount-link">Change amount</a>
+                </div>
+            </div>
+        </div>
+        <div class="ak-change-amount" style="display: none">
+            <label>
+                Monthly Amount
+            </label>
+            <input type="text" name="amount" size="6" value="{{ profile.amount }}">
+        </div>
+        
+        <div>
+            <label>
+                First Payment
+            </label>
+            <div class="ak-readonly-value">
+                <div>
+                    {{ profile.created_at|date }}
+                </div>
+            </div>
+        </div>
+        
+        {% if profile.order.payment_method == "cc" %}
+        <div class="ak-show-cc">
+            <label>
+                Credit Card
+            </label>
+            <div class="ak-readonly-value">
+                <div>
+                    Card ending in {{ profile.card_num }}
+                    <br>
+                    Expiration {{ profile.display_expiration_date }}
+                </div>
+                <div>
+                    <a href="#" onclick="return ak_recurring_change_card('{{ profile.id }}');">Change credit card information</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ak-change-cc" style="display: none">
+            <label for="card_num_{{ profile.id }}">
+                Credit Card Number
+            </label>
+            <input id="card_num_{{ profile.id }}" type="text" name="card_num" disabled=true>
+            <div class="ak-card_num-hosted"></div>
+        </div>
+        
+        <div class="ak-change-cc" style="display: none">
+            <label for="exp_date_{{ profile.id }}">
+                Expiration Date
+            </label>
+            <input id="exp_date_{{ profile.id }}" type="text" name="exp_date" size="6" placeholder="MMYY" style="max-width: 33%" disabled=true>
+            <div class="ak-exp_date-hosted"></div>
+        </div>
+        
+        <div class="ak-change-cc" style="display: none">
+            <label for="card_code_{{ profile.id }}">
+                Verification Number
+            </label>
+            <input id="card_code_{{ profile.id }}" type="text" name="card_code" size="6"  style="max-width: 33%" disabled=true>
+            <div class="ak-card_code-hosted"></div>
+        </div>
+
+        {% endif %}
+        
+        {% if profile.order.payment_method == "cc" %}
+            <div class="ak-show-address" style="display: none">
+                <label>
+                    Address
+                </label>
+                <div class="ak-readonly-value">
+                    <div class="ak-full-address">{{ profile.user.full_address }}</div>
+                    {% if profile.payment_processor.recurring_update_supports_address %}
+                    <div>
+                        <a href="#" onclick="return ak_recurring_change_address('{{ profile.id }}');">Change billing information</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+    
+            {% if profile.payment_processor.recurring_update_supports_address %}
+    
+            <div class="ak-change-address" style="display: none">
+                <div style="text-align: center">
+                    Optionally also enter your credit card billing address:
+                </div>
+                <div>
+                    <label for="id_address1_{{ profile.id }}">
+                        Street Address
+                    </label>
+                    <input name="address1" id="id_address1_{{ profile.id }}" type="text" value="{{ profile.order.user_detail.address1 }}" disabled=true>
+                </div>
+    
+                <div>
+                    <label for="id_city_{{ profile.id }}">
+                        City
+                    </label>
+                    <input name="city" id="id_city_{{ profile.id }}" type="text" value="{{ profile.order.user_detail.city }}" disabled=true>
+                </div>
+        
+                <div class="state_select_box">
+                    <label>
+                        State
+                    </label>
+                    {% include "./state_select.html" %}
+                </div>
+    
+                <div>
+                    <label for="id_zip_{{ profile.id }}">
+                        ZIP Code
+                    </label>
+                    <input name="zip" id="id_zip_{{ profile.id }}" type="text" value="{{ profile.order.user_detail.zip }}" disabled=true>
+                </div>
+    
+                <div>
+                    <label for="id_region_{{ profile.id }}">
+                        Region
+                    </label>
+                    <input name="region" id="id_region_{{ profile.id }}" type="text" value="{{ profile.order.user_detail.region }}" disabled=true>
+                </div>
+    
+                <div>
+                    <label for="id_postal_{{ profile.id }}">
+                        Postal
+                    </label>
+                    <input name="postal" id="id_postal_{{ profile.id }}" type="text" value="{{ profile.order.user_detail.postal }}" disabled=true>
+                </div>
+    
+                <div class="country_select_box">
+                    <label>
+                        Country
+                    </label>
+                    {% include "./country_select.html" %}
+                </div>
+
+                <script>
+                  $(function () {
+                     {% if profile.order.user_detail.country %}
+                       $("#change_profile_{{ profile.id }} .country_select_box select").val("{{ profile.order.user_detail.country }}");
+                     {% endif %}
+                     {% if profile.order.user_detail.state %}
+                       $("#change_profile_{{ profile.id }} .state_select_box select").val("{{ profile.order.user_detail.state }}");
+                     {% endif %}
+                  });
+                </script>
+            </div>
+    
+            {% endif %}
+        {% endif %}
+
+
+        <div class="ak-change-submit ak-align-right" style="display: none">
+            <button name="submit_form" type="submit">Save Changes</button>
+        </div>
+
+        </div>
+    </div>
+
+</form>
+{% if pp.use_vzero %}
+<script>
+initVZeroForForm('#change_profile_{{ profile.id }}', '{{ pp.client_token }}');
+</script>
+{% endif %}
+
+{% endwith %}

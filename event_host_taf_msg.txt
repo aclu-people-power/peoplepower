@@ -1,0 +1,26 @@
+Subject: Hope you can come!
+{% load actionkit_tags %}
+{% with action.event as event %}
+Hi,
+
+{% filter single_line %}
+I'm hosting an event as part of {% client_name %}'s 
+"{{ event.campaign.local_title }}" campaign.  It's at 
+{{ event.address1 }} {% if event.venue %}({{ event.venue }}){% endif %}
+in {{ event.city }}, {{ event.region }} 
+on {{ event.starts_at|date:"l, F j" }} at {{ event.starts_at|date:"f A" }}.  
+{% endfilter %}
+
+RSVP here so I can know you're coming:
+
+http://{% client_domain %}/event/{{ event.campaign.signup_page.name }}/{{ event.id }}/?source=taf
+
+Thanks,
+{{ action.user.first_name }}
+
+{% endwith %}
+
+{% comment %}
+[Campaigners: the default host tell-a-friend message comes from
+event_host_taf_msg.txt in the templateset.]
+{% endcomment %}

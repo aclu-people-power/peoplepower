@@ -1,0 +1,80 @@
+{% extends './wrapper.html' %}
+
+{% block content %}
+
+<div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+        <h2 class="ak-display-inline-block">{{ actionkit_user.name }}</h2> 
+        &nbsp; <a href="/logout/">Log Out</a>
+    </div>
+</div>
+
+<div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>
+                        {{ message }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <h3>Email And Address</h3>
+        <div><strong>{{ actionkit_user.email }}</strong></div>
+
+        <div class="ak-full-address">{{ actionkit_user.full_address }}</div>
+
+        <div><a href="update/">Update your email or address.</a></div>
+
+        <h3> Subscription History </h3>
+
+        <ul class="ak-margin-none">
+            {% for subscription in actionkit_user.subscription_history %}
+            <li>
+                {{ subscription.list.name }}, {{ subscription.change.name }}, at {{ subscription.created_at|date:"m/d/Y" }}
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% if actionkit_user.is_subscribed %}
+        <div><a href="/cms/unsubscribe/unsubscribe/?akid={{ actionkit_user.token }}">Unsubscribe</a></div>
+        {% endif %}
+
+        {% if recurring_donations %}
+        <h3> Your Recurring Donations </h3>
+        <ul class="ak-margin-none">
+            {% for profile in recurring_donations %}
+            <li>
+                <strong>{{ profile.amt }}</strong> a {{ profile.inverse_period_display|lower }}, started on {{ profile.created_at|date:"m/d/Y" }}. 
+                You've given a total of {{ profile.payment_total_amt }}. 
+                {% if profile.is_active %}
+                    {% if profile.order.payment_method != "paypal" %}
+                        <a href="/cms/pledge/update/update/">Update your credit card</a> or <a href="/cms/pledge/cancel/monthly/">cancel at any time.</a>
+                    {% else %}
+                        <a href="/cms/pledge/cancel/monthly/">Cancel at any time.</a>
+                    {% endif %} 
+                {% else %}
+                    <b>{{ profile.get_status_display }} on {{ profile.updated_at|date:"m/d/Y" }} </b>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if donations %}
+            <h3> Donation History </h3>
+            <ul>
+                {% for donation in donations %}
+                    <li>
+                        {{ donation.amt }} on {{ donation.created_at|date:"m/d/Y" }}  {% if donation.recurring %} (Recurring) {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

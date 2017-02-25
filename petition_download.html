@@ -1,0 +1,87 @@
+{% extends "./wrapper.html" %}
+
+{% block title %}
+    Download constituent comments and signatures
+{% endblock %}
+
+{% block script_additions %}
+
+<script>
+    function showStatus(details) {
+        if ( details.status == 'error' ) {
+            var error = status.details.error.replace(/\n/g, '<br>');
+            $('#task-status').addClass('ak-err').html(
+                'Error: ' + (error || generic_error)
+            );
+            window.clearInterval(statusCheckTimer);
+        }
+        if ( details.status == 'complete' ) {
+            var download_url = (
+                '/constituents/finish_download/'
+                + '?akid={{user.token}}&backgroundtask_id={{backgroundtask.id}}'
+                + '&_rand=' + Math.random()
+            )
+            $('#task-status').html('<a href="' + download_url + '">Your file is ready!  Click here to download.</a>');
+            window.clearInterval(statusCheckTimer);
+        }
+        if ( details.status == 'failed' ) {
+            $('#task-status').html('<b>Sorry, there was an error preparing your file</b>');
+            window.clearInterval(statusCheckTimer);
+        }
+    }
+    function checkStatus() {
+        actionkit.forms.createScriptElement(
+            '/constituents/check_download/'
+            + '?akid={{user.token}}&backgroundtask_id={{backgroundtask.id}}'
+            + '&_rand=' + Math.random()
+        );
+    }
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+
+        {% if fmt %}
+            {% comment %}
+                Monitor the status of the PDF job, and 
+                provide a download link when it's done.
+            {% endcomment %}
+
+            <h2>Download Constituent Signatures And Comments</h2>
+
+            <h2 id="task-status">We're preparing your file now...</h2>
+
+            <script>
+                actionkit.forms.initForm = function() {} // not an action form
+                statusCheckTimer = window.setInterval(checkStatus, 5000);
+                checkStatus();
+            </script>
+
+        {% else %}
+            {% comment %}
+                Need to pick format
+            {% endcomment %}
+            <h2>Choose Download Format</h2>
+
+            <ul>
+                <li>
+                    <a href="?akid={{user.token}}&job_id={{job.id}}&fmt=pdf">
+                        Download printable PDF
+                    </a>
+                </li>
+                <li>
+                    <a href="?akid={{user.token}}&job_id={{job.id}}&fmt=csv">
+                        Download spreadsheet in CSV format (Excel-compatible)
+                    </a>
+                </li>
+            </ul>
+        {% endif %}
+        
+    </div>
+</div>
+
+{% endblock %} 

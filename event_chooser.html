@@ -1,0 +1,38 @@
+{% extends "./wrapper.html" %}
+
+{% block content %}
+
+{% if signups.count == 0 %}
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <h2>You aren't signed up for any events</h2>
+        </div>
+    </div>
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <div><a href="/event/{{ campaign.local_name }}/">Search for an event here</a></div>
+        </div>
+    </div>
+{% else %}
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <h2>Please choose an event below.</h2>
+        </div>
+    </div>
+    <div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
+            <ul>
+                {% for signup in signups %}
+                <li>
+                    <a href="{{ signup.url }}">{{ signup.event.title }} &mdash; {{ signup.event.get_starts_at_display }}</a>
+                    {% if signup.role == 'host' %}
+                    &nbsp;(you are hosting)
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
