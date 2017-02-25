@@ -71,11 +71,10 @@
 </a>
 				
 <span>{% ifequal page.type "Unsubscribe" %}By submitting this form, you will be unsubscribed from People Power.{% else %}
-				   {% if page.type = "thanks" %}
-				   		Test
+				   {% if filename|split:'.'|nth:0 = "thanks" %}
+				   		Thank you!
 				   {% else %}
 				   		By submitting this form, you are agreeing to receive periodic updates from People Power and other ACLU channels.
-						<span style="visibility: hidden">{{ filename|split:'.'|nth:0 }}</span>
 				   {% endif %}
                {% endifequal %}</span>
                 <span><a href="https://go.peoplepower.org/signup/privacy/">{{ 'Privacy Policy'|ak_text:'privacy' }}</a></span>
