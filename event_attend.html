@@ -102,7 +102,7 @@
                       <img src="http://maps.google.com/maps/api/staticmap?sensor=false&size=500x300&markers={{ event.address1|urlencode }}, {{ event.city_etc|urlencode }}"> 
                   -->
                 </div>
-<p style="width:100%;font-weight:200;text-align:center;font-size:13px;color:#537882">People Power is driven by volunteers! That means that this event was likely posted by volunteer, not an official representative of the ACLU.{% if args.event_id = '27'  %} ({{args.event_id}}){%endif%}</p>
+<p style="width:100%;font-weight:200;text-align:center;font-size:13px;color:#537882">People Power is driven by volunteers! That means that this event was likely posted by volunteer, not an official representative of the ACLU.{% if not args.event_id = '27'  %} ({{args.event_id}}){%endif%}</p>
 
                 {% endif %}
 </div>
