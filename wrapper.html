@@ -41,6 +41,11 @@
 
     {% load_ak_context context %}
     {% load_js %}
+       	{% if filename|split:'.'|nth:0 = "event_attend" %}
+			//peoplepower.org/assets/jstz.js
+			//peoplepower.org/assets/moment.js
+			//peoplepower.org/assets/moment-timezone.js
+		{% endif %}
         //s3.amazonaws.com/s3.peoplepower.org/scripts/jquery.min.js
         /resources/actionkit.js
     {% end %}
@@ -124,6 +129,53 @@
             }
         });
     </script>
+    
+    
+    
+{% if filename|split:'.'|nth:0 = "event_attend" %}
+			 <script>
+				// Get the timezone
+				// If it's already in storage, just grab from there
+				if (!sessionStorage.getItem('timezone')) {
+				  var tz = jstz.determine() || 'UTC';
+				  sessionStorage.setItem('timezone', tz.name());
+				}
+				var currTz = sessionStorage.getItem('timezone');
+
+				// References to DOM elements
+				var inputTime = document.querySelector("#input-time");
+				var output = document.querySelector("#local");
+
+				// When the input changes, update the local time
+				inputTime.addEventListener("change", function() {
+				  updateTime(this.value);
+				});
+
+				function updateTime(theTime) {
+
+				  // Format Moment.js expects:
+				  //   2015-08-12T14:30Z
+				  // Moment.js can help us build it.
+				  var date = moment().format("YYYY-MM-DD");
+				  var stamp = date + "T" + theTime + "Z";
+
+				  // Create a Moment.js object
+				  var momentTime = moment(stamp);
+
+				  // Adjust using Moment Timezone
+				  var tzTime = momentTime.tz(currTz);
+
+				  // Format the time back to normal
+				  var formattedTime = tzTime.format('h:mm A');
+
+				  output.textContent = "Time in " + currTz + ": " + formattedTime;
+				}
+
+				updateTime(inputTime.value);
+				  //# sourceURL=pen.js
+				  </script>		   	
+{% endif %}
+    
 <!-- SiteCatalyst code version: AppMeasurement 1.6.1 Copyright 1996-2017 Adobe, Inc. -->
 <script language="javascript" type="text/javascript" src="https://www.aclu.org/sites/all/libraries/sitecatalyst/AppMeasurement.js"></script>
 <script language="javascript" type="text/javascript"><!--
