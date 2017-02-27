@@ -166,7 +166,7 @@
 				  var tzTime = momentTime.tz(currTz);
 
 				  // Format the time back to normal
-				  var formattedTime = tzTime.format('h:mm A');
+				  var formattedTime = tzTime.format('h:mm A T');
 
 				  output.textContent = currTz + ": " + formattedTime;
 				}
