@@ -55,7 +55,6 @@
                 {% if event.distance|is_nonblank %}
                     <p><span class="ak-event-distance">{{ event.distance_str }} away</a></span></p>
                    {% endif %}
-<!--
 <div class="ak-event-time">
 <h3>Date and time:</h3>
 <div class="ak-event-time-entry"></div>
@@ -74,10 +73,9 @@
 <div class="ak-event-attendee-count-output">{{ event.attendee_count }} attendee{{ event.attendee_count|pluralize }}</div>
 </div>
 {% endif %}
--->
 
+<!--
                 <table cellspacing="0" class="ak-event-table">
-						<!--test###-->
                         <tr class="ak-event-time">
                             <th>Date and time:</th>
                             <td>March 11 at 4:30pm ET/3:30pm CT/2:30pm MT/1:30pm PT</td>
@@ -95,6 +93,7 @@
                         </tr>
                     {% endif %}
                 </table>
+-->
 
                 {% if campaign.show_public_description %}
                     {% if event.public_description %}
