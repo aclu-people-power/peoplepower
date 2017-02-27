@@ -167,8 +167,25 @@
 
 				  // Format the time back to normal
 				  var formattedTime = tzTime.format('h:mm A');
-
-				  output.textContent = formattedTime + " " + currTz;
+					if (currTz == 'America/New_York'){
+						var newKTz = 'ET'
+					} else {
+						if (currTz == 'America/Chicago'){
+							var newKTz = 'CT'
+						} else {
+							if (currTz == 'America/Los_Angeles'){
+								var newKTz = 'PT'
+							} else {
+								if (currTz == 'America/Denver'){
+									var newKTz = 'MT'
+								} else {
+										var newKTz = currTz
+								}
+							}
+						}
+					}
+					
+				  output.textContent = formattedTime + " " + newKTz;
 				}
 
 				updateTime(inputTime.value);
