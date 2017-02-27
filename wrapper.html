@@ -82,7 +82,7 @@
                {% endifequal %}</span>
 				<span>Contact us at <a href="mailto:info@peoplepower.org">info@peoplepower.org</a>.<br><a href="https://go.peoplepower.org/signup/privacy/">{{ 'Privacy Policy'|ak_text:'privacy' }}</a></span>
           		 	{% if filename|split:'.'|nth:0 = "event_attend" %}
-				   		<input value="22:30" type="time" id="input-time" style="display:none;">
+				   		<input value="21:30" type="time" id="input-time" style="display:none;">
 						<p id="local" style="color:#000;display:block;clear:both;float:none;"></p>
 				   {% endif %}
             </div>
@@ -166,7 +166,7 @@
 				  var tzTime = momentTime.tz(currTz);
 
 				  // Format the time back to normal
-				  var formattedTime = tzTime.format('h:mm A T');
+				  var formattedTime = tzTime.format('h:mm A');
 
 				  output.textContent = currTz + ": " + formattedTime;
 				}
