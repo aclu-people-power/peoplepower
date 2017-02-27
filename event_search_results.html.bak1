@@ -1,0 +1,103 @@
+{% load actionkit_tags %}
+{% filter collapse_spaces %}
+
+{% comment %}
+    This file is so long because you can choose whether your campaign uses
+    event titles, venues, etc., and different choices produce different HTML.  
+
+    The field that's linked in each search result is the first of these
+    that's defined:
+
+        1. Title
+        2. Venue
+        3. Distance
+        4. Campaign name
+{% endcomment %}
+
+{% if events|is_defined %}
+    <input type="hidden" id="id_have_events" name="have_events" value="1">
+    {% if not events|length %}
+        <h3>No events found near {{ place|default:"your location" }}.</h3>
+    {% else %}
+
+        {% if campaign.show_address1 and not hide_map %}
+            <div id="ak-map">
+                <img src="http://maps.google.com/maps/api/staticmap?sensor=false&size=500x300&markers={% for event in events %}{{ event.address1|urlencode }}, {{ event.city_etc|urlencode }}{% if not forloop.last %}|{% endif %}{% endfor %}">
+            </div>
+        {% endif %}
+        
+        {% for event in events %}
+            <div class="ak-field-box">
+                {% if campaign.use_title and campaign.show_title %}
+                    <p class="ak-event-title"><a href="/event/{{ campaign.local_name }}/{{event.id}}/signup/?akid={{args.akid}}&amp;zip={{args.zip}}">{{ event.title }}</a></p>
+                {% else %}
+                    <p class="ak-event-title">
+                        <a href="/event/{{ campaign.local_name }}/{{event.id}}/signup/?akid={{args.akid}}&amp;zip={{args.zip}}" class="ak-campaign-title">{{ campaign.local_title }}</a>
+                    </p>
+                {% endif %}
+                
+                {% if campaign.show_venue and event.venue %}
+                    <span class="ak-event-venue">{{ event.venue }}</span>
+                {% endif %}
+                
+                {% if campaign.show_address1 %}
+                    <div class="ak-event-address1">{{ event.address1 }}</div>
+                {% endif %}
+
+                {% if campaign.show_city or campaign.show_state or campaign.show_zip %}
+                    {% if campaign.show_zip %}
+                        <div class="ak-event-city-etc">{{ event.city_etc }}</div>
+                    {% else %}
+                        <div class="ak-event-city-etc">{{ event.city_etc_no_postal }}</div>
+                    {% endif %}
+                {% endif %}
+
+                {% if event.distance|is_nonblank %}
+                    <p><span class="ak-event-distance">{{ event.distance_str }} away</a></span></p>
+                   {% endif %}
+            
+                <table cellspacing="0" class="ak-event-table">
+                        <tr class="ak-event-time">
+                            <th>Date and time:</th>
+                            <td>March 11 at 4:30pm ET/3:30pm CT/2:30pm MT/1:30pm PT</td>
+                        </tr>
+                    {% if campaign.show_directions and event.directions %}
+                        <tr class="ak-event-directions">
+                            <th>Directions:</th> 
+                            <td>{{ event.directions }}</span></td>
+                        </tr>
+                    {% endif %}
+                    {% if campaign.show_attendee_count %}
+                        <tr class="ak-event-attendee-count">
+                            <th>Attendee count:</th>
+                            <td>{{ event.attendee_count }} attendee{{ event.attendee_count|pluralize }}</td>
+                        </tr>
+                    {% endif %}
+                </table>
+
+                {% if campaign.show_public_description %}
+                    {% if event.public_description %}
+                        <p class="ak-event-description">
+                            {{ event.public_description }}
+                        </p>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% if campaign.public_create_page %}
+        <div>
+            <a class="ak-button ak-event-create" href="/event/{{ campaign.name }}/create/">Create your own event</a>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% if errors|length %}
+    <ul id="ak-errors">
+    {% for key,val in errors.items %}
+        <li>{{ val|nth:0 }}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% endfilter %}
