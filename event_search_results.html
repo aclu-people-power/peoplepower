@@ -28,6 +28,7 @@
         
         {% for event in events %}
             <div class="ak-field-box">
+				<div class="subA">Event</div>
                 {% if campaign.use_title and campaign.show_title %}
                     <p class="ak-event-title"><a href="/event/{{ campaign.local_name }}/{{event.id}}/signup/?akid={{args.akid}}&amp;zip={{args.zip}}">{{ event.title }}</a></p>
                 {% else %}
