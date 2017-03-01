@@ -61,7 +61,7 @@
 
 <div class="ak-event-time">
 <h3>Date and time:</h3>
-<div class="ak-event-time-entry">March 11 at 4:30pm ET/3:30pm CT/2:30pm MT/1:30pm PT</div>
+<div class="ak-event-time-entry">March 11 at {% if filename|split:'.'|nth:0 = "event_attend" %}<input value="21:30" type="time" id="input-time" style="display:none;"><span id="local"></span>{% endif %}</div>
 </div>
 
 {% if campaign.show_directions and event.directions %}
