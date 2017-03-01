@@ -71,14 +71,14 @@
                 <a class="if-js ak-emailalt" id="ak_hide_message_note" href="#" style="display: none;" onclick="$('#taf_preview').fadeOut(); $(this).hide(); $('#ak_view_message_note').show(); return false;">Hide message/note</a>
             </p>
             <p class="ak-clearfix">
-                <a class="if-js ak-emailalt" id="ak_view_message_note" href="#" onclick="$('#taf_preview').fadeIn(); $('#ak_hide_message_note').show(); $(this).hide(); return false;">View message/add note</a>
+                <a class="if-js ak-emailalt buttonB1" id="ak_view_message_note" href="#" onclick="$('#taf_preview').fadeIn(); $('#ak_hide_message_note').show(); $(this).hide(); return false;">View message/add note</a>
             </p>
 
-            <p class="ak-clearfix">You can also <a href="mailto:?subject={% filter referring_akid:akid|strip|urlencode %}
+            <p class="ak-clearfix" <a href="mailto:?subject={% filter referring_akid:akid|strip|urlencode %}
                 {% include_tmpl page.followup.taf_subject %}
                 {% endfilter %}&amp;body={% filter referring_akid:akid|strip|urlencode %}
                 {% include_tmpl page.followup.taf_body %}
-                {% endfilter %}">mail friends through your email program</a>.
+                {% endfilter %}" class="buttonB1">mail friends through your email program</a>.
             </p>
 
         </div>
