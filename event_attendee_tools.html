@@ -41,9 +41,9 @@
 	        <div class="subA">Event tools</div>
 	        <ul id="event-attendee-links" class="ak-links-menu">
 	            {{ form.tools_sidebar|safe }}
-	            <li><a href="../cancel_signup/?akid={{ args.akid }}">Cancel signup</a></li> 
+	            <li><a href="../cancel_signup/?akid={{ args.akid }}" class="buttonB1">Cancel signup</a></li> 
 	            <li class="narrower"> 
-	            | <a href="#" onclick="$('div.contact-form').slideDown('slow'); $(this).parent('li.narrower').hide();">Email host</a>
+	            | <a href="#" onclick="$('div.contact-form').slideDown('slow'); $(this).parent('li.narrower').hide();" class="buttonB1">Email host</a>
 	            </li>
 	        </ul>
 	        {% include "./event_contact.html" %}
