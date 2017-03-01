@@ -8,6 +8,8 @@
 <!--         <p class="ak-event-title"><a href="/event/{{ campaign.local_name }}/{{event.id}}/signup/?akid={{args.akid}}&amp;zip={{args.zip}}">{{ event.title }}</a></p> -->
     {% endif %}
 
+	<div class="subB">Location:</div>
+
     {% if event.venue %}
         <span class="ak-event-venue">{{ event.venue }}</span>
     {% endif %}
@@ -18,7 +20,7 @@
     <div class="ak-event-table">
     {% if event.get_starts_at_display %}
         <div class="ak-event-time">
-            <div>When:</div>
+            <div class="subB">When:</div>
             <div>
                 4:30pm ET/3:30pm CT/2:30pm MT/1:30pm PT
                 {% if event.is_in_past %}
@@ -31,13 +33,13 @@
     {% endif %}
     {% if event.directions %}
         <div class="ak-event-directions">
-            <div>Directions to event:</div>
+            <div class="subB">Directions to event:</div>
             <div>{{ event.directions }}</div>
         </div> <!-- .ak-event-directions -->
     {% endif %}
     {% if event.note_to_attendees %}
         <div class="ak-event-note-to-attendees">
-            <div>Your host says:</div>
+            <div class="subB">Your host says:</div>
             <div>{{ event.note_to_attendees }}</div>
         </div> <!-- .ak-event-note-to-attendees -->
     {% endif %}
@@ -45,6 +47,7 @@
 
     {% if event.public_description %}
         <div class="ak-event-description">
+		<div class="subB">Description</div>
             {{ event.public_description }}
         </div>
     {% endif %}
