@@ -18,20 +18,20 @@
 
         <div class="ak-styled-fields {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
         
-        <table class="ak-message-form">
-            <tr class="ak-event-contact-headers">
-                <th>
+        <div class="ak-message-form">
+            <div class="ak-event-contact-headers">
+                <div>
                     <label>From</label>
-                </th>
-                <td class="ak-readonly-value">
+                </div>
+                <div class="ak-readonly-value">
                     You (<span class="header-from header-val">{{ user.name }}</span>)
-                </td>
-            </tr>
-            <tr class="ak-event-contact-headers">
-                <th>
+                </div>
+            </div>
+            <div class="ak-event-contact-headers">
+                <div>
                     <label>To</label>
-                </th>
-                <td class="ak-readonly-value">
+                </div>
+                <div class="ak-readonly-value">
                     <span class="header-to header-val">
                         {% if signup.role == 'attendee' %}
                             Your event host
@@ -40,27 +40,27 @@
                             {% if to == 'attendees' %}attendee{% else %}co-host{% endif %}{% if signups|length > 1 %}(s){% endif %}
                         {% endif %}
                     </span>
-                </td>
-            </tr>
+                </div>
+            </div>
             {% if to in 'attendees|cohosts' %}
-            <tr class="event-contact-subject">
-                <th>
+            <div class="event-contact-subject">
+                <div>
                     <label>Subject*</label>
-                </th>
-                <td>
+                </div>
+                <div>
                     <input type="text" name="subject" class="ak-full-width" value="Message from your &quot;{{ event.title|default:campaign.local_title }}&quot; {% if to == 'cohosts'%}co-{% endif %}host">
-                </td>
-            </tr>
+                </div>
+            </div>
             {% endif %}
-            <tr class="event-contact-body">
-                <th>
+            <div class="event-contact-body">
+                <div>
                     <label>Your Message*</label>
-                </th>
-                <td>
+                </div>
+                <div>
                     <textarea name="body"></textarea>
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+        </div>
         
         <div class="ak-align-right">
             <input name="send_email" value="Send" type="submit" class="ak-btn-short"> 
