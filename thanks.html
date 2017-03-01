@@ -6,7 +6,7 @@
 
 <form name="taf" method="POST" action="/update_action/" accept-charset="utf-8" class="ak-thanks ak-styled-fields">
     <input type="hidden" name="page" value="{{ page.name }}">
-{% if page.name = 'attend-march-11' %}Thank you page{% else %}
+
 {% if actionkit_user %}
     {% if recurring_update or recurring_cancel %}
         <div class="ak-grid-row">
@@ -175,5 +175,5 @@
     actionkit.forms.initTafForm('taf');
     actionkit.sharing.initShareTools();
 </script>
-{% endif %}
+
 {% endblock %}
