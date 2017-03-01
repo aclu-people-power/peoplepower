@@ -28,32 +28,34 @@
 </div> <!-- .event-rsvpthanks -->
 
 <div class="ak-grid-row">
-    <div class="ak-grid-col ak-grid-col-6-of-12">
-        <div id="event-attendee-details">
-		<div class="subA">Event Details</div>
-            {% include "./event_attendee_details.html" %}
-        </div>
 
+<div class="ak-grid-col ak-grid-col-6-of-12">
+	<div id="event-attendee-details">
+	<div class="subA">Event Details</div>
+	{% include "./event_attendee_details.html" %}
+	</div>
+	<div class="event-tools">
+	<div class="subA">Event tools</div>
+	<div id="event-attendee-links">
+	{{ form.tools_sidebar|safe }}
+	<span><a href="../cancel_signup/?akid={{ args.akid }}" class="buttonB1 icon-cancel">Cancel signup</a></span>
+	<span><a href="#" onclick="$('div.contact-form').slideDown('slow'); $(this).parent('li.narrower').hide();" class="buttonB1 icon-email">Email host</a></span>
+	</div>
+	{% include "./event_contact.html" %}
+	</div> <!-- .event-tools -->
+</div> <!-- col6 -->
 
-		<div class="event-tools">
-	        <div class="subA">Event tools</div>
-	        <div id="event-attendee-links">
-	            {{ form.tools_sidebar|safe }}
-	            <span><a href="../cancel_signup/?akid={{ args.akid }}" class="buttonB1 icon-cancel">Cancel signup</a></span>
-	            <span><a href="#" onclick="$('div.contact-form').slideDown('slow'); $(this).parent('li.narrower').hide();" class="buttonB1 icon-email">Email host</a></span>
-	        </div>
-	        {% include "./event_contact.html" %}
-		</div> <!-- .event-tools -->
-    </div><!--col-6-->
+<div class="ak-grid-col ak-grid-col-6-of-12">
+	<div class="event-attendee-sidebar">
+	    {% if event.is_open_for_signup %}
+	        {% include "./event_invite.html" %}
+	    {% endif %}
+	</div>
+    <div><a class="ak-button ak-share-button ak-facebook" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank">Post to Facebook</a></div>
+	<div><a class="ak-button ak-share-button ak-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank">Share on Twitter</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+</div> <!-- col6 -->
 
-    <div class="ak-grid-col ak-grid-col-6-of-12">
-    <div class="event-attendee-sidebar">
-        {% if event.is_open_for_signup %}
-            {% include "./event_invite.html" %}
-        {% endif %}
-    </div>
-    </div>
-</div>
+</div> <!-- .ak-grid-row -->
 
 {% else %}
     {% if event.is_inactive %}
