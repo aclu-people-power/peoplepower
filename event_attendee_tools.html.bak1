@@ -44,7 +44,6 @@
         {% include "./event_contact.html" %}
 
         <div id="event-attendee-details">
-		<div class="subA">Event Details</div>
             {% include "./event_attendee_details.html" %}
         </div>
         
