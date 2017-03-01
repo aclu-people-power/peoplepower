@@ -36,7 +36,7 @@
 			<label for="id_taf_note">Your note</label>
 			<textarea id="id_taf_note" name="taf_note" class="wide" style="height: 75px;" placeholder="Optionally add a personal comment"></textarea>
 		</div> <!-- .taf-form-message -->
-		<div class="taf-form-message"><label for="id_taf_body">Message</label><span class="ak-readonly-value">{% filter referring_akid:akid|tag_links:"source=taf"|strip|linebreaksbr %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}</span></div>
+		<div class="taf-form-message"><label for="id_taf_body">Message</label><div class="ak-readonly-value">{% filter referring_akid:akid|tag_links:"source=taf"|strip|linebreaksbr %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}</div></div>
 	</div> <!-- #taf_preview -->
 </div> <!-- .ak-taf-form -->
 
