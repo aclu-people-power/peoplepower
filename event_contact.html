@@ -3,7 +3,7 @@
 <a name="contact{% if to %}-{{to}}{% endif %}"></a>
 
 <div class="ak-nodisplay-if-js contact-form contact{% if to %}-{{to}}{% endif %} ak-field-box ak-margin-1">
-    <h3>Email {% if to == 'attendees' %}attendee{% else %}Host{% endif %}(s)</h3>
+    <div class="subB">Email {% if to == 'attendees' %}attendee{% else %}Host{% endif %}(s)</div>
     {% if need_form != 'no' %}
     <form name="contact{% if to %}-{{to}}{% endif %}" method="post" action="/event/{{ campaign.local_name }}/{{ event.id }}/contact/" accept-charset="utf-8">
         <input type="hidden" name="page" value="{{ page.name }}">
