@@ -16,13 +16,15 @@
     <div class="ak-event-address1">{{ event.address1 }}</div>
     <div class="ak-event-city-etc">{{ event.city_etc }}</div>
         <div id="map">
-			<div><a href="https://www.google.com/maps/place/{{ event.address1|urlencode }}+{{ event.city_etc|urlencode }}">Get Map</a></div>
-            <iframe src="https://www.google.com/maps/embed/v1/place?q={{ event.address1|urlencode }},+{{ event.city_etc|urlencode }}&amp;key=AIzaSyCqC-M0AKpFkQtigs-Eda4M4yvC0Xu8fKY" frameborder="0" style="border:0" width="100%" height="300"></iframe>
-            <form class="directions-form ak-styled-fields" action="http://maps.google.com/maps/" method="get">
+			<div class="map-rawlink"><a href="https://www.google.com/maps/place/{{ event.address1|urlencode }}+{{ event.city_etc|urlencode }}" target="_blank">Get Map</a></div>
+            <div class="map-iframe"><iframe src="https://www.google.com/maps/embed/v1/place?q={{ event.address1|urlencode }},+{{ event.city_etc|urlencode }}&amp;key=AIzaSyCqC-M0AKpFkQtigs-Eda4M4yvC0Xu8fKY" frameborder="0" style="border:0" width="100%" height="300"></iframe></div>
+            <div class="map-getdir">
+			<form class="directions-form ak-styled-fields" action="http://maps.google.com/maps/" method="get">
                 <input size="26" type="text" name="saddr" placeholder="Enter your street address">
                 <input type="hidden" name="daddr" value="{{ event.address1 }}, {{ event.city_etc }}">
                 <button type="submit" class="ak-pull-right">Get Directions</button>
             </form>
+            </div> <!-- .map-getdir -->
         </div>
 
 
