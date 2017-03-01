@@ -3,7 +3,7 @@
 
 {% block content %}
 {% autoescape off %}
-
+{% if page.name = 'attend-march-11' %}Thank you page{% else %}
 <form name="taf" method="POST" action="/update_action/" accept-charset="utf-8" class="ak-thanks ak-styled-fields">
     <input type="hidden" name="page" value="{{ page.name }}">
 
@@ -149,7 +149,7 @@
 {% endif %}
 
 </form>
-
+{% endif %}
 {% endautoescape %}
 {% endblock %}
 
