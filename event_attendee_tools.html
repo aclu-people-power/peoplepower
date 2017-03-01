@@ -8,26 +8,24 @@
 
 <div class="banding-black">
 <div class="ak-grid-row">
-    <div class="ak-grid-col ak-grid-col-12-of-12">
+<div class="ak-grid-col ak-grid-col-12-of-12">
+{% if campaign.use_title %}
+<h2>Event: {{ event.title }}</h2>
+{% else %}
+<h2>Event: {{ campaign.local_title }}</h2>
+{% endif %}
+{% if campaign.use_title %}
+<h3>{{ campaign.local_title }}</h3>
+{% endif %}
+<!-- Message from mothership -->
+<div id="attendee-tools-intro">{{ form.tools_text|safe }}</div>
+</div> <!--col-12-->
+</div> <!--ak-grid-row-->
+</div> <!-- .banding-black -->
 
-        {% if campaign.use_title %}
-            <h2>Event: {{ event.title }}</h2>
-        {% else %}
-            <h2>Event: {{ campaign.local_title }}</h2>
-        {% endif %}
-
-        {% if campaign.use_title %}
-            <h3>{{ campaign.local_title }}</h3>
-        {% endif %}
-
-        <!-- Message from mothership -->
-        <div id="attendee-tools-intro">
-            {{ form.tools_text|safe }}
-        </div>
-
-    </div><!--col-12-->
-</div><!--ak-grid-row-->
-</div>
+<div class="ak-grid-row event-rsvpthanks">
+<div class="ak-grid-col ak-grid-col-3-of-12">Thanks for Signing Up!</div>
+</div> <!-- .event-rsvpthanks -->
 
 <div class="ak-grid-row">
     <div class="ak-grid-col ak-grid-col-6-of-12">
