@@ -34,7 +34,7 @@
 
             {% include "./user_form_wrapper.html" %}
 
-            <button type="submit" class="full">Sign Up</button>
+            <button type="submit" class="full">{% if page.id == '50' %}Find events near me{%else%}Sign Up{%endif%}</button>
 
         </div>
     </div>
