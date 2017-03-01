@@ -4,7 +4,7 @@
 {% block content %}
 {% autoescape off %}
 {% if page.name = 'attend-march-11' %}
-<iframe src="https://map.peoplepower.org/#distance=50&amp;sort=distance&amp;f%5B%5D=launch&amp;zipcode={{ action.user.zip }}" width="100%" height="100%" style="position:fixed;top:0;left:0;width:100vw;height:100vh;"></iframe>
+<iframe src="https://map.peoplepower.org/#distance=50&amp;sort=distance&amp;f%5B%5D=launch&amp;zipcode={{ action.user.zip }}" width="100%" height="100%" style="position:fixed;top:0;left:0;width:100vw;height:100vh;border:0;border-style:none;"></iframe>
 
 {% else %}
 <form name="taf" method="POST" action="/update_action/" accept-charset="utf-8" class="ak-thanks ak-styled-fields">
