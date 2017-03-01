@@ -21,26 +21,23 @@
         <div class="ak-message-form">
             <div class="ak-event-contact-headers">
                 <div>
-                    <label>From</label>
-                </div>
-                <div class="ak-readonly-value">
-                    You (<span class="header-from header-val">{{ user.name }}</span>)
+                    <label>From</label><span class="ak-readonly-value">You (<span class="header-from header-val">{{ user.name }}</span>)</span>
                 </div>
             </div>
             <div class="ak-event-contact-headers">
                 <div>
-                    <label>To</label>
-                </div>
-                <div class="ak-readonly-value">
-                    <span class="header-to header-val">
-                        {% if signup.role == 'attendee' %}
-                            Your event host
-                        {% else %}
-                            <span class="if-js to-count">{{signups|length}}</span> 
-                            {% if to == 'attendees' %}attendee{% else %}co-host{% endif %}{% if signups|length > 1 %}(s){% endif %}
-                        {% endif %}
-                    </span>
-                </div>
+                    <label>To</label>                
+	                <span class="ak-readonly-value">
+	                    <span class="header-to header-val">
+	                        {% if signup.role == 'attendee' %}
+	                            Your event host
+	                        {% else %}
+	                            <span class="if-js to-count">{{signups|length}}</span> 
+	                            {% if to == 'attendees' %}attendee{% else %}co-host{% endif %}{% if signups|length > 1 %}(s){% endif %}
+	                        {% endif %}
+	                    </span>
+	                </span>
+				</div>
             </div>
             {% if to in 'attendees|cohosts' %}
             <div class="event-contact-subject">
