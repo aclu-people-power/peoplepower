@@ -31,18 +31,6 @@
 
 <div class="ak-grid-row">
     <div class="ak-grid-col ak-grid-col-6-of-12">
-        <h3>Event tools</h3>
-        <ul id="event-attendee-links" class="ak-links-menu">
-            {{ form.tools_sidebar|safe }}
-            <li><a href="../cancel_signup/?akid={{ args.akid }}">Cancel signup</a></li> 
-            <li class="narrower"> 
-            | <a href="#" onclick="$('div.contact-form').slideDown('slow'); $(this).parent('li.narrower').hide();">Email host</a>
-            
-            </li>
-        </ul>
-        
-        {% include "./event_contact.html" %}
-
         <div id="event-attendee-details">
 		<div class="subA">Event Details</div>
             {% include "./event_attendee_details.html" %}
@@ -52,6 +40,18 @@
             {% include "./event_invite.html" %}
         {% endif %}
 
+		<div class="event-tools">
+	        <div class="subA">Event tools</div>
+	        <ul id="event-attendee-links" class="ak-links-menu">
+	            {{ form.tools_sidebar|safe }}
+	            <li><a href="../cancel_signup/?akid={{ args.akid }}">Cancel signup</a></li> 
+	            <li class="narrower"> 
+	            | <a href="#" onclick="$('div.contact-form').slideDown('slow'); $(this).parent('li.narrower').hide();">Email host</a>
+	            
+	            </li>
+	        </ul>
+	        {% include "./event_contact.html" %}
+		</div> <!-- .event-tools -->
     </div><!--col-6-->
 
     <div class="ak-grid-col ak-grid-col-6-of-12">
