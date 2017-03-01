@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <script>startTime=new Date()</script>
+    <meta name="application-name" content="People Power"/>
+
 <link rel="shortcut icon" type="image/x-icon" href="https://peoplepower.org/assets/favicon.ico" />
 <link rel="icon" type="image/png" href="https://peoplepower.org/assets/favicon-196x196.png" sizes="196x196" />
 <link rel="icon" type="image/png" href="https://peoplepower.org/assets/favicon-96x96.png" sizes="96x96" />
@@ -81,10 +83,6 @@
 				   {% endif %}
                {% endifequal %}</span>
 				<span>Contact us at <a href="mailto:info@peoplepower.org">info@peoplepower.org</a>.<br><a href="https://go.peoplepower.org/signup/privacy/">{{ 'Privacy Policy'|ak_text:'privacy' }}</a></span>
-          		 	{% if filename|split:'.'|nth:0 = "event_attend" %}
-				   		<input value="21:30" type="time" id="input-time" style="display:none;">
-						<p id="local" style="color:#000;display:block;clear:both;float:none;"></p>
-				   {% endif %}
             </div>
             <div class="clear"></div>
         </div>
