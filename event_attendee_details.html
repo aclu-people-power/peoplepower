@@ -5,7 +5,7 @@
 <div class="ak-field-box">
 
     {% if campaign.use_title and campaign.show_title %}
-        <p class="ak-event-title"><a href="/event/{{ campaign.local_name }}/{{event.id}}/signup/?akid={{args.akid}}&amp;zip={{args.zip}}">{{ event.title }}</a></p>
+<!--         <p class="ak-event-title"><a href="/event/{{ campaign.local_name }}/{{event.id}}/signup/?akid={{args.akid}}&amp;zip={{args.zip}}">{{ event.title }}</a></p> -->
     {% endif %}
 
     {% if event.venue %}
@@ -15,38 +15,38 @@
     <div class="ak-event-address1">{{ event.address1 }}</div>
     <div class="ak-event-city-etc">{{ event.city_etc }}</div>
 
-    <table class="ak-event-table">
+    <div class="ak-event-table">
     {% if event.get_starts_at_display %}
-        <tr class="ak-event-time">
-            <th>When:</th>
-            <td>
+        <div class="ak-event-time">
+            <div>When:</div>
+            <div>
                 4:30pm ET/3:30pm CT/2:30pm MT/1:30pm PT
                 {% if event.is_in_past %}
                     <span class="ak-error ak-event-over-notice">
                         (event is now over)
                     </span>
                 {% endif %}
-            </td>
-        </tr>
+            </div>
+        </div> <!-- .ak-event-time -->
     {% endif %}
     {% if event.directions %}
-        <tr class="ak-event-directions">
-            <th>Directions to event:</th>
-            <td>{{ event.directions }}</td>
-        </tr>
+        <div class="ak-event-directions">
+            <div>Directions to event:</div>
+            <div>{{ event.directions }}</div>
+        </div> <!-- .ak-event-directions -->
     {% endif %}
     {% if event.note_to_attendees %}
-        <tr class="ak-event-note-to-attendees">
-            <th>Your host says:</th>
-            <td>{{ event.note_to_attendees }}</td>
-        </tr>
+        <div class="ak-event-note-to-attendees">
+            <div>Your host says:</div>
+            <div>{{ event.note_to_attendees }}</div>
+        </div> <!-- .ak-event-note-to-attendees -->
     {% endif %}
-    </table>
+    </div> <!-- .ak-event-table -->
 
     {% if event.public_description %}
-        <p class="ak-event-description">
+        <div class="ak-event-description">
             {{ event.public_description }}
-        </p>
+        </div>
     {% endif %}
 
 </div>
