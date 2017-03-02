@@ -39,7 +39,7 @@
     </div>
 {% else %}
 
-    <div class="ak-grid-row">
+<div class="banding-black">
         <div class="ak-grid-col ak-grid-col-6-of-12">
             <h2>
                 {% if page.followup.send_taf and args.taf %}
@@ -52,6 +52,11 @@
                     {% endfilter %}
                 {% endif %}
             </h2>
+        </div>
+</div> <!-- .banding-black -->
+
+    <div class="ak-grid-row">
+		<div class="ak-grid-col ak-grid-col-6-of-12">	
             <div>
                 {% include_tmpl form.thank_you_text %}
             </div>
