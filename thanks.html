@@ -67,12 +67,12 @@
 
         <div class="ak-grid-col ak-grid-col-6-of-12">
 
-<div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank"><span></span>Post to Facebook</a></div>
-<div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank"><span></span>Share on Twitter</a></div>
-<div class="thanks-share-getmap"><a class="buttonA3 icon-mapmarker" href="https://map.peoplepower.org/#zipcode={{ action.event.postal|urlencode }}&distance=20&sort=distance&f%5B%5D=launch" target="_blank"><span></span>Find an Event</a></div>
+<div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank"><span class="icon"></span>Post to Facebook</a></div>
+<div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank"><span class="icon"></span>Share on Twitter</a></div>
+<div class="thanks-share-getmap"><a class="buttonA3 icon-mapmarker" href="https://map.peoplepower.org/#zipcode={{ action.event.postal|urlencode }}&distance=20&sort=distance&f%5B%5D=launch" target="_blank"><span class="box"><span class="icon"></span>Find an Event</a></span></div>
 
             {% if page.followup.send_taf and args.taf %}
-<div class="thanks-share-email"><a class="buttonA3 icon-email" href="mailto:?subject={{ page.followup.taf_subject|urlencode }}&amp;body={% filter referring_akid:akid|tag_links:"source=mailto"|urlencode %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}" target="_blank"><span></span>{% filter ak_text:"taf_mailto_ask" %}Send an email now {% endfilter %}</a></div>
+<div class="thanks-share-email"><a class="buttonA3 icon-email" href="mailto:?subject={{ page.followup.taf_subject|urlencode }}&amp;body={% filter referring_akid:akid|tag_links:"source=mailto"|urlencode %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}" target="_blank"><span class="icon"></span>{% filter ak_text:"taf_mailto_ask" %}Send an email now {% endfilter %}</a></div>
 
                 <div id="copy-and-paste">
                     <p class="ak-normal">Or copy and paste the text below into an email message:</p>
