@@ -57,6 +57,14 @@
                     <p><span class="ak-event-distance">{{ event.distance_str }} away</a></span></p>
                    {% endif %}
 
+<div class="map-rawlink"><a href="https://map.peoplepower.org/#zipcode={{ action.event.postal|urlencode }}&distance=20&sort=distance&f%5B%5D=launch" target="_blank" class="buttonB1 icon-mapmarker">Get Map</a></div>
+<div class="map-getdir">
+<form class="directions-form ak-styled-fields" action="http://maps.google.com/maps/" method="get">
+<input size="26" type="text" name="saddr" placeholder="Enter your street address">
+<input type="hidden" name="daddr" value="{{ event.address1 }}, {{ event.city_etc }}">
+<button type="submit" class="buttonA2 bgBlack">Get Directions</button>
+</form>
+</div> <!-- .map-getdir -->
 
 
 <div class="ak-event-time">
