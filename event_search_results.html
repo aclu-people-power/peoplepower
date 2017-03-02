@@ -60,20 +60,20 @@
 
 
 <div class="ak-event-time">
-<h3>Date and time:</h3>
+<strong>Date and time:</strong>
 <div class="ak-event-time-entry">March 11 at {% if filename|split:'.'|nth:0 = "event_attend" %}<input value="21:30" type="time" id="input-time" style="display:none;"><span id="local"></span>{% endif %}</div>
 </div>
 
 {% if campaign.show_directions and event.directions %}
 <div class="ak-event-directions">
-<h3>Directions:</h3>
+<strong>Directions:</strong>
 <div class="ak-event-directions-entry">{{ event.directions }}</div>
 </div>
 {% endif %}
 
 {% if campaign.show_attendee_count %}
 <div class="ak-event-attendee-count">
-<h3>Attendee count:</h3>
+<strong>Attendee count:</strong>
 <div class="ak-event-attendee-count-output">{{ event.attendee_count }} attendee{{ event.attendee_count|pluralize }}</div>
 </div>
 {% endif %}
