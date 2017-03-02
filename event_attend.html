@@ -93,7 +93,12 @@
                     <div>
                     <button type="submit" class="ak-submit-button">{% if update %}Update RSVP{% else %}RSVP to attend{% endif %}</button>
                     </div>
-                </div>           
+                </div>   
+                <div class="event-share">
+		<div class="subA">Share</div>
+	    <div class="event-share-fb"><a class="buttonA3 icon-fb" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank"><span></span>Post to Facebook</a></div>
+		<div class="event-share-twitter"><a class="buttonA3 icon-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank"><span></span>Share on Twitter</a></div>
+	</div>        
             </div>
         </div>
 <div class="ak-grid-row">
