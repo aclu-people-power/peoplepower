@@ -40,7 +40,8 @@
 {% else %}
 
 <div class="banding-black">
-        <div class="ak-grid-col ak-grid-col-6-of-12">
+<div class="ak-grid-row">
+        <div class="ak-grid-col ak-grid-col-12-of-12">
             <h2>
                 {% if page.followup.send_taf and args.taf %}
                     {% filter ak_text:"tell_your_friends_banner" %}
@@ -53,6 +54,7 @@
                 {% endif %}
             </h2>
         </div>
+</div> <!-- .ak-grid-row -->
 </div> <!-- .banding-black -->
 
     <div class="ak-grid-row">
