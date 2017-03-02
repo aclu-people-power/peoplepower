@@ -59,19 +59,12 @@
         </div>
 
         <div class="ak-grid-col ak-grid-col-6-of-12 ak-margin-top-2">
-            <div>
-                <a class="ak-button ak-share-button ak-facebook" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank">Post to Facebook</a>
-            </div>
 
-            <div>
-                <a class="ak-button ak-share-button ak-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank">Share on Twitter</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-            </div>
+<div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank">Post to Facebook</a></div>
+<div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank">Share on Twitter</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
 
             {% if page.followup.send_taf and args.taf %}
-                <div>
-                    <a class="ak-button ak-share-button ak-email" href="mailto:?subject={{ page.followup.taf_subject|urlencode }}&amp;body={% filter referring_akid:akid|tag_links:"source=mailto"|urlencode %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}" target="_blank">{% filter ak_text:"taf_mailto_ask" %}Send an email now {% endfilter %}</a>
-                </div>
+<div class="thanks-share-email"><a class="buttonA3 icon-email" href="mailto:?subject={{ page.followup.taf_subject|urlencode }}&amp;body={% filter referring_akid:akid|tag_links:"source=mailto"|urlencode %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}" target="_blank">{% filter ak_text:"taf_mailto_ask" %}Send an email now {% endfilter %}</a></div>
 
                 <div id="copy-and-paste">
                     <p class="ak-normal">Or copy and paste the text below into an email message:</p>
