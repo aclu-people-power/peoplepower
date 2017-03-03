@@ -110,7 +110,20 @@
                 {% if campaign.show_public_description %}
                     {% if event.public_description %}
                         <p class="ak-event-description">
+                           {% if args.event_id = '27'  %}
+                           <p>On March 11, the ACLU will host “The Resistance Training: An ACLU Town Hall” in Miami, Florida, the main event to launch its grassroots organizing platform, People Power. There will be volunteer-led Action Events taking place in all 50 states on the same day to watch the livestream of the Resistance Training and put local action plans in place.</p>
+						<p>The Resistance Training will begin at 5pm ET and feature:</p>
+							<ul>
+								<li>A welcome from ACLU Executive Director Anthony D. Romero</li>
+								<li>Lee Rowland, ACLU Senior Staff Attorney, on “Know Your Rights” and First Amendment rights of protesters</li>
+								<li>Louise Melling, ACLU Deputy Legal Director, on Planned Parenthood defunding and Affordable Care Act repeal</li>
+								<li>Andre Segura, Staff Attorney with the ACLU Immigrants’ Rights Project, on immigration-related issues, including the Muslim and refugee ban, deportation raids, sanctuary cities</li>
+								<li>A live musical performance and an appearance by a guest celebrity</li>
+								<li>A national call-to-action to empower local communities to defend their civil liberties</li>
+							</ul>
+                           {%else%}
                             {{ event.public_description }}
+                            {%endif%}
                         </p>
                     {% endif %}
                 {% endif %}
