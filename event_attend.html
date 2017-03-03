@@ -16,7 +16,7 @@
         <div class="ak-grid-row titlerow">
             <div class="ak-grid-col ak-grid-col-12-of-12">
                 {% if not update %}
-                    <h2>{{ page.title }}</h2>
+                    <h2>{% if args.event_id = '27'  %}The Resistance Training: An ACLU Town Hall{%else%}{{ page.title }}{%endif%}</h2>
                 {% else %}
                     <h2>Update your RSVP:</h2>
                 {% endif %}
