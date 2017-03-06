@@ -126,9 +126,7 @@
                         <h2>Sorry, this event was cancelled.</h2>
                     {% endif %}
                     {% if event.is_full %}
-                        <h2>Sorry, this event is full. Search the map for another event:</h2>
-		    <iframe src='https://map.peoplepower.org/' frameborder="0" width="1200" height="600"></iframe>
-		    <a class="ak-button ak-event-create" href="/event/launch/create/">Create your own event</a>
+                        <h2>Sorry, this event is full. <a href="event/launch/search/">Search for another event to attend</a>, or <a href="event/launch/create/">host your own</a>.</h2>
                     {% endif %}
                     {% if event.is_in_past %}
                         <h2>Sorry, it's too late to sign up for this event.</h2>
