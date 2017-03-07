@@ -161,6 +161,9 @@ h3, h4, h5, h6 {
   font-weight: 400;
 }
 
+html, body, .container, .sidebar {
+    height: 100%;
+}
 
 body {
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
