@@ -1,9 +1,18 @@
+.PHONY: default dependencies local lint deploy
+
+default:
+	echo "No default action"
+
 dependencies:
 	echo "installing dependencies"
 	pip install --upgrade --user awscli
+	npm install
 
 local:
 	open src/index.html
+
+lint:
+	gulp default
 
 deploy:
 	echo "deploying"
