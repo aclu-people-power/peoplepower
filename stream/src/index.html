@@ -2,74 +2,38 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>People Power</title>
-        <!-- FONTS -->
-        <script src="https://use.typekit.net/qav2kef.js"></script>
-        <script>try{Typekit.load({ async: true });}catch(e){}</script>
-        <!-- STYLES -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/people_power.css" rel="stylesheet">
+        <title>...</title>
     </head>
     <body>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="main-video col-md-9">
+        <div class="content">
+            <div class="main-video">
                 <!-- TODO: Correct video URL -->
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/e2axToBYD68"></iframe>
-                    </div>
+                <iframe src="https://www.youtube.com/embed/e2axToBYD68" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="sidebar">
+                <div class="logo">
+                    <h1>LOGO</h1>
                 </div>
-
-                <div class="sidebar col-md-3" align="center">
-                    <div class="logo">
-                       <img src="images/people_power_horizontal.png" width="200" alt="" class="img-fluid">
-                    </div>
-                    <p>Join the resistance movement</p>
-                    <form class="form-horizontal" method="post" style="display:block; text-align: center;">
-                        <div class="form-group">
-                          <div class="col-sm-12">
-                            <input name="email" class="form-control" id="email" placeholder="Email">
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <div class="col-sm-6">          
-                            <input name="first_name" class="form-control" id="fist_name" placeholder="First Name">
-                          </div>
-                          <div class="col-sm-6">          
-                            <input name="last_name" class="form-control" id="last_name" placeholder="Last Name">
-                          </div>
-                        </div>
-
-                        <div class="form-group">
-                          <div class="col-sm-6">          
-                            <input name="zip" class="form-control" id="zip" placeholder="Zip">
-                          </div>
-                          <div class="col-sm-6">          
-                            <input name="phone_number" class="form-control" id="phone_number" placeholder="Phone">
-                          </div>
-                        </div>
-
-                        <div class="form-group">        
-                          <div class="col-sm-12 long-button">
-                            <button type="submit" class="btn btn-default red">Count me in</button>
-                          </div>
-                        </div>
+                <div>
+                    <h3>Join the resistance movement</h3>
+                    <form method="post">
+                        <input type="email" name="email" />
+                        <input type="text" name="first_name" />
+                        <input type="text" name="last_name" />
+                        <input type="text" name="zip" />
+                        <input type="tel" name="phone_number" />
+                        <input type="submit" value="Count me in">
                     </form>
+                </div>
+                <div>
                     <h2>Freedom cities</h2>
-                    <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                    <div class="col-sm-12 long-button grey">
-                        <button type="button" class="btn btn-default grey">Learn more about Freedom Cities</button>
-                    </div>
-                    <div>
-                        <p>Privacy Policy:</p>
-                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <button type="button">Learn more about Freedom Cities</button>
+                </div>
+                <div>
+                    <p>Privacy Policy:</p>
                 </div>
             </div>
         </div>
-
-    <!-- BOOTSTRAP -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
