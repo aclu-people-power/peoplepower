@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-        <div class="content">
+        <div class="container">
             <div class="main-video two-thirds column">
                 <!-- TODO: Correct video URL -->
                 <iframe src="https://www.youtube.com/embed/e2axToBYD68" frameborder="0" allowfullscreen></iframe>
@@ -21,12 +21,37 @@
                 <div>
                     <h3>Join the resistance movement</h3>
                     <form method="post">
-                        <input type="email" name="email" />
-                        <input type="text" name="first_name" />
-                        <input type="text" name="last_name" />
-                        <input type="text" name="zip" />
-                        <input type="tel" name="phone_number" />
-                        <input class="button-primary" type="submit" value="Count me in">
+                        <div class="row">
+                            <div class="twelve columns">
+                                <label for="email">Your email</label>
+                                <input class="u-full-width" id="email" type="email" name="email" placeholder="Email" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="six columns">
+                                <label for="first_name">First Name</label>
+                                <input class="u-full-width" type="text" name="first_name" placeholder="First Name" />
+                            </div>
+                            <div class="six columns">
+                                <label for="last_name">Last Name</label>
+                                <input class="u-full-width" type="text" name="last_name" placeholder="Last Name" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="six columns">
+                                <label for="zip">Zip Code</label>
+                                <input class="u-full-width" type="text" name="zip" placeholder="Zip Code" />
+                            </div>
+                            <div class="six columns">
+                                <label for="phone_number">Phone Number</label>
+                                <input class="u-full-width" type="tel" name="phone_number" placeholder="Phone Number" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="twelve columns">
+                                <input class="button-primary u-full-width" type="submit" value="Count me in">
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div>

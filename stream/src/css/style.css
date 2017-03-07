@@ -167,6 +167,11 @@ body {
   color: #272F32;
 }
 
+.container {
+  width: 100%;
+  max-width: none;
+}
+
 .logo img {
   width: 100%;
 }
