@@ -1,0 +1,316 @@
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/FreightSansCmpPro-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/FreightSansCmpPro-Book.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/FreightSansCmpPro-Med.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/FreightSansCmpPro-Med.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/FreightSansCmpPro-Semi.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/FreightSansCmpPro-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../fonts/FreightSansCmpPro-Black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../fonts/FreightSansCmpPro-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/FreightSansCmpPro-Book.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/FreightSansCmpPro-Med.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/FreightSansCmpPro-Med.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/FreightSansCmpPro-Semi.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/FreightSansCmpPro-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../fonts/FreightSansCmpPro-Black.otf") format("opentype");
+}
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: italic;
+  font-weight: 200;
+  src: url("../fonts/FreightSansCmpPro-LightItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: italic;
+  font-weight: 300;
+  src: url("../fonts/FreightSansCmpPro-BookItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/FreightSansCmpPro-MedItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: italic;
+  font-weight: 500;
+  src: url("../fonts/FreightSansCmpPro-MedItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/FreightSansCmpPro-SemiItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/FreightSansCmpPro-BoldItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: italic;
+  font-weight: 800;
+  src: url("../fonts/FreightSansCmpPro-BlackItalic.otf") format("opentype");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
+  color: #272F32;
+}
+h1, h2 {
+  font-weight: 700;
+}
+
+h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  color: #272F32;
+  background-color: #272f32;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+.sidebar {
+  padding: 0 20px;
+  background-color: #e5e5e5;
+  height: initial;
+}
+
+/* In order to make the left-margin gray as well, we need to make the margin
+ * into padding instead and adjust width. If you change the number of columns
+ * in the sidebar, you'll need to update this as well. */
+@media (min-width: 750px) {
+  .sidebar.one-third.column {
+    padding-left: 4%;
+    margin-left: 0px;
+    width: 34.6666666667%;
+    min-height: 100%;
+  }
+}
+
+.logo img {
+  width: 100%;
+  max-width: 350px;
+  display: block;
+  margin: auto;
+}
+
+.main-video iframe {
+  height: 100%;
+  width: 100%;
+  min-height: 500px;
+}
+
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
+  background-color: #ef4134;
+  color: #ffffff;
+  border: 1px solid #ef4134;
+  border-radius: 0;
+  font-size: 18px;
+}
+
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  background-color: #bc0000;
+  color: #ffffff;
+  border: 1px solid #bc0000;
+  border-radius: 0;
+}
+
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  background-color: #9dbdc6;
+  color: #ffffff;
+  border: 1px solid #9dbdc6;
+  border-radius: 0;
+}
+
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  background-color: #537882;
+  color: #ffffff;
+  border: 1px solid #537882;
+  border-radius: 0;
+}
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  border-radius: 0px;
+}
+
+a,
+a:visited {
+  color: #ef4134;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  color: #bc0000;
+}
+
+.color-red{
+  color: #ef4134;
+}
+.color-red.dark {
+  color: #bc0000;
+}
+.color-blue{
+  background-color: #9dbdc6;
+}
+.color-blue.dark {
+  background-color: #537882;
+}
+.color-offwhite{
+  background-color: #ececec;
+}
+.color-offblack{
+  background-color: #272f32;
+}
+
+
+
+
+
