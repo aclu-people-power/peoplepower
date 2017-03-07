@@ -170,10 +170,18 @@ body {
 .container {
   width: 100%;
   max-width: none;
+  padding: 0;
+}
+
+.sidebar {
+  padding: 0 20px;
 }
 
 .logo img {
   width: 100%;
+  max-width: 350px;
+  display: block;
+  margin: auto;
 }
 
 .main-video iframe {
