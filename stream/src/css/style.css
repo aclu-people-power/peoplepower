@@ -165,6 +165,7 @@ h3, h4, h5, h6 {
 body {
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   color: #272F32;
+  background-color: #272f32;
 }
 
 .container {
@@ -175,6 +176,18 @@ body {
 
 .sidebar {
   padding: 0 20px;
+  background-color: #e5e5e5;
+}
+
+/* In order to make the left-margin gray as well, we need to make the margin
+ * into padding instead and adjust width. If you change the number of columns
+ * in the sidebar, you'll need to update this as well. */
+@media (min-width: 750px) {
+  .sidebar.one-third.column {
+    padding-left: 4%;
+    margin-left: 0px;
+    width: 34.6666666667%;
+  }
 }
 
 .logo img {
