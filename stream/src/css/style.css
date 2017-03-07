@@ -196,10 +196,12 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
+  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
   background-color: #ef4134;
   color: #ffffff;
   border: 1px solid #ef4134;
   border-radius: 0;
+  font-size: 18px;
 }
 
 .button:hover,
@@ -256,4 +258,40 @@ textarea,
 select {
   border-radius: 0px;
 }
+
+a,
+a:visited {
+  color: #ef4134;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  color: #bc0000;
+}
+
+.color-red{
+  color: #ef4134;
+}
+.color-red.dark {
+  color: #bc0000;
+}
+.color-blue{
+  background-color: #9dbdc6;
+}
+.color-blue.dark {
+  background-color: #537882;
+}
+.color-offwhite{
+  background-color: #ececec;
+}
+.color-offblack{
+  background-color: #272f32;
+}
+
+
+
+
 
