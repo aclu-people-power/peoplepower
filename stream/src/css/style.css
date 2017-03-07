@@ -167,6 +167,16 @@ body {
   color: #272F32;
 }
 
+.logo img {
+  width: 100%;
+}
+
+.main-video iframe {
+  height: 100%;
+  width: 100%;
+  min-height: 500px;
+}
+
 
 .button,
 button,
