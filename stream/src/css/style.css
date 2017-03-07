@@ -1,163 +1,37 @@
 @font-face {
   font-family: "Freight Sans CMP";
   font-style: normal;
-  font-weight: 200;
-  src: url("../fonts/FreightSansCmpPro-Light.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
   font-weight: 300;
-  src: url("../fonts/FreightSansCmpPro-Book.otf") format("opentype");
+  src: url("../fonts/FreightSansCmpPro-Book.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/FreightSansCmpPro-Book.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Freight Sans CMP";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/FreightSansCmpPro-Med.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
-  font-weight: 500;
-  src: url("../fonts/FreightSansCmpPro-Med.otf") format("opentype");
+  src: url("../fonts/FreightSansCmpPro-Med.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/FreightSansCmpPro-Med.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Freight Sans CMP";
   font-style: normal;
   font-weight: 600;
-  src: url("../fonts/FreightSansCmpPro-Semi.otf") format("opentype");
+  src: url("../fonts/FreightSansCmpPro-Semi.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/FreightSansCmpPro-Semi.otf") format("opentype");
 }
 
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
-  font-weight: 700;
-  src: url("../fonts/FreightSansCmpPro-Bold.otf") format("opentype");
-}
 
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
-  font-weight: 800;
-  src: url("../fonts/FreightSansCmpPro-Black.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
-  font-weight: 200;
-  src: url("../fonts/FreightSansCmpPro-Light.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
-  font-weight: 300;
-  src: url("../fonts/FreightSansCmpPro-Book.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/FreightSansCmpPro-Med.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
-  font-weight: 500;
-  src: url("../fonts/FreightSansCmpPro-Med.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
-  font-weight: 600;
-  src: url("../fonts/FreightSansCmpPro-Semi.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
-  font-weight: 700;
-  src: url("../fonts/FreightSansCmpPro-Bold.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: normal;
-  font-weight: 800;
-  src: url("../fonts/FreightSansCmpPro-Black.otf") format("opentype");
-}
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: italic;
-  font-weight: 200;
-  src: url("../fonts/FreightSansCmpPro-LightItalic.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: italic;
-  font-weight: 300;
-  src: url("../fonts/FreightSansCmpPro-BookItalic.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: italic;
-  font-weight: 400;
-  src: url("../fonts/FreightSansCmpPro-MedItalic.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: italic;
-  font-weight: 500;
-  src: url("../fonts/FreightSansCmpPro-MedItalic.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: italic;
-  font-weight: 600;
-  src: url("../fonts/FreightSansCmpPro-SemiItalic.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: italic;
-  font-weight: 700;
-  src: url("../fonts/FreightSansCmpPro-BoldItalic.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Freight Sans CMP";
-  font-style: italic;
-  font-weight: 800;
-  src: url("../fonts/FreightSansCmpPro-BlackItalic.otf") format("opentype");
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
-  color: #272F32;
-}
 h1, h2 {
+  color: #272F32;
+  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
   font-weight: 700;
 }
 
 h3, h4, h5, h6 {
+  color: #272F32;
+  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
 }
 
@@ -166,47 +40,47 @@ html, body {
 }
 
 body {
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  color: #272F32;
   background-color: #272f32;
+  color: #272F32;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 .container {
-  width: 100%;
   height: 100%;
   max-width: none;
   padding: 0;
+  width: 100%;
 }
 
 .sidebar {
-  padding: 0 20px;
   background-color: #e5e5e5;
   height: initial;
+  padding: 0 20px;
 }
 
 /* In order to make the left-margin gray as well, we need to make the margin
  * into padding instead and adjust width. If you change the number of columns
  * in the sidebar, you'll need to update this as well. */
 @media (min-width: 750px) {
-  .sidebar.one-third.column {
-    padding-left: 4%;
-    margin-left: 0px;
-    width: 34.6666666667%;
+  .sidebar.one-third.column { 
+    margin-left: 0;
     min-height: 100%;
+    padding-left: 4%; /* csslint allow: box-model */
+    width: 34.6666666667%;
   }
 }
 
 .logo img {
-  width: 100%;
-  max-width: 350px;
   display: block;
   margin: auto;
+  max-width: 350px;
+  width: 100%;
 }
 
 .main-video iframe {
   height: 100%;
-  width: 100%;
   min-height: 500px;
+  width: 100%;
 }
 
 
@@ -215,11 +89,11 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
   background-color: #ef4134;
-  color: #ffffff;
   border: 1px solid #ef4134;
   border-radius: 0;
+  color: #ffffff;
+  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
   font-size: 18px;
 }
 
@@ -234,9 +108,9 @@ input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
   background-color: #bc0000;
-  color: #ffffff;
   border: 1px solid #bc0000;
   border-radius: 0;
+  color: #ffffff;
 }
 
 .button.button-primary,
@@ -245,9 +119,9 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
   background-color: #9dbdc6;
-  color: #ffffff;
   border: 1px solid #9dbdc6;
   border-radius: 0;
+  color: #ffffff;
 }
 
 .button.button-primary:hover,
@@ -261,9 +135,9 @@ input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   background-color: #537882;
-  color: #ffffff;
   border: 1px solid #537882;
   border-radius: 0;
+  color: #ffffff;
 }
 
 input[type="email"],
@@ -275,7 +149,7 @@ input[type="url"],
 input[type="password"],
 textarea,
 select {
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 a,

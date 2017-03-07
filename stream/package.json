@@ -1,0 +1,13 @@
+{
+  "name": "PeoplePower",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kpenning/peoplepower"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-csslint": "^1.0.0"
+  }
+}
