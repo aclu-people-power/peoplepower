@@ -1,4 +1,4 @@
-.PHONY: default dependencies local lint deploy
+.PHONY: default dependencies local test deploy
 
 default:
 	echo "No default action"
@@ -11,7 +11,7 @@ dependencies:
 local:
 	open src/index.html
 
-lint:
+test:
 	gulp default
 
 deploy:
