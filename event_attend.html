@@ -126,7 +126,13 @@
                         <h2>Sorry, this event was cancelled.</h2>
                     {% endif %}
                     {% if event.is_full %}
-                        <h2>Sorry, this event is full. <a href="/event/launch/search/">Search for another event to attend</a>, or <a href="/event/launch/create/">host your own</a>.</h2>
+                        <h2>Sorry, this event is full. <a href="/event/launch/search/">Search for another event to attend</a>, or <a href="/event/launch/create/">host your own</a>.</h2><hr>
+		     <h3>If you have already signed up to attend this event, here are the basic details:</h3>
+                    <div id="event-search-results">
+                    {% with 1 as hide_map %}
+                    {% include "./event_search_results.html" %}
+                    {% endwith %}
+                </div>
                     {% endif %}
                     {% if event.is_in_past %}
                         <h2>Sorry, it's too late to sign up for this event.</h2>
