@@ -16,7 +16,6 @@ font-weight: 700;
 
  html,body,.col-md-12,.row {
   height:100%;
-  display: table;
 }
 
 .row > div {
