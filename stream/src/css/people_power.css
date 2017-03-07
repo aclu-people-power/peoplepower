@@ -18,8 +18,10 @@ font-weight: 700;
   height:100%;
 }
 
+@media (min-width: 767px){
 .row > div {
   height:100%;
+}
 }
 
 .main-video{
