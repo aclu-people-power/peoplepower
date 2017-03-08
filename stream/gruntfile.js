@@ -7,7 +7,7 @@ module.exports = function(grunt) {
       options: {
         csslintrc: '.csslintrc'
       },
-      src: ['src/css/*.css', '!src/css/normalize.css', '!src/css/skeleton.css']
+      src: ['src/css/*.css', '!src/css/normalize.css', '!src/css/bootstrap.css']
     },
     accessibility: {
       options: {
