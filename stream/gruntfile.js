@@ -8,13 +8,25 @@ module.exports = function(grunt) {
         csslintrc: '.csslintrc'
       },
       src: ['src/css/*.css', '!src/css/normalize.css', '!src/css/skeleton.css']
+    },
+    accessibility: {
+      options: {
+        accessibilityLevel: 'WCAG2A',
+        reportLevels: {
+          notice: false,
+          warning: false,
+          error: true
+        }
+      },
+      src: ['src/**.html']
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
+  // Load plugins
   grunt.loadNpmTasks('grunt-contrib-csslint');
+  grunt.loadNpmTasks('grunt-accessibility');
 
-  // Default task(s).
-  grunt.registerTask('default', ['csslint']);
+  // Default task
+  grunt.registerTask('default', ['csslint', 'accessibility']);
 
 };

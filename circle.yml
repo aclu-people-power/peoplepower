@@ -5,4 +5,5 @@ dependencies:
 test:
   override:
     - pushd stream && grunt csslint && popd;
+    - pushd stream && grunt accessibility && popd;
 
