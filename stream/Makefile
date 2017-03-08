@@ -12,7 +12,7 @@ local:
 	open src/index.html
 
 test:
-	gulp default
+	grunt
 
 deploy:
 	echo "deploying"
