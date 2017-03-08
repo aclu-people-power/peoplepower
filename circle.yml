@@ -1,0 +1,8 @@
+dependencies:
+  override:
+    - pushd stream; npm install; popd;
+
+test:
+  override:
+    - pushd stream; make test; popd;
+
