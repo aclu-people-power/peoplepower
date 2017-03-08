@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="col-sm-4 col-xs-12">
-                <form id="signup-form" method="post">
+                <form name="act" id="signup-form" method="post" action="https://go.peoplepower.org/act/">
                     <div id="join-us-form">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 form-group">
@@ -48,11 +48,13 @@
                             </div>
                             <div class="col-xs-6 col-sm-12 col-md-6 form-group">
                                 <label for="phone-number">Phone Number</label>
-                                <input id="phone-number" class="form-control" type="tel" name="phone_number" placeholder="Phone Number" />
+                                <input id="phone-number" class="form-control" type="tel" name="mobile_phone" placeholder="Phone Number" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
+                                <input type="hidden" name="country" value="United States" />
+                                <input type="hidden" name="page" value="join_people_power">
                                 <input class="btn btn-primary btn-block" type="submit" value="SIGN UP">
                             </div>
                         </div>
@@ -81,8 +83,8 @@
         </div>
     </body>
 
-    <script src="js/respond.min.js"></script>
-    <script src="js/jquery-1.12.4.min.js"></script>
-    <script src="js/stream.js"></script>
-
+    <script type="text/javascript" src="js/respond.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://go.peoplepower.org/resources/actionkit.js"></script>
+    <script type="text/javascript" src="js/stream.js"></script>
 </html>
