@@ -26,25 +26,6 @@ label, legend {
   font-weight: 200;
 }
 
-.color-red{
-  color: #ef4134;
-}
-.color-red.dark {
-  color: #bc0000;
-}
-.color-blue{
-  background-color: #9dbdc6;
-}
-.color-blue.dark {
-  background-color: #537882;
-}
-.color-offwhite{
-  background-color: #ececec;
-}
-.color-offblack{
-  background-color: #272f32;
-}
-
 .btn-primary {
   background-color: #bc0000;
   border-color: #bc0000;
@@ -60,9 +41,14 @@ label, legend {
   letter-spacing: 0.06em;
 }
 
+html {
+  min-height: 100%;
+  position: relative;
+}
 body {
   font-weight: 200;
   letter-spacing: 0.05em;
+  margin-bottom: 60px;
 }
 h4 {
   font-weight: 200;
@@ -73,19 +59,26 @@ h4 {
   padding: 30px 0 30px 0;
 }
 
-.privacy-policy {
+.footer {
   background-color: #385a63;
+  bottom: 0;
+  height: 60px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+.privacy-policy {
+  display: inline-block;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.6em;
   font-weight: 200;
   letter-spacing: 0.2em;
-  padding: 40px 0;
-  text-align: center;
+  padding: 25px 0;
 }
-.privacy-policy a {
+.footer a {
   color: #ececec;
 }
-.privacy-policy a:hover {
+.footer a:hover {
   color: #ffffff;
 }
 
