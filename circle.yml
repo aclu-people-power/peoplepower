@@ -6,4 +6,5 @@ test:
   override:
     - pushd stream && grunt csslint && popd;
     - pushd stream && grunt accessibility && popd;
+    - pushd stream && grunt htmllint && popd;
 
