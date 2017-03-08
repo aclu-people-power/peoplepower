@@ -4,5 +4,5 @@ dependencies:
 
 test:
   override:
-    - pushd stream; make test; popd;
+    - pushd stream && grunt csslint && popd;
 

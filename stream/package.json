@@ -5,5 +5,9 @@
     "type": "git",
     "url": "https://github.com/kpenning/peoplepower"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-csslint": "^2.0.0"
+  }
 }
