@@ -24,13 +24,13 @@
 
 
 h1, h2 {
-  color: #272F32;
+  color: #ffffff;
   font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
   font-weight: 700;
 }
 
 h3, h4, h5, h6 {
-  color: #272F32;
+  color: #ffffff;
   font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
 }
@@ -53,9 +53,16 @@ body {
 }
 
 .sidebar {
-  background-color: #e5e5e5;
-  height: initial;
-  padding: 0 20px;
+  background-color: #252f32;
+  color: #ffffff;
+  padding: 30px 20px;
+}
+
+.privacy-policy {
+  background-color: #385a63;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 20px;
 }
 
 /* In order to make the left-margin gray as well, we need to make the margin
@@ -68,6 +75,10 @@ body {
     padding-left: 4%; /* csslint allow: box-model */
     width: 34.6666666667%;
   }
+}
+
+.logo {
+  text-align: center;
 }
 
 .logo img {
@@ -83,6 +94,10 @@ body {
   width: 100%;
 }
 
+.thanks-message-div {
+  text-align: center;
+  padding: 60px;
+}
 
 .button,
 button,
@@ -97,6 +112,12 @@ input[type="button"] {
   font-size: 18px;
 }
 
+.learnmore-button {
+  background-color: #95bec7;
+  color: #252f32;
+  border: none;
+}
+
 .button:hover,
 button:hover,
 input[type="submit"]:hover,
@@ -107,8 +128,8 @@ button:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
-  background-color: #bc0000;
-  border: 1px solid #bc0000;
+  background-color: #537882;
+  border: 1px solid #537882;
   border-radius: 0;
   color: #ffffff;
 }
@@ -118,8 +139,8 @@ button.button-primary,
 input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
-  background-color: #9dbdc6;
-  border: 1px solid #9dbdc6;
+  background-color: #bc0000;
+  border: 1px solid #bc0000;
   border-radius: 0;
   color: #ffffff;
 }
