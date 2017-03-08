@@ -1,9 +1,9 @@
 @font-face {
   font-family: "Freight Sans CMP";
   font-style: normal;
-  font-weight: 300;
-  src: url("../fonts/FreightSansCmpPro-Book.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/FreightSansCmpPro-Book.otf") format("opentype");
+  font-weight: 200;
+  src: url("../fonts/FreightSansCmpPro-Light.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/FreightSansCmpPro-Light.otf") format("opentype");
 }
 
 @font-face {
@@ -22,156 +22,73 @@
        url("../fonts/FreightSansCmpPro-Semi.otf") format("opentype");
 }
 
-
-h1, h2 {
-  color: #ffffff;
-  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
-  font-weight: 700;
-  letter-spacing: initial;
-  margin-bottom: .5rem;
-}
-
-h3, h4, h5, h6 {
-  color: #ffffff;
-  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
-  font-weight: 300;
-  letter-spacing: initial;
-}
-
-body {
-  background-color: #272f32;
-  color: #272F32;
-  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-weight: 300;
-}
-
-.button,
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-  background-color: #ef4134;
-  border: 1px solid #ef4134;
-  border-radius: 0;
-  color: #ffffff;
-  font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
-  font-size: 18px;
-}
-
-.button:hover,
-button:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover,
-.button:focus,
-button:focus,
-input[type="submit"]:focus,
-input[type="reset"]:focus,
-input[type="button"]:focus {
-  background-color: #bc0000;
-  border: 1px solid #bc0000;
-  border-radius: 0;
-  color: #ffffff;
-}
-
-.button.button-primary,
-button.button-primary,
-input[type="submit"].button-primary,
-input[type="reset"].button-primary,
-input[type="button"].button-primary {
-  background-color: #9dbdc6;
-  border: 1px solid #9dbdc6;
-  border-radius: 0;
-  color: #272F32;
-}
-
-.button.button-primary:hover,
-button.button-primary:hover,
-input[type="submit"].button-primary:hover,
-input[type="reset"].button-primary:hover,
-input[type="button"].button-primary:hover,
-.button.button-primary:focus,
-button.button-primary:focus,
-input[type="submit"].button-primary:focus,
-input[type="reset"].button-primary:focus,
-input[type="button"].button-primary:focus {
-  background-color: #537882;
-  border: 1px solid #537882;
-  border-radius: 0;
-  color: #ffffff;
-}
-
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="text"],
-input[type="tel"],
-input[type="url"],
-input[type="password"],
-textarea,
-select {
-  border-radius: 0;
-}
-
-a,
-a:visited {
-  color: #ef4134;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-a:hover,
-a:active,
-a:focus {
-  color: #bc0000;
-}
-
 label, legend {
-  font-weight: 300;
+  font-weight: 200;
 }
 
-.color-red{
-  color: #ef4134;
+.btn-primary {
+  background-color: #bc0000;
+  border-color: #bc0000;
 }
-.color-red.dark {
-  color: #bc0000;
+.btn-primary:hover {
+  background-color: #ef4134;
 }
-.color-blue{
-  background-color: #9dbdc6;
+.btn-info {
+  color: #272f32;
 }
-.color-blue.dark {
-  background-color: #537882;
-}
-.color-offwhite{
-  background-color: #ececec;
-}
-.color-offblack{
-  background-color: #272f32;
+.btn {
+  font-size: 1.4em;
+  letter-spacing: 0.06em;
 }
 
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  font-weight: 200;
+  letter-spacing: 0.05em;
+  margin-bottom: 60px;
+}
+h4 {
+  font-weight: 200;
+}
 
 .sidebar {
-  background-color: #252f32;
-  color: #ffffff;
   display: inline-block;
-  padding: 30px 0 0 0;
+  padding: 30px 0 30px 0;
 }
 
-.privacy-policy {
+.footer {
   background-color: #385a63;
-  padding: 40px 0;
+  bottom: 0;
+  height: 60px;
+  position: absolute;
   text-align: center;
+  width: 100%;
 }
-.privacy-policy a {
-  color: #ececec;
-  font-weight: 300;
+.privacy-policy {
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.6em;
+  font-weight: 200;
   letter-spacing: 0.2em;
+  padding: 25px 0;
+}
+.footer a {
+  color: #ececec;
+}
+.footer a:hover {
+  color: #ffffff;
+}
+
+.height-2em {
+  height: 2em;
 }
 
 .logo {
   text-align: center;
 }
-
 .logo img {
   display: block;
   margin: 0 auto 1.2em auto;
