@@ -26,6 +26,15 @@ module.exports = function(grunt) {
         'id-class-style': 'dash'
       },
       src: ['src/**.html']
+    },
+    jshint: {
+      options: {
+        'esversion': 3,
+        'globals': {
+          'jQuery': true
+        }
+      },
+      src: ['gruntfile.js', 'src/js/**.js', '!src/js/**.min.js']
     }
   });
 
@@ -33,8 +42,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-accessibility');
   grunt.loadNpmTasks('grunt-htmllint');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task
-  grunt.registerTask('default', ['csslint', 'accessibility', 'htmllint']);
+  grunt.registerTask('default', ['csslint', 'accessibility', 'htmllint', 'jshint']);
 
 };
