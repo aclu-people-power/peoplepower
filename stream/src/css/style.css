@@ -27,76 +27,22 @@ h1, h2 {
   color: #ffffff;
   font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
   font-weight: 700;
+  letter-spacing: initial;
+  margin-bottom: .5rem;
 }
 
 h3, h4, h5, h6 {
   color: #ffffff;
   font-family: "Freight Sans CMP", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
-}
-
-html, body {
-  height: 100%;
+  font-weight: 300;
+  letter-spacing: initial;
 }
 
 body {
   background-color: #272f32;
   color: #272F32;
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-}
-
-.container {
-  height: 100%;
-  max-width: none;
-  padding: 0;
-  width: 100%;
-}
-
-.sidebar {
-  background-color: #252f32;
-  color: #ffffff;
-  padding: 30px 20px;
-}
-
-.privacy-policy {
-  background-color: #385a63;
-  color: #ffffff;
-  padding: 20px 20px;
-  text-align: center;
-}
-
-/* In order to make the left-margin gray as well, we need to make the margin
- * into padding instead and adjust width. If you change the number of columns
- * in the sidebar, you'll need to update this as well. */
-@media (min-width: 750px) {
-  .sidebar.one-third.column { 
-    margin-left: 0;
-    min-height: 100%;
-    padding-left: 4%; /* csslint allow: box-model */
-    width: 34.6666666667%;
-  }
-}
-
-.logo {
-  text-align: center;
-}
-
-.logo img {
-  display: block;
-  margin: auto;
-  max-width: 350px;
-  width: 100%;
-}
-
-.main-video iframe {
-  height: 100%;
-  min-height: 500px;
-  width: 100%;
-}
-
-.thanks-message-div {
-  padding: 60px;
-  text-align: center;
+  font-weight: 300;
 }
 
 .button,
@@ -112,12 +58,6 @@ input[type="button"] {
   font-size: 18px;
 }
 
-.learnmore-button {
-  background-color: #95bec7;
-  border: none;
-  color: #252f32;
-}
-
 .button:hover,
 button:hover,
 input[type="submit"]:hover,
@@ -128,8 +68,8 @@ button:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
-  background-color: #537882;
-  border: 1px solid #537882;
+  background-color: #bc0000;
+  border: 1px solid #bc0000;
   border-radius: 0;
   color: #ffffff;
 }
@@ -139,10 +79,10 @@ button.button-primary,
 input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
-  background-color: #bc0000;
-  border: 1px solid #bc0000;
+  background-color: #9dbdc6;
+  border: 1px solid #9dbdc6;
   border-radius: 0;
-  color: #ffffff;
+  color: #272F32;
 }
 
 .button.button-primary:hover,
@@ -186,6 +126,10 @@ a:focus {
   color: #bc0000;
 }
 
+label, legend {
+  font-weight: 300;
+}
+
 .color-red{
   color: #ef4134;
 }
@@ -206,6 +150,45 @@ a:focus {
 }
 
 
+.sidebar {
+  background-color: #252f32;
+  color: #ffffff;
+  display: inline-block;
+  padding: 30px 0 0 0;
+}
 
+.privacy-policy {
+  background-color: #385a63;
+  padding: 40px 0;
+  text-align: center;
+}
+.privacy-policy a {
+  color: #ececec;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo img {
+  display: block;
+  margin: 0 auto 1.2em auto;
+  max-width: 250px;
+  width: 100%;
+}
+
+.main-video iframe {
+  border: 0;
+  height: 100%;
+  min-height: 450px;
+  width: 100%;
+}
+
+.thanks-message-div {
+  padding: 60px;
+  text-align: center;
+}
 
 
