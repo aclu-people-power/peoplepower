@@ -61,8 +61,8 @@ body {
 .privacy-policy {
   background-color: #385a63;
   color: #ffffff;
-  text-align: center;
   padding: 20px 20px;
+  text-align: center;
 }
 
 /* In order to make the left-margin gray as well, we need to make the margin
@@ -95,8 +95,8 @@ body {
 }
 
 .thanks-message-div {
-  text-align: center;
   padding: 60px;
+  text-align: center;
 }
 
 .button,
@@ -114,8 +114,8 @@ input[type="button"] {
 
 .learnmore-button {
   background-color: #95bec7;
-  color: #252f32;
   border: none;
+  color: #252f32;
 }
 
 .button:hover,
