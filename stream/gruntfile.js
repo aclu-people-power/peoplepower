@@ -35,6 +35,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-htmllint');
 
   // Default task
-  grunt.registerTask('default', ['csslint', 'accessibility']);
+  grunt.registerTask('default', ['csslint', 'accessibility', 'htmllint']);
 
 };
