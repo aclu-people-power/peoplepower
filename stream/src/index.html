@@ -11,20 +11,24 @@
     </head>
     <body>
         <div class="container">
-            <div class="main-video two-thirds column">
+
+            <div class="main-video">
                 <!-- TODO: Correct video URL -->
                 <iframe title="Live Stream Video" src="https://www.youtube.com/embed/e2axToBYD68" allowfullscreen></iframe>
             </div>
-            <div class="sidebar one-third column">
-                <div class="logo">
-                    <img src="images/ACLU_PeoplePower_1_fullcolor.png" alt="ACLU People Power Logo" />
+
+            <div class="sidebar">
+                <div class="logo one-third column">
+                    <img src="images/ACLU_PeoplePower_1_fullcolor_white_stacked.png" alt="ACLU People Power Logo" />
+                    <h3>Join the resistance.</h3>
                 </div>
-                <div>
-                    <h3>Join the resistance movement</h3>
-                    <form method="post">
+
+                <div class="one-third column">
+                    <form id="signup-form" method="post">
+                      <div id="join-us-form">
                         <div class="row">
                             <div class="twelve columns">
-                                <label for="email">Your email</label>
+                                <label for="email">Email</label>
                                 <input id="email" class="u-full-width" type="email" name="email" placeholder="Email" />
                             </div>
                         </div>
@@ -50,20 +54,29 @@
                         </div>
                         <div class="row">
                             <div class="twelve columns">
-                                <input class="button-primary u-full-width" type="submit" value="Count me in">
+                                <input class="button-primary u-full-width" type="submit" value="Sign up">
                             </div>
+                        </div>
                         </div>
                     </form>
                 </div>
-                <div>
-                    <h2>Freedom cities</h2>
+
+                <div class="one-third column">
+                    <h2>FREEDOM CITIES</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <button type="button">Learn more</button>
+                    <button type="button" class="learnmore-button">Learn more</button>
                 </div>
-                <div>
-                    <a href="https://www.aclu.org/american-civil-liberties-union-privacy-statement">Privacy Policy</a>
-                </div>
+
             </div>
+
+            <div class="privacy-policy">
+              <a href="https://www.aclu.org/american-civil-liberties-union-privacy-statement">Privacy Policy</a>
+            </div>
+
         </div>
     </body>
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/stream.js"></script>
+
 </html>
