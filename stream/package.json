@@ -5,10 +5,5 @@
     "type": "git",
     "url": "https://github.com/kpenning/peoplepower"
   },
-  "license": "UNLICENSED",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-accessibility": "^3.0.1",
-    "gulp-csslint": "^1.0.0"
-  }
+  "license": "UNLICENSED"
 }
