@@ -96,10 +96,33 @@ h4 {
   width: 100%;
 }
 
+.main-video {
+  background: no-repeat center url("../images/video_bg.png");
+  background-size: cover;
+  height: 450px;
+  text-align: center;
+  width: 100%;
+}
+.video-overlay {
+  cursor: pointer;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+.video-overlay img {
+  padding-top: 120px;
+}
+.video-overlay:hover img {
+  opacity: 0.7;
+}
+.main-video .video-background {
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 .main-video iframe {
   border: 0;
-  height: 100%;
-  min-height: 450px;
+  height: 450px;
+  max-width: 675px;
   width: 100%;
 }
 
