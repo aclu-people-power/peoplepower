@@ -122,7 +122,8 @@ h4 {
 .main-video iframe {
   border: 0;
   height: 450px;
-  width: 675px;
+  max-width: 675px;
+  width: 100%;
 }
 
 .thanks-message-div {
