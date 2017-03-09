@@ -23,7 +23,7 @@
 }
 
 label, legend {
-  font-weight: 200;
+  font-weight: 400;
 }
 
 .btn-primary {
@@ -38,7 +38,7 @@ label, legend {
 }
 .btn {
   font-size: 1.4em;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.03em;
 }
 
 html {
@@ -49,9 +49,11 @@ body {
   font-weight: 200;
   letter-spacing: 0.05em;
   margin-bottom: 60px;
+  font-size: 18px;
 }
 h4 {
   font-weight: 200;
+  font-size: 24px;
 }
 
 .sidebar {
