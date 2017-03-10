@@ -6,24 +6,26 @@ $(document).ready(function() {
     // I'll admit. Not the cleanest way but it'll work!
     $('#signup-form').submit(function(e) {
         var form = $(e.target);
-
-        var handler = function(form, success) {
-            if (success) {
-                // Let user know that it's done
-                form.find('input.btn').addClass('btn-success').val('Successfully Submitted!');
-                setTimeout(function() {
-                    form.find('input.btn').removeClass('btn-success').addClass('btn-primary').val('SIGN UP');
-                }, 5000);
-                // Reset the form for next submission
-                form.trigger('reset');
-            } else {
-                // Let user know that it failed
-                // Keep the form as is for resubmission
-                form.find('input.btn').addClass('btn-warning').val('Error. Try again?');
-                setTimeout(function() {
-                    form.find('input.btn').removeClass('btn-warning').addClass('btn-primary').val('SIGN UP');
-                }, 5000);
-            }
+        var handle_success = function(form) {
+            // Let user know that it's done
+            var button = form.find('input.btn')
+            var sign_up_text = button.val()
+            button.addClass('btn-success').val('Successfully Submitted!');
+            setTimeout(function() {
+                button.removeClass('btn-success').addClass('btn-primary').val(sign_up_text);
+            }, 5000);
+            // Reset the form for next submission
+            form.trigger('reset');
+        };
+        var handle_failure = function(form) {
+            // Let user know that it failed
+            // Keep the form as is for resubmission
+            var button = form.find('input.btn')
+            var sign_up_text = button.val()
+            button.addClass('btn-warning').val('Error. Try again?');
+            setTimeout(function() {
+                button.removeClass('btn-warning').addClass('btn-primary').val(sign_up_text);
+            }, 5000);
         };
 
         if (!form.hasClass('contains-errors')) {
@@ -37,15 +39,15 @@ $(document).ready(function() {
                 success: function(data, textStatus, jqXHR) {
                     if (data.result == "success") {
                         // Form submitted!
-                        handler(form, true);
+                        handle_success(form);
                     } else {
                         // Handle error
-                        handler(form, false);
+                        handle_failure(form);
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     // Handle error
-                    handler(form, false);
+                    handler_failure(form);
                 }
             });
         }
