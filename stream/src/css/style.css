@@ -33,7 +33,7 @@ label, legend {
 .btn-primary:hover {
   background-color: #ef4134;
 }
-.btn-info {
+.btn-info, .btn-warning {
   color: #272f32;
 }
 .btn {
@@ -134,3 +134,104 @@ h4 {
 }
 
 
+
+
+/* Action Kit Errors
+   ========================================================================== */
+
+/* Error and confirmation blocks */
+/* csslint ignore:start */
+#ak-errors,
+#ak-confirmation,
+#ak-error-info,
+.ak-errors,
+.ak-confirmation,
+.ak-error-info {
+    display: none
+}
+
+form.contains-errors #ak-errors,
+form.contains-errors #ak-error-info,
+form.contains-errors .ak-errors,
+form.contains-errors .ak-error-info {
+    display: block;
+}
+
+#ak-errors,
+#ak-confirmation,
+.ak-errors,
+.ak-confirmation {
+    list-style-type: none;
+    font-weight: 200;
+    padding: 7px 12px;
+    margin: 7px 0;
+}
+
+ul#ak-errors li,
+ul.ak-errors li {
+    padding: 0;
+    margin: 0;
+}
+
+.ak-color-error {
+    color: #d00;
+}
+
+#ak-errors,
+.ak-errors {
+    background-color: #ffe6e6;
+    color: #ef4134;
+    font-weight: 200;
+}
+#ak-confirmation,
+.ak-confirmation {
+    background-color: #668d24;
+    color: #fff;
+    font-weight: 400;
+}
+
+/* Fields with error conditions */
+.ak-styled-fields input[type="text"].ak-error,
+.ak-styled-fields input[type="password"].ak-error,
+.ak-styled-fields input[type="number"].ak-error,
+.ak-styled-fields input[type="email"].ak-error,
+.ak-styled-fields textarea.ak-error,
+.ak-styled-fields select.ak-error,
+input.ak-error,
+select.ak-error,
+textarea.ak-error {
+    background-color: #ffe6e6;
+    border-color: #d00;
+}
+
+span.ak-error,
+label.ak-error,
+.ak-labels-overlaid input.ak-error,
+.ak-labels-overlaid label.ak-error,
+.ak-labels-before label.ak-error,
+.ak-styled-fields select.ak-error {
+    color: #d00;
+    font-weight: 600;
+}
+
+/* Inline errors */
+.ak-err {
+    color: #d00;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ak-err li {
+    line-height: 1.4;
+}
+
+.ak-err-above .ak-err {
+    margin-top: 0.25em;
+}
+.ak-err-below .ak-err {
+    margin-top: -4px;
+    margin-bottom: 12px;
+}
+
+/* csslint ignore:end */
