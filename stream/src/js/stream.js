@@ -6,10 +6,11 @@ $(document).ready(function() {
     // I'll admit. Not the cleanest way but it'll work!
     $('#signup-form').submit(function(e) {
         var form = $(e.target);
+        var button = form.find('input.btn')
+        var sign_up_text = button.val()
         var handle_success = function(form) {
             // Let user know that it's done
-            var button = form.find('input.btn')
-            var sign_up_text = button.val()
+
             button.addClass('btn-success').val('Successfully Submitted!');
             setTimeout(function() {
                 button.removeClass('btn-success').addClass('btn-primary').val(sign_up_text);
@@ -20,8 +21,6 @@ $(document).ready(function() {
         var handle_failure = function(form) {
             // Let user know that it failed
             // Keep the form as is for resubmission
-            var button = form.find('input.btn')
-            var sign_up_text = button.val()
             button.addClass('btn-warning').val('Error. Try again?');
             setTimeout(function() {
                 button.removeClass('btn-warning').addClass('btn-primary').val(sign_up_text);
