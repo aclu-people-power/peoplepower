@@ -2,24 +2,24 @@
   font-family: "Freight Sans CMP";
   font-style: normal;
   font-weight: 200;
-  src: url("../fonts/FreightSansCmpPro-Light.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/FreightSansCmpPro-Light.otf") format("opentype");
+  src: url('../fonts/freightsanscmppro-light-webfont.woff2') format('woff2'),
+       url('../fonts/freightsanscmppro-light-webfont.woff') format('woff');
 }
 
 @font-face {
   font-family: "Freight Sans CMP";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/FreightSansCmpPro-Med.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/FreightSansCmpPro-Med.otf") format("opentype");
+  src: url('../fonts/freightsanscmppro-med-webfont.woff2') format('woff2'),
+       url('../fonts/freightsanscmppro-med-webfont.woff') format('woff');
 }
 
 @font-face {
   font-family: "Freight Sans CMP";
   font-style: normal;
   font-weight: 600;
-  src: url("../fonts/FreightSansCmpPro-Semi.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/FreightSansCmpPro-Semi.otf") format("opentype");
+  src: url('../fonts/freightsanscmppro-semi-webfont.woff2') format('woff2'),
+       url('../fonts/freightsanscmppro-semi-webfont.woff') format('woff');
 }
 
 label, legend {
