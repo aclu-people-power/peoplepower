@@ -10,7 +10,7 @@
     <input type="hidden" name="page" id="id_page" value="{{ page.name }}">
     <input type="hidden" name="event_id" value="{{ args.event_id }}">
 
-    {% if event.is_open_for_signup or update %}
+    {% if event.is_open_for_signup or update or event.is_in_past %}
 
 <div class="banding-black">
         <div class="ak-grid-row titlerow">
