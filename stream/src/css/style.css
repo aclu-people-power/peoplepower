@@ -78,12 +78,10 @@ h4 {
   letter-spacing: 0.2em;
   padding: 25px 0;
 }
-
 .footer a {
   color: #ececec;
   transition: color .2s;
 }
-
 .footer a:hover {
   color: #ffffff;
 }
@@ -95,7 +93,6 @@ h4 {
 .logo {
   text-align: center;
 }
-
 .logo img {
   display: block;
   margin: 0 auto 1.2em auto;
