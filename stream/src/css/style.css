@@ -39,6 +39,7 @@ label, legend {
 .btn {
   font-size: 1.4em;
   letter-spacing: 0.03em;
+  transition: all .2s;
 }
 
 html {
@@ -79,6 +80,7 @@ h4 {
 }
 .footer a {
   color: #ececec;
+  transition: color .2s;
 }
 .footer a:hover {
   color: #ffffff;
@@ -98,34 +100,59 @@ h4 {
   width: 100%;
 }
 
-.main-video {
+.hero {
   background: no-repeat center url("../images/video_bg.png");
   background-size: cover;
-  height: 450px;
-  text-align: center;
-  width: 100%;
+  position: relative;
 }
-.video-overlay {
-  cursor: pointer;
+
+.hero.video-playing:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
-  text-align: center;
   width: 100%;
-}
-.video-overlay img {
-  padding-top: 120px;
-}
-.video-overlay:hover img {
-  opacity: 0.7;
-}
-.main-video .video-background {
   background-color: #000000;
   background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
 }
-.main-video iframe {
-  border: 0;
-  height: 450px;
+
+.video-wrap {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
   max-width: 675px;
+}
+
+.video {
+  height: 0;
+  /* Maintain 16:9 aspect ratio, 9/16 == .5625 */
+  padding: 0 0 56.25% 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.video img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity .2s;
+}
+
+.video:hover img {
+  opacity: 0.7;
+}
+
+.video iframe {
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  z-index: 999;
 }
 
 .thanks-message-div {
