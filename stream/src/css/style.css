@@ -24,12 +24,12 @@
 
 label, legend {
   font-weight: 400;
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 input[type="tel"], input[type="text"], input[type="email"]
-	{
-	font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
-		font-weight: 400;
+{
+  font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  font-weight: 400;
 }
 
 .btn-primary {
@@ -53,13 +53,13 @@ html {
   position: relative;
 }
 body {
+  font-size: 18px;
   font-weight: 200;
   letter-spacing: 0.05em;
-  font-size: 18px;
 }
 h4 {
-  font-weight: 200;
   font-size: 24px;
+  font-weight: 200;
 }
 
 .sidebar {
@@ -72,40 +72,44 @@ h4 {
   text-align: center;
   width: 100%;
 }
-#alert { width:100%;
-color:#FFF;
-	background-color:#272F32;
-	text-align: center;
-	font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
-	font-family:400;
-	padding:12px;
-	box-sizing: border-box;
+.alert {
+  background-color:#272F32;
+  box-sizing: border-box;
+  color:#FFF;
+  font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  font-weight:400;
+  padding:12px;
+  text-align: center;
+  width:100%;
 }
-#alert a {
-	color:#FFF;
-	display:inline-block;
-	padding:5px 15px;
-	background-color:#EF4134;
-	font-weight:bold;
-	text-transform: uppercase;
-	font-family: "Freight Sans CMP";
-	font-weight:600;
-	margin-left:8px;
+.alert a {
+  background-color:#EF4134;
+  color:#FFF;
+  display:inline-block;
+  font-family: "Freight Sans CMP";
+  font-weight:600;
+  margin-left:8px;
+  padding:5px 15px;
+  text-transform: uppercase;
 }
 .privacy-policy {
   display: inline-block;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.8em;
   font-weight: 200;
-  letter-spacing: 0px;
+  letter-spacing: 0;
   padding: 25px 0;
 }
 .footer a {
   color: #ececec;
+  text-decoration: underline;
   transition: color .2s;
 }
 .footer a:hover {
   color: #ffffff;
+}
+.bold {
+  font-weight: 600;
 }
 
 .height-2em {
@@ -129,37 +133,38 @@ color:#FFF;
 }
 
 .hero.video-playing:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
   background-color: #000000;
   background-color: rgba(0, 0, 0, 0.7);
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
   z-index: 1;
 }
 
 .video-wrap {
-  position: relative;
-  text-align: center;
   margin: 0 auto;
   max-width: 675px;
+  position: relative;
+  text-align: center;
 }
 
 .video {
+  cursor: pointer;
   height: 0;
   /* Maintain 16:9 aspect ratio, 9/16 == .5625 */
   padding: 0 0 56.25% 0;
-  cursor: pointer;
   position: relative;
 }
 
 .video img {
-  position: absolute;
   left: 50%;
+  position: absolute;
   top: 50%;
   -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   transition: opacity .2s;
 }
@@ -170,11 +175,11 @@ color:#FFF;
 
 .video iframe {
   border: none;
+  height: 100%;
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
   z-index: 999;
 }
 
