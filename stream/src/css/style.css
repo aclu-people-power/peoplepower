@@ -24,12 +24,12 @@
 
 label, legend {
   font-weight: 400;
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 input[type="tel"], input[type="text"], input[type="email"]
-	{
-	font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
-		font-weight: 400;
+{
+  font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  font-weight: 400;
 }
 
 .btn-primary {
@@ -73,24 +73,24 @@ h4 {
   width: 100%;
 }
 #alert { width:100%;
-color:#FFF;
-	background-color:#272F32;
-	text-align: center;
-	font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
-	font-weight:400;
-	padding:12px;
-	box-sizing: border-box;
+  color:#FFF;
+  background-color:#272F32;
+  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  font-weight:400;
+  padding:12px;
+  box-sizing: border-box;
 }
 #alert a {
-	color:#FFF;
-	display:inline-block;
-	padding:5px 15px;
-	background-color:#EF4134;
-	font-weight:bold;
-	text-transform: uppercase;
-	font-family: "Freight Sans CMP";
-	font-weight:600;
-	margin-left:8px;
+  color:#FFF;
+  display:inline-block;
+  padding:5px 15px;
+  background-color:#EF4134;
+  font-weight:bold;
+  text-transform: uppercase;
+  font-family: "Freight Sans CMP";
+  font-weight:600;
+  margin-left:8px;
 }
 .privacy-policy {
   display: inline-block;
