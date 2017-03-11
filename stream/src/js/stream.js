@@ -6,8 +6,8 @@ $(document).ready(function() {
     // I'll admit. Not the cleanest way but it'll work!
     $('#signup-form').submit(function(e) {
         var form = $(e.target);
-        var button = form.find('input.btn')
-        var sign_up_text = button.val()
+        var button = form.find('input.btn');
+        var sign_up_text = button.val();
         var handle_success = function(form) {
             // Let user know that it's done
 
