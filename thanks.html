@@ -3,10 +3,6 @@
 
 {% block content %}
 {% autoescape off %}
-{% if page.name in 'attend-march-11, david-cole-stream' %}
-<iframe src="https://map.peoplepower.org/#distance=50&amp;sort=distance&amp;f%5B%5D=launch&amp;zipcode={{ action.user.zip }}" width="100%" height="100%" style="position:fixed;top:0;left:0;width:100vw;height:100vh;border:0;border-style:none;"></iframe>
-
-{% else %}
 <form name="taf" method="POST" action="/update_action/" accept-charset="utf-8" class="ak-thanks ak-styled-fields">
     <input type="hidden" name="page" value="{{ page.name }}">
 
@@ -69,7 +65,9 @@
 
 <div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="/share/link?type=fb&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank"><span class="box"><span class="icon"></span>Post to Facebook</a></span></div>
 <div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="/share/link?type=tw&amp;page_name={{page.name}}&amp;action_id={{action.id}}&amp;akid={{akid}}" target="_blank"><span class="box"><span class="icon"></span>Share on Twitter</a></span></div>
+<!--
 <div class="thanks-share-getmap"><a class="buttonA3 icon-mapmarker" href="https://map.peoplepower.org/#zipcode={{ action.user.zip|urlencode }}&distance=20&sort=distance&f%5B%5D=launch" target="_blank"><span class="box"><span class="icon"></span>Find an Event</a></span></div>
+            -->
 
             {% if page.followup.send_taf and args.taf %}
 <div class="thanks-share-email"><a class="buttonA3 icon-email" href="mailto:?subject={{ page.followup.taf_subject|urlencode }}&amp;body={% filter referring_akid:akid|tag_links:"source=mailto"|urlencode %}{% include_tmpl page.followup.taf_body escaped %}{% endfilter %}" target="_blank"><span class="box"><span class="icon"></span>{% filter ak_text:"taf_mailto_ask" %}Send an email now {% endfilter %}</a></span></div>
@@ -153,7 +151,6 @@
 {% endif %}
 
 </form>
-{% endif %}
 {% endautoescape %}
 {% endblock %}
 

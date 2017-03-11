@@ -16,9 +16,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	{% if event.is_open_for_signup %}
-		<title>People Power Action Event in {{ event.city_etc_no_postal }} on March 11</title>
+		<title>People Power Action Event in {{ event.city_etc_no_postal }}</title>
 		<meta property="og:image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/peoplepower-rsvpsocial.png" />
-		<meta property="og:title" content="Join a People Power Action Event in {{ event.city_etc_no_postal }} on March 11" />
+		<meta property="og:title" content="Join a People Power Action Event in {{ event.city_etc_no_postal }}" />
 		<meta name="description" property="og:description" content="We're organizing grassroots volunteers to fight against the worst abuses of the Trump administration.">
 		<meta property="og:site_name" content="PeoplePower.org">
 		<meta name="twitter:card" value="summary_large_image">
@@ -43,11 +43,6 @@
 
     {% load_ak_context context %}
     {% load_js %}
-       	{% if filename|split:'.'|nth:0 = "event_attend" %}
-			//s3.amazonaws.com/peoplepower.org/assets/jstz.js
-			//peoplepower.org/assets/moment.js
-			//peoplepower.org/assets/moment-timezone.js
-		{% endif %}
         //s3.amazonaws.com/s3.peoplepower.org/scripts/jquery.min.js
         /resources/actionkit.js
     {% end %}
@@ -127,68 +122,6 @@ By submitting this form, you are agreeing to receive periodic updates from Peopl
     </script>
     
     
-    
-{% if filename|split:'.'|nth:0 = "event_attend" %}
-			 <script>
-				// Get the timezone
-				// If it's already in storage, just grab from there
-				if (!sessionStorage.getItem('timezone')) {
-				  var tz = jstz.determine() || 'UTC';
-				  sessionStorage.setItem('timezone', tz.name());
-				}
-				var currTz = sessionStorage.getItem('timezone');
-
-				// References to DOM elements
-				var inputTime = document.querySelector("#input-time");
-				var output = document.querySelector("#local");
-
-				// When the input changes, update the local time
-				inputTime.addEventListener("change", function() {
-				  updateTime(this.value);
-				});
-
-				function updateTime(theTime) {
-
-				  // Format Moment.js expects:
-				  //   2015-08-12T14:30Z
-				  // Moment.js can help us build it.
-				  var date = moment().format("YYYY-MM-DD");
-				  var stamp = date + "T" + theTime + "Z";
-
-				  // Create a Moment.js object
-				  var momentTime = moment(stamp);
-
-				  // Adjust using Moment Timezone
-				  var tzTime = momentTime.tz(currTz);
-
-				  // Format the time back to normal
-				  var formattedTime = tzTime.format('h:mma');
-					if (currTz == 'America/New_York'){
-						var newKTz = 'ET'
-					} else {
-						if (currTz == 'America/Chicago'){
-							var newKTz = 'CT'
-						} else {
-							if (currTz == 'America/Los_Angeles'){
-								var newKTz = 'PT'
-							} else {
-								if (currTz == 'America/Denver'){
-									var newKTz = 'MT'
-								} else {
-										var newKTz = currTz
-								}
-							}
-						}
-					}
-					
-				  output.textContent = formattedTime + " " + newKTz;
-				}
-
-				updateTime(inputTime.value);
-				  //# sourceURL=pen.js
-				  </script>		   	
-{% endif %}
-    
 <!-- SiteCatalyst code version: AppMeasurement 1.6.1 Copyright 1996-2017 Adobe, Inc. -->
 <script language="javascript" type="text/javascript" src="https://www.aclu.org/sites/all/libraries/sitecatalyst/AppMeasurement.js"></script>
 <script language="javascript" type="text/javascript"><!--
@@ -200,12 +133,5 @@ By submitting this form, you are agreeing to receive periodic updates from Peopl
   var s_code=s.t();if(s_code)document.write(s_code)//-->
 </script>
 <!-- End SiteCatalyst code -->
-	<script>
-	$(window).load( function() {
-		$('#video').on('click', function() {
-			$(this).html('<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Faclupeoplepower%2Fvideos%2F395209630838326%2F&show_text=0&width=475" style="width:100%;" height="315" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>').css('background', 'none');
-		});
-	});
-	</script>
 </body>
 </html>

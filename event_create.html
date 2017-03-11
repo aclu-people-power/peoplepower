@@ -48,7 +48,7 @@
                     {% if campaign.use_title %}
                         <div>
                             <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
-                            <input id="id_event_title" type="text" name="event_title" value="ACLU People Power Action Event - March 11">
+                            <input id="id_event_title" type="text" name="event_title">
                         </div>
                     {% endif %}
 
@@ -100,8 +100,6 @@
                     <div>
                         <label for="id_event_max_attendees">Maximum attendance</label>
                         <input id="id_event_max_attendees" type="text" name="event_max_attendees" value="{{ campaign.default_event_size|default:"" }}" size=3>
-<p style="font-weight:200;width: 65%;margin-left: 35%;">Event will be streamed live, so the date and time are fixed for all events. <span style="font-weight:bold;color:#ef4134">Time for all events is 4:30pm ET/3:30 pm CT/2:30pm MT/1:30pm PT.</span></p>
-<p style="font-weight:200;width: 65%;margin-left: 35%;">Set your maximum attendance at about twice as many people as you can accommodate — not every RSVP will show up.</p>
                     </div>
 
                     {% include_tmpl form.custom_field_html %}
@@ -173,7 +171,7 @@
                             will see this text before signing up
                         </span>
                     </label>
-                    <textarea id="id_event_public_description" name="event_public_description">Join us on March 11 for a livestream viewing of the ACLU's launch of People Power. We'll watch the Resistance Training live and talk about next steps for organizing to resist Trump’s attacks on our basic freedoms.</textarea>
+                    <textarea id="id_event_public_description" name="event_public_description"></textarea>
                 </div>
 
                 <div>

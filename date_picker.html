@@ -4,7 +4,7 @@
     {% else %}
         {% if date_field.static_date %}
             <input type="hidden" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}">
-            March 11
+            {{ date_field.default_date }}
         {% else %}
             <input type="text" placeholder="mm/dd/yyyy" size="10" name="{{ date_field.name }}_date" id="id_{{ date_field.name }}_date" value="{{ date_field.default_date }}" format="date">
         {% endif %} 
@@ -19,7 +19,7 @@
         {% if date_field.static_time %}
             <input type="hidden" name="{{ date_field.name }}_time" id="id_{{ date_field.name }}_time" format="time" value="{{ date_field.default_time }}">
             <input type="hidden" name="{{ date_field.name }}_ampm" id="id_{{ date_field.name }}_ampm" value="{{ date_field.default_ampm }}">
-            4:30pm ET/3:30pm CT/2:30pm MT/1:30pm PT
+            {{ date_field.default_time }} {{ date_field.default_ampm }}
         {% else %}
             <input type="text" placeholder="hh:mm" size="8" name="{{ date_field.name }}_time" id="id_{{ date_field.name }}_time" value="{{ date_field.default_time }}" format="time">
             <select name="{{ date_field.name }}_ampm" id="id_{{ date_field.name }}_ampm">

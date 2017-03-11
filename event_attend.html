@@ -16,7 +16,7 @@
         <div class="ak-grid-row titlerow">
             <div class="ak-grid-col ak-grid-col-12-of-12">
                 {% if not update %}
-                    <h2>{% if args.event_id = '27'  %}The Resistance Training: An ACLU Town Hall{%else%}{{ page.title }}{%endif%}</h2>
+                    <h2>{{ page.title }}</h2>
                 {% else %}
                     <h2>Update your RSVP:</h2>
                 {% endif %}
@@ -97,9 +97,8 @@
                 <div class="event-share">
 		<div class="subA">Share</div>
 	   <div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://go.peoplepower.org/event/{{ campaign.local_name }}/{{event.id}}/signup/?source=fbshare" target="_blank"><span class="box"><span class="icon"></span>Post to Facebook</a></span></div>
-<div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="https://twitter.com/home?status=Join%20me%20for%20an%20%40ACLU%20People%20Power%20Action%20Event%20in%20{{ event.city_etc_no_postal }}%20on%20March%2011%20https%3A//go.peoplepower.org/event/{{campaign.local_name}}/{{event.id}}/signup/?source=twshare" target="_blank"><span class="box"><span class="icon"></span>Share on Twitter</a></span></div>
+<div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="https://twitter.com/home?status=Join%20me%20for%20an%20%40ACLU%20People%20Power%20Action%20Event%20in%20{{ event.city_etc_no_postal }}%20https%3A//go.peoplepower.org/event/{{campaign.local_name}}/{{event.id}}/signup/?source=twshare" target="_blank"><span class="box"><span class="icon"></span>Share on Twitter</a></span></div>
 	</div>        
-           {% if args.event_id = '27'  %}<img src="https://s3.amazonaws.com/s3.peoplepower.org/images/SM-FLevent-PeoplePower-1200x628-v01.png" alt="People Power" style="width:100%;height:auto;" />{% endif %}
             </div>
         </div>
 <div class="ak-grid-row">
@@ -111,9 +110,6 @@
                       <img src="http://maps.google.com/maps/api/staticmap?sensor=false&size=500x300&markers={{ event.address1|urlencode }}, {{ event.city_etc|urlencode }}"> 
                   -->
                 </div>
-                {% if not args.event_id = '27'  %}
-<p style="width:100%;font-weight:200;text-align:center;font-size:13px;color:#537882">People Power is driven by volunteers! That means that this event was likely posted by volunteer, not an official representative of the ACLU.</p>
-				{%endif%}
                 {% endif %}
 </div>
 </div>    
