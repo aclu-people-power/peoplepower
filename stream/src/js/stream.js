@@ -11,7 +11,7 @@ $(document).ready(function() {
         var handle_success = function(form) {
             // Let user know that it's done
 
-            button.addClass('btn-success').val('Successfully Submitted!');
+            button.addClass('btn-success').val('SUCCESS!');
             setTimeout(function() {
                 button.removeClass('btn-success').addClass('btn-primary').val(sign_up_text);
             }, 5000);
@@ -29,7 +29,7 @@ $(document).ready(function() {
 
         if (!form.hasClass('contains-errors')) {
             e.preventDefault();
-            form.find('input.btn').removeClass('btn-primary').val('Submitting...');
+            form.find('input.btn').removeClass('btn-primary').val('SUBMITTING...');
             $.ajax({
                 type: "POST",
                 url: form.attr('action'),
@@ -54,7 +54,7 @@ $(document).ready(function() {
 
     $('#video').on('click', function() {
         /* TODO: Correct video URL */
-        $(this).html('<iframe title="Live Stream Video" src="https://www.youtube.com/embed/e2axToBYD68?autoplay=1" allowfullscreen></iframe>');
+        $(this).html('<iframe title="Live Stream Video" src="https://www.youtube.com/embed/8mR449w4Qmo?autoplay=1&rel=0" allowfullscreen></iframe>');
 
         $('.hero').addClass('video-playing');
     });

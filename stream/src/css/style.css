@@ -24,6 +24,12 @@
 
 label, legend {
   font-weight: 400;
+	margin-bottom: 0;
+}
+input[type="tel"], input[type="text"], input[type="email"]
+	{
+	font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
+		font-weight: 400;
 }
 
 .btn-primary {
@@ -49,7 +55,6 @@ html {
 body {
   font-weight: 200;
   letter-spacing: 0.05em;
-  margin-bottom: 60px;
   font-size: 18px;
 }
 h4 {
@@ -64,18 +69,35 @@ h4 {
 
 .footer {
   background-color: #385a63;
-  bottom: 0;
-  height: 60px;
-  position: absolute;
   text-align: center;
   width: 100%;
+}
+#alert { width:100%;
+color:#FFF;
+	background-color:#272F32;
+	text-align: center;
+	font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
+	font-family:400;
+	padding:12px;
+	box-sizing: border-box;
+}
+#alert a {
+	color:#FFF;
+	display:inline-block;
+	padding:5px 15px;
+	background-color:#EF4134;
+	font-weight:bold;
+	text-transform: uppercase;
+	font-family: "Freight Sans CMP";
+	font-weight:600;
+	margin-left:8px;
 }
 .privacy-policy {
   display: inline-block;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.6em;
+  font-size: 0.8em;
   font-weight: 200;
-  letter-spacing: 0.2em;
+  letter-spacing: 0px;
   padding: 25px 0;
 }
 .footer a {
