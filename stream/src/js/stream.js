@@ -53,7 +53,6 @@ $(document).ready(function() {
     });
 
     $('#video').on('click', function() {
-        /* TODO: Correct video URL */
         $(this).html('<iframe title="Live Stream Video" src="https://www.youtube.com/embed/8mR449w4Qmo?autoplay=1&rel=0" allowfullscreen></iframe>');
 
         $('.hero').addClass('video-playing');
