@@ -1,0 +1,292 @@
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/FreightSansCmpPro-Light.woff2') format('woff2'),
+       url('../fonts/FreightSansCmpPro-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/FreightSansCmpPro-Med.woff2') format('woff2'),
+       url('../fonts/FreightSansCmpPro-Med.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Freight Sans CMP";
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/FreightSansCmpPro-Semi.woff2') format('woff2'),
+       url('../fonts/FreightSansCmpPro-Semi.woff') format('woff');
+}
+
+label, legend {
+  font-weight: 400;
+  margin-bottom: 0;
+}
+input[type="tel"], input[type="text"], input[type="email"]
+{
+  font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  font-weight: 400;
+}
+
+.btn-primary {
+  background-color: #bc0000;
+  border-color: #bc0000;
+}
+.btn-primary:hover {
+  background-color: #ef4134;
+}
+.btn-info, .btn-warning {
+  color: #272f32;
+}
+.btn {
+  font-size: 1.4em;
+  letter-spacing: 0.03em;
+  transition: all .2s;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  font-size: 18px;
+  font-weight: 200;
+  letter-spacing: 0.05em;
+}
+h4 {
+  font-size: 24px;
+  font-weight: 200;
+}
+
+.sidebar {
+  display: inline-block;
+  padding: 30px 0 30px 0;
+}
+
+.footer {
+  background-color: #385a63;
+  text-align: center;
+  width: 100%;
+}
+.alert {
+  background-color:#272F32;
+  box-sizing: border-box;
+  color:#FFF;
+  font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
+  font-weight:400;
+  padding:12px;
+  text-align: center;
+  width:100%;
+}
+.alert a {
+  background-color:#EF4134;
+  color:#FFF;
+  display:inline-block;
+  font-family: "Freight Sans CMP";
+  font-weight:600;
+  margin-left:8px;
+  padding:5px 15px;
+  text-transform: uppercase;
+}
+.privacy-policy {
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8em;
+  font-weight: 200;
+  letter-spacing: 0;
+  padding: 25px 0;
+}
+.footer a {
+  color: #ececec;
+  text-decoration: underline;
+  transition: color .2s;
+}
+.footer a:hover {
+  color: #ffffff;
+}
+.bold {
+  font-weight: 600;
+}
+
+.height-2em {
+  height: 2em;
+}
+
+.logo {
+  text-align: center;
+}
+.logo img {
+  display: block;
+  margin: 0 auto 1.2em auto;
+  max-width: 250px;
+  width: 100%;
+}
+
+.hero {
+  background: no-repeat center url("../images/video_bg.png");
+  background-size: cover;
+  position: relative;
+}
+
+.hero.video-playing:after {
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.7);
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.video-wrap {
+  margin: 0 auto;
+  max-width: 675px;
+  position: relative;
+  text-align: center;
+}
+
+.video {
+  cursor: pointer;
+  height: 0;
+  /* Maintain 16:9 aspect ratio, 9/16 == .5625 */
+  padding: 0 0 56.25% 0;
+  position: relative;
+}
+
+.video img {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: opacity .2s;
+}
+
+.video:hover img {
+  opacity: 0.7;
+}
+
+.video iframe {
+  border: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.thanks-message-div {
+  padding: 60px;
+  text-align: center;
+}
+
+
+
+
+/* Action Kit Errors
+   ========================================================================== */
+
+/* Error and confirmation blocks */
+/* csslint ignore:start */
+#ak-errors,
+#ak-confirmation,
+#ak-error-info,
+.ak-errors,
+.ak-confirmation,
+.ak-error-info {
+    display: none
+}
+
+form.contains-errors #ak-errors,
+form.contains-errors #ak-error-info,
+form.contains-errors .ak-errors,
+form.contains-errors .ak-error-info {
+    display: block;
+}
+
+#ak-errors,
+#ak-confirmation,
+.ak-errors,
+.ak-confirmation {
+    list-style-type: none;
+    font-weight: 200;
+    padding: 7px 12px;
+    margin: 7px 0;
+}
+
+ul#ak-errors li,
+ul.ak-errors li {
+    padding: 0;
+    margin: 0;
+}
+
+.ak-color-error {
+    color: #d00;
+}
+
+#ak-errors,
+.ak-errors {
+    background-color: #ffe6e6;
+    color: #ef4134;
+    font-weight: 200;
+}
+#ak-confirmation,
+.ak-confirmation {
+    background-color: #668d24;
+    color: #fff;
+    font-weight: 400;
+}
+
+/* Fields with error conditions */
+.ak-styled-fields input[type="text"].ak-error,
+.ak-styled-fields input[type="password"].ak-error,
+.ak-styled-fields input[type="number"].ak-error,
+.ak-styled-fields input[type="email"].ak-error,
+.ak-styled-fields textarea.ak-error,
+.ak-styled-fields select.ak-error,
+input.ak-error,
+select.ak-error,
+textarea.ak-error {
+    background-color: #ffe6e6;
+    border-color: #d00;
+}
+
+span.ak-error,
+label.ak-error,
+.ak-labels-overlaid input.ak-error,
+.ak-labels-overlaid label.ak-error,
+.ak-labels-before label.ak-error,
+.ak-styled-fields select.ak-error {
+    color: #d00;
+    font-weight: 600;
+}
+
+/* Inline errors */
+.ak-err {
+    color: #d00;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ak-err li {
+    line-height: 1.4;
+}
+
+.ak-err-above .ak-err {
+    margin-top: 0.25em;
+}
+.ak-err-below .ak-err {
+    margin-top: -4px;
+    margin-bottom: 12px;
+}
+
+/* csslint ignore:end */

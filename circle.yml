@@ -1,0 +1,11 @@
+dependencies:
+  override:
+    - pushd stream; npm install; popd;
+
+test:
+  override:
+    - pushd stream && grunt csslint && popd;
+    - pushd stream && grunt accessibility && popd;
+    - pushd stream && grunt htmllint && popd;
+    - pushd stream && grunt jshint && popd;
+
