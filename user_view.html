@@ -29,6 +29,21 @@
 
         <div><a href="update/">Update your email or address.</a></div>
 
+        {% record '{"id": "' in user_dict %}
+        {% record actionkit_user.id in user_dict %}
+        {% record '"}' in user_dict %}
+        {% with user_dict|join:""|load_json as user_dict %}
+        {% withevents with "action" as campaign user_dict as host %}
+        {% if events %}
+        <h3>Events You're Hosting</h3>
+        <ul ckass="ak-margin-none">
+        {% for event in events %}
+          <li><a href="/event/action/{{ event.id }}/host">{{ event.title }} ({{ event.starts_at }})</a></li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwithevents %}
+        
         <h3> Subscription History </h3>
 
         <ul class="ak-margin-none">
