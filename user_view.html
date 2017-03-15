@@ -41,10 +41,14 @@
           <li><a href="/event/action/{{ event.id }}/host">{{ event.title }} ({% if event.obj.is_in_past %}occurred on {{ event.starts_at_full }}{% else %}{{ event.starts_at }}{% endif %})</a></li>
         {% endfor %}
         </ul>
+        {% else %}
+        <form method="GET" action="https://go.peoplepower.org/event/action/create">
+          <input type="hidden" name="source" value="akuserdash">
+          <input type="submit" class="ak-submit-button" value="Create a People Power action event!">
+        </form>
         {% endif %}
         {% endwithevents %}
-        {% endwith %}
-        
+
         <h3> Subscription History </h3>
 
         <ul class="ak-margin-none">
