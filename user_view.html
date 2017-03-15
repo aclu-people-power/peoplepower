@@ -36,7 +36,7 @@
         {% withevents with "action" as campaign user_dict as host %}
         {% if events %}
         <h3>Events You're Hosting</h3>
-        <ul ckass="ak-margin-none">
+        <ul class="ak-margin-none">
         {% for event in events %}
           <li><a href="/event/action/{{ event.id }}/host">{{ event.title }} ({% if event.obj.is_in_past %}occurred on {{ event.starts_at_full }}{% else %}{{ event.starts_at }}{% endif %})</a></li>
         {% endfor %}
@@ -52,7 +52,7 @@
         {% withevents with "launch" as campaign user_dict as host %}
         {% if events %}
         <h3>Your Resistance Training livestream</h3>
-        <ul ckass="ak-margin-none">
+        <ul class="ak-margin-none">
         {% for event in events %}
           <li><a href="/event/launch/{{ event.id }}/host">{{ event.title }} ({% if event.obj.is_in_past %}occurred on {{ event.starts_at_full }}{% else %}{{ event.starts_at }}{% endif %})</a></li>
         {% endfor %}
