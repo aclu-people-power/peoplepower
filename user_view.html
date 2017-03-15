@@ -38,7 +38,7 @@
         <h3>Events You're Hosting</h3>
         <ul ckass="ak-margin-none">
         {% for event in events %}
-          <li><a href="/event/action/{{ event.id }}/host">{{ event.title }} ({{ event.starts_at }})</a></li>
+          <li><a href="/event/action/{{ event.id }}/host">{{ event.title }} ({% if event.obj.is_in_past %}occurred on {{ event.starts_at_full }}{% else %}{{ event.starts_at }}{% endif %})</a></li>
         {% endfor %}
         </ul>
         {% endif %}
