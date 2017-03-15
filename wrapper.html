@@ -51,6 +51,10 @@
     
     </style>
     {% block script_additions %}{% endblock %}
+
+    {% if page.custom_fields.code_head %}
+    {% include_tmpl page.custom_fields.code_head %}
+    {% endif %}
 </head>
 <body class="ak-pagetype-{{ filename|split:'.'|nth:0 }} ak-lang-{{page.lang.iso_code|default:"unknown"}}{% if page.lang.is_rtl %} ak-rtl{% endif %} ak-no-js">
     <script type="text/javascript">actionkit.forms.initPage()</script>
