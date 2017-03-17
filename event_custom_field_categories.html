@@ -1,0 +1,8 @@
+{% if templateset.custom_fields.event_categories and event.custom_fields.event_category %}
+<div class="ak-event-categories">
+{% for category in event.custom_fields.event_category|force_list %}
+<strong>{{ templateset.custom_fields.event_categories|load_json|nth:category|nth:"label"|default:category }}</strong>
+{% if not forloop.last %}•{% endif %}
+{% endfor %}
+</div>
+{% endif %}

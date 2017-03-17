@@ -106,6 +106,28 @@
                 </div>
             </div>
 
+            {% if templateset.custom_fields.event_categories %}
+            <div id="event-categories">
+              <h3>Event categories</h3>
+              {% with templateset.custom_fields.event_categories|load_json as categories_config %}
+              {% for category in categories_config %}
+              <div class="ak-err-below">
+                <input id="id_action_event_category_{{ category }}"
+                       class="checkbox" type="checkbox"
+                       name="action_event_category"
+                       value="{{ category }}"
+                       {% if event and event.custom_fields.category and event.custom_fields.category|force_list|contains:category %}checked{% endif %}
+                >
+                <label for="id_action_event_category_{{ category }}"
+                       class="ak-checkbox-label ak-event-category-checkbox-label">
+                  {{ categories_config|nth:category|nth:"label" }}
+                </label>
+              </div>
+              {% endfor %}
+              {% endwith %}
+            </div>
+            {% endif %}
+            
             <div id="event-info">
                 <h3>Event location</h3>
                 <div class="unknown_user">
@@ -267,6 +289,55 @@
 {% include "includes/jquery_ui.html" %}
 
 <script type="text/javascript">
+
+ actionkit.forms.prefill = function(overwrite) {
+     var forms = actionkit.forms, ak = actionkit;
+     // some event handlers want to change behavior during prefill (like
+     // maybe not fire). they can check actionkit.forms.prefilling.
+     forms.prefilling = true;
+     
+     var prefill_data = (
+         ( ak.context && ak.context.prefill_data )
+         ? ak.context.prefill_data
+         : ak.args
+     );
+     if ( prefill_data.form_name )
+         forms.setForm(prefill_data.form_name);
+     $(ak.form).deserialize(prefill_data, {overwrite: false});
+
+     // Check/uncheck boxes, which deserialize() won't do
+     $(ak.form).find('input:checkbox').each(function() {
+         if (prefill_data[this.name].constructor === Array) {
+             this.checked = $.inArray(this.value, prefill_data[this.name]) !== -1;
+         } else {
+             this.checked = prefill_data[this.name] == this.value ? true : false;
+         }
+     })
+
+     // checking for true, not just present
+     if ( prefill_data['amount_other'] ) {
+         $(ak.form).find('input.amount_radio_button').attr('checked', false)
+         $(ak.form).find('input[name=amount_other]').click()
+     }
+
+     // fire onchange and onclick, for in-field labels etc.
+     // unfortunately #id_subscription_consent's onchange turns on
+     // suppress_subscribe, so leave it out.
+     $(ak.form).find(':input:not(#id_subscription_consent)').change();
+     $(ak.form).find(':input:checked').each(function(){
+         // trigger radio handler used by donate form amount buttons
+         // for checkboxes we just checked, click() would uncheck them
+         if (this.type.toLowerCase() != 'checkbox')
+             $(this).click();
+         $(this).change();
+     });
+
+     // the change events forced above hide errors; show them again
+     forms.handleQueryStringErrors()
+
+     forms.prefilling = false;
+ }
+ 
     isEventUnitedStates = function () {
         var country = actionkit.form && actionkit.form.event_country
         && actionkit.utils.val(actionkit.form.event_country)
