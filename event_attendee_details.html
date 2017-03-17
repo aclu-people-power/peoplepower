@@ -8,6 +8,8 @@
 <!--         <p class="ak-event-title"><a href="/event/{{ campaign.local_name }}/{{event.id}}/signup/?akid={{args.akid}}&amp;zip={{args.zip}}">{{ event.title }}</a></p> -->
     {% endif %}
 
+      {% include "event_custom_field_categories.html" %}
+  <br>
 	<div class="subB">Location:</div>
 
     {% if event.venue %}
