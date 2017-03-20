@@ -162,7 +162,7 @@
                             {% endif %}
                         </li>
                         {% endif %}
-                        <li><a href="../../create/?action_id={{ action.id }}&amp;update=1&amp;want_prefill_data=1">Edit event details</a></li>
+                        <li><a href="/event/{{ campaign.local_name }}/create/?action_id={{ action.id }}&amp;update=1&amp;want_prefill_data=1">Edit event details</a></li>
                         {% if cohosts %}
                         <li class="if-js"><a class="jump-link" id="email-cohosts-link" href="#contact-cohosts">Email cohost{{ cohosts|length|pluralize }}</a></li>
                         {% endif %}
@@ -178,7 +178,7 @@
                         {% if event.is_open_for_signup and page.pagefollowup.send_taf %}
                         <li class="if-js"><a class="jump-link" id="invite-friends-link" href="#invite-friends">Invite friends</a></li>
                         {% endif %}
-                        <li><a confirm-message="Really cancel event? This can't be undone." href="../cancel_event/">Cancel event</a></li>
+                        <li><a confirm-message="Really cancel event? This can't be undone." href="/event/{{ campaign.local_name }}/{{ event.id }}/cancel_event/">Cancel event</a></li>
                         <li><a href="/logout/">Log out</a></li>
                     </ul>
                 </div>
@@ -190,7 +190,7 @@
             <div id="host-event-details ak-clearfix">
                 <h3>
                     Event Details 
-                    (<a class="ak-underline-on-hover" href="../../create/?action_id={{ action.id }}&amp;update=1&amp;want_prefill_data=1">Edit</a>)
+                    (<a class="ak-underline-on-hover" href="/event/{{ campaign.local_name }}/create/?action_id={{ action.id }}&amp;update=1&amp;want_prefill_data=1">Edit</a>)
                 </h3>
                 {% include "./event_host_details.html" %}
             </div>
