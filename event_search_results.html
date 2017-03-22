@@ -90,7 +90,7 @@
 
 <div class="ak-event-attendee-count">
 <strong>Host:</strong>
-<div>{{ event.creator }}</div>
+<div>{{ event.creator_user.first_name }} {{ event.creator_user.last_name }}</div>
 </div>
 
 {% include "event_custom_field_categories.html" %}
