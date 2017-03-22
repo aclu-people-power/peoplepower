@@ -87,11 +87,10 @@
 <div class="ak-event-attendee-count-output">{{ event.attendee_count }} attendee{{ event.attendee_count|pluralize }}</div>
 </div>
 {% endif %}
-<!--
-<div class="ak-event-attendee-count">
+<div>
 <strong>Host:</strong>
-<div>{{ event.creator_user.first_name }} {{ event.creator_user.last_name }}</div>
-</div> -->
+<div>{{ event.obj.creator }}</div>
+</div>
 
 {% include "event_custom_field_categories.html" %}
 
