@@ -1,14 +1,56 @@
-Subject: Your "{{campaign_title}}" event has been cancelled
+Subject: {% if user.id == event.creator.id and "moderation_not_approved"|is_in:event.notes %}Your "{{campaign_title}}" event doesn't (yet) meet our criteria for approval.{% else %}Your "{{campaign_title}}" event has been cancelled{% endif %}
 
 {% load actionkit_tags %}
+{% if user.id == event.creator.id and "moderation_not_approved"|is_in:event.notes %}
+<p>We checked out your event and it doesn’t <i>yet</i> meet our criteria for approval.</p>
+
+<p>We’d like to invite you to consider updating the event so we can review it again for approval. Here are some reasons which prevent us from approving an event. If you can change your event listing to comply with our guidelines, we’d be happy to approve it.</p>
+
+<ul>
+  <li>
+    PeoplePower.org is nonpartisan. If your event refers to defeating or electing candidates for office or promoting a political party it can’t be approved. Candidates for office and political parties can post events if the focus is on organizing resistance to Trump’s agenda as opposed to electioneering.
+  </li>
+  <li>
+    Events containing obscenity or offensive language won’t be approved.
+  </li>
+  <li>
+    We don’t post generic meetings or events. Event descriptions should specify opposition to policies or an agenda.
+  </li>
+  <li>
+    We promote events that are free to the public. If a contribution is required (rather than optional) for attendance, it won’t be approved.
+  </li>
+  <li>
+    We need to know what an event is about. You must offer a full description of an event for it to be approved. We can’t approve events where the description is simply a link to another platform.
+  </li>
+</ul>
+
+<p>
+  If possible, please update your event to abide by the above guidelines and it will be resubmitted for approval:
+</p>
+
+<p>
+  <a href="https://{% client_domain %}/event/{{ campaign.local_name }}/create/?prefill=1&event_title={{ event.title|default:'' }}&event_starts_at_date={{ event.starts_at|date:'m/d/Y' }}&event_starts_at_time={{ event.starts_at|date:'g:i' }}&event_starts_at_ampm={{ event.starts_at|date:'A' }}&event_max_attendees={{ event.max_attendees|default:'' }}&{% for category in event.custom_fields.event_category|force_list %}action_event_category={{ category }}&{% endfor %}event_venue={{ event.venue|default:'' }}&event_address1={{ event.address1|default:'' }}&event_city={{ event.city|default:'' }}&event_state={{ event.state|default:'' }}&event_zip={{ event.zip|default:'' }}&event_public_description={{ event.public_description|default:'' }}&event_directions={{ event.directions|default:'' }}">Click here to update and resubmit your event</a>
+</p>
+
+<p>
+  Best,
+</p>
+<p>
+  Events Team
+  <br>
+  People Power
+</p>
+
+{% else %}
 <p>The "{{ campaign.local_title }}" event you signed up for has been cancelled.</p>
 
 <p>You can search for other events here:</p>
 
 <p><a href="http://{% client_domain %}/event/{{ campaign.local_name }}/search/">http://{% client_domain %}/event/{{ campaign.local_name }}/search/</a></p>
+{% endif %}
 
 <!-- Replacement for unsubscribe. -->
 <p><small>
-    You received this message because you were signed up for an event.  
-    You won't receive any more messages about this event.
+  You received this message because you were signed up for an event.
+  You won't receive any more messages about this event.
 </small></p>
