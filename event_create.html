@@ -289,7 +289,6 @@
 {% include "includes/jquery_ui.html" %}
 
 <script type="text/javascript">
-
  actionkit.forms.prefill = function(overwrite) {
      var forms = actionkit.forms, ak = actionkit;
      // some event handlers want to change behavior during prefill (like
@@ -299,7 +298,7 @@
      var prefill_data = (
          ( ak.context && ak.context.prefill_data )
          ? ak.context.prefill_data
-         : ak.args
+         : ak.utils.getListArgs()
      );
      if ( prefill_data.form_name )
          forms.setForm(prefill_data.form_name);
@@ -307,7 +306,7 @@
 
      // Check/uncheck boxes, which deserialize() won't do
      $(ak.form).find('input:checkbox').each(function() {
-         if (prefill_data[this.name].constructor === Array) {
+         if (prefill_data[this.name] && prefill_data[this.name].constructor === Array) {
              this.checked = $.inArray(this.value, prefill_data[this.name]) !== -1;
          } else {
              this.checked = prefill_data[this.name] == this.value ? true : false;
