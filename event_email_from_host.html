@@ -1,7 +1,7 @@
 Subject: {{subject}}
 
 {% load actionkit_tags %}
-<p>Here's a message from a {{ sender_signup.role }} of your {{ campaign.local_title }} event:</p>
+<p>Here is a message from a host of your "{{ signup.event.title }}" event:</p>
 
 <blockquote>
 {{ message|linebreaksbr }}
