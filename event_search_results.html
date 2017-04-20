@@ -67,12 +67,16 @@
 </div> <!-- .map-getdir -->
 
 
-					{% if event.starts_at %}
+                        {% if event.starts_at %}
                         <div class="ak-event-time">
 						<strong>Date and time:</strong>
-						<div class="ak-event-time-entry">{{ event.starts_at }}</div>
-						</div>
-                    {% endif %}
+                                                {% if event.custom_fields.event_time_changed %}
+						<div class="ak-event-time-entry" style="font-weight: bold; color: red">NEW: {{ event.starts_at }}</div>
+                                                {% else %}
+                                                <div class="ak-event-time-entry">{{ event.starts_at }}</div>
+                                                {% endif %}
+			</div>
+                        {% endif %}
 
 {% if campaign.show_directions and event.directions %}
 <div class="ak-event-directions">

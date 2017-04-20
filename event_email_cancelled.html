@@ -42,11 +42,11 @@ Subject: {% if user.id == event.creator.id and "moderation_not_approved"|is_in:e
 </p>
 
 {% else %}
-<p>The "{{ campaign.local_title }}" event you signed up for has been cancelled.</p>
+<p>The "{{ event.title }}" event you signed up for, scheduled to be held on {{ event.starts_at|date:"l, F jS" }} at {{ event.venue }}, has been cancelled.</p>
 
 <p>You can search for other events here:</p>
 
-<p><a href="http://{% client_domain %}/event/{{ campaign.local_name }}/search/">http://{% client_domain %}/event/{{ campaign.local_name }}/search/</a></p>
+<p><a href="https://map.peoplepower.org/">map.peoplepower.org</a></p>
 {% endif %}
 
 <!-- Replacement for unsubscribe. -->
