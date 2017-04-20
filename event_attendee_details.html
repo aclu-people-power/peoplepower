@@ -35,13 +35,13 @@
     {% if event.get_starts_at_display %}
         <div class="ak-event-time">
             <div class="subB">When:</div>
-            <div>
-                {{ event.get_starts_at_display }}
-                {% if event.is_in_past %}
-                    <span class="ak-error ak-event-over-notice">
-                        (event is now over)
-                    </span>
-                {% endif %}
+            <div {% if event.custom_fields.event_time_changed %}style="font-weight: bold; color: red"{% endif %}>
+              {% if event.custom_fields.event_time_changed %}NEW: {% endif %}{{ event.get_starts_at_display }}
+              {% if event.is_in_past %}
+              <span class="ak-error ak-event-over-notice">
+                (event is now over)
+              </span>
+              {% endif %}
             </div>
         </div> <!-- .ak-event-time -->
     {% endif %}
