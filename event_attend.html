@@ -9,9 +9,8 @@
 
   <input type="hidden" name="page" id="id_page" value="{{ page.name }}">
   <input type="hidden" name="event_id" value="{{ args.event_id }}">
-    
-  {% if event.is_open_for_signup or update %}
 
+  {% if event.is_open_for_signup or update or ((event.is_full or event.is_in_past) and (not event.is_inactive and not event.is_awaiting_confirmation and event.status == "active")) %}  
   <div class="banding-black">
     <div class="ak-grid-row titlerow">
       <div class="ak-grid-col ak-grid-col-12-of-12">
@@ -58,6 +57,8 @@
     
     <div class="ak-grid-col ak-grid-col-6-of-12">
       <div class="subA">Signup for Event</div>
+
+      {% if event.is_open_for_signup or update %}
       <div id="event-attend-form" class="{{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
         <div class="{{templateset.custom_fields.field_labels_class|default:"ak-labels-overlaid"}}">
           {% if not update %}
@@ -94,6 +95,8 @@
           <button type="submit" class="ak-submit-button">{% if update %}Update RSVP{% else %}RSVP to attend{% endif %}</button>
         </div>
       </div>   
+      {% endif %}
+      
       <div class="event-share">
 	<div class="subA">Share</div>
 	<div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://go.peoplepower.org/event/{{ campaign.local_name }}/{{event.id}}/signup/?source=fbshare" target="_blank"><span class="box"><span class="icon"></span>Post to Facebook</a></span></div>
@@ -110,6 +113,10 @@
              <img src="http://maps.google.com/maps/api/staticmap?sensor=false&size=500x300&markers={{ event.address1|urlencode }}, {{ event.city_etc|urlencode }}"> 
            -->
       </div>
+      {% elif event.is_full %}
+      <h2>Sorry, this event is full. <a href="https://map.peoplepower.org">Search for another event to attend</a>, or <a href="/event/{{ campaign.name }}/create/">host your own</a>.</h2>
+      {% elif event.is_in_past %}
+      <h2>Sorry, it's too late to sign up for this event.</h2>
       {% endif %}
     </div>
   </div>    
@@ -117,20 +124,9 @@
   
   <div class="ak-grid-row">
     <div class="ak-grid-col ak-grid-col-12-of-12">
-      {% if event.is_inactive or event.is_full or event.is_in_past or event.is_awaiting_confirmation %}
+      {% if event.is_inactive or event.is_awaiting_confirmation %}
       {% if event.is_inactive %}
       <h2>Sorry, this event was cancelled.</h2>
-      {% endif %}
-      {% if event.is_full %}
-      <h2>Sorry, this event is full. <a href="/event/launch/search/">Search for another event to attend</a>, or <a href="/event/launch/create/">host your own</a>.</h2><h4>If you have already signed up to attend this event, here are the basic details:</h4>
-      <div id="event-search-results">
-        {% with 1 as hide_map %}
-        {% include "./event_search_results.html" %}
-        {% endwith %}
-      </div>
-      {% endif %}
-      {% if event.is_in_past %}
-      <h2>Sorry, it's too late to sign up for this event.</h2>
       {% endif %}
       {% if event.is_awaiting_confirmation %}
       <h2>Sorry, the event host has not yet confirmed this event.</h2>
