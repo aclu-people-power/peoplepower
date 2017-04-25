@@ -69,12 +69,12 @@
 
                         {% if event.starts_at %}
                         <div class="ak-event-time">
-						<strong>Date and time:</strong>
-                                                {% if event.custom_fields.event_time_changed %}
-						<div class="ak-event-time-entry" style="font-weight: bold; color: red">NEW: {{ event.starts_at }}</div>
-                                                {% else %}
-                                                <div class="ak-event-time-entry">{{ event.starts_at }}</div>
-                                                {% endif %}
+			  <strong>Date and time:</strong>
+                          {% if event.custom_fields.event_time_changed %}
+			  <div class="ak-event-time-entry" style="font-weight: bold; color: red">NEW: {{ event.starts_at }} {% if event.obj.is_in_past %}<span style="font-style: italic; color: #bb0202">(Event is over)</span>{% endif %}</div>
+                          {% else %}
+                          <div class="ak-event-time-entry">{{ event.starts_at }} {% if event.obj.is_in_past %}<span style="font-style: italic; color: #bb0202">(Event is over)</span>{% endif %}</div>
+                          {% endif %}
 			</div>
                         {% endif %}
 
