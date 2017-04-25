@@ -7,146 +7,146 @@
 
 <form id="id_act" class="ak-form ak-styled-fields" name="act" method="POST" action="{% if update %}/update_action/{% else %}/act/{% endif %}" accept-charset="utf-8">
 
-    <input type="hidden" name="page" id="id_page" value="{{ page.name }}">
-    <input type="hidden" name="event_id" value="{{ args.event_id }}">
+  <input type="hidden" name="page" id="id_page" value="{{ page.name }}">
+  <input type="hidden" name="event_id" value="{{ args.event_id }}">
+    
+  {% if event.is_open_for_signup or update %}
 
-    {% if event.is_open_for_signup or update %}
-
-<div class="banding-black">
-        <div class="ak-grid-row titlerow">
-            <div class="ak-grid-col ak-grid-col-12-of-12">
-                {% if not update %}
-                    <h2>{{ page.title }}</h2>
-                {% else %}
-                    <h2>Update your RSVP:</h2>
-                {% endif %}
-            </div>
-        </div>
-</div>
-
-        <div class="ak-grid-row ak-grid-row-inverted">
-            {% if page.custom_fields.featured_image %}
-            <div class="ak-grid-col ak-grid-col-3-of-12">
-                <img class="ak-featured-img" src="{{page.custom_fields.featured_image}}">
-            </div>
-            {% endif %}
-
-            <div class="ak-grid-col {% if page.custom_fields.featured_image %}ak-grid-col-9-of-12{% else %}ak-grid-col-12-of-12{% endif %}">
-                {% if not update and form.signup_text %}
-                    <div class="ak-page-content">
-                        {{ form.signup_text|safe }}
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class="ak-grid-row">
-            <div class="ak-grid-col ak-grid-col-6-of-12">
-
-                <div id="event-search-results">
-                    <!-- If you're embedding this page on your own site, remove everything from here... -->
-                    {% with 1 as hide_map %}
-                    {% include "./event_search_results.html" %}
-                    {% endwith %}
-                    <!-- ...to here -->
-                </div>
-                
-
-                <ul class="compact" id="ak-errors"></ul>
-
-            </div>
-
-            <div class="ak-grid-col ak-grid-col-6-of-12">
-				<div class="subA">Signup for Event</div>
-                <div id="event-attend-form" class="{{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
-                    <div class="{{templateset.custom_fields.field_labels_class|default:"ak-labels-overlaid"}}">
-                        {% if not update %}
-                        {% include "./user_form_wrapper.html" %}
-                        {% else %}
-                        <div id="user-info">
-                            {% include "./user_form_wrapper.html" %}
-                            <script type="text/javascript">
-                            $('#user-info input[name=email]').attr('disabled','disabled');
-                            </script>
-                            <!-- If they want to "update email", they should do a new signup instead. -->
-                            <p>Need to sign up with another email address?  <a href="?" onclick="window.actionkit.args = {}; return actionkit.forms.logOut()">Click here.</a></p>
-                        </div>
-                        {% endif %}
-
-                    </div>
-            
-                    {% if form.ground_rules|is_nonblank and not update %}
-                        <div style="margin: 10px 0">
-                            <input id="id_event_signup_ground_rules" type="checkbox" name="event_signup_ground_rules" value="1">
-                            <label class="ak-checkbox-label" for="id_event_signup_ground_rules">
-                                <strong>Required:</strong>  
-                                I agree to <a href="#" onclick="$('#id_ground_rules_text').show(); $(this).before(this.innerHTML + ' (below)').hide(); return false;">the rules</a> for signing up for an event.
-                            </label>
-                        </div>
-                        <blockquote id="id_ground_rules_text" class="nojs">
-                            <div class="strong">Event ground rules:</div>
-                            {% include_tmpl form.ground_rules %}
-                        </blockquote>
-                    {% else %}
-                        <input type="hidden" name="event_signup_ground_rules" value="1">
-                    {% endif %}
-                    <div>
-                    <button type="submit" class="ak-submit-button">{% if update %}Update RSVP{% else %}RSVP to attend{% endif %}</button>
-                    </div>
-                </div>   
-                <div class="event-share">
-		<div class="subA">Share</div>
-	   <div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://go.peoplepower.org/event/{{ campaign.local_name }}/{{event.id}}/signup/?source=fbshare" target="_blank"><span class="box"><span class="icon"></span>Post to Facebook</a></span></div>
-<div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="https://twitter.com/home?status=Join%20me%20for%20an%20%40ACLU%20People%20Power%20Action%20Event%20in%20{{ event.city_etc_no_postal }}%20https%3A//go.peoplepower.org/event/{{campaign.local_name}}/{{event.id}}/signup/?source=twshare" target="_blank"><span class="box"><span class="icon"></span>Share on Twitter</a></span></div>
-	</div>        
-            </div>
-        </div>
-<div class="ak-grid-row">
-<div class="ak-grid-col ak-grid-col-12-of-12">
-{% if campaign.show_address1 %}
-                <div id="ak-map">
-                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCqC-M0AKpFkQtigs-Eda4M4yvC0Xu8fKY&amp;q={{ event.address1|urlencode }},%20{{ event.city_etc|urlencode }}" frameborder="0" style="border: 0" width="100%"></iframe>
-                  <!-- Static version: 
-                      <img src="http://maps.google.com/maps/api/staticmap?sensor=false&size=500x300&markers={{ event.address1|urlencode }}, {{ event.city_etc|urlencode }}"> 
-                  -->
-                </div>
-                {% endif %}
-</div>
-</div>    
-    {% else %}
-
-        <div class="ak-grid-row">
-            <div class="ak-grid-col ak-grid-col-12-of-12">
-                {% if event.is_inactive or event.is_full or event.is_in_past or event.is_awaiting_confirmation %}
-                    {% if event.is_inactive %}
-                        <h2>Sorry, this event was cancelled.</h2>
-                    {% endif %}
-                    {% if event.is_full %}
-                        <h2>Sorry, this event is full. <a href="/event/launch/search/">Search for another event to attend</a>, or <a href="/event/launch/create/">host your own</a>.</h2><h4>If you have already signed up to attend this event, here are the basic details:</h4>
-                    <div id="event-search-results">
-                    {% with 1 as hide_map %}
-                    {% include "./event_search_results.html" %}
-                    {% endwith %}
-                </div>
-                    {% endif %}
-                    {% if event.is_in_past %}
-                        <h2>Sorry, it's too late to sign up for this event.</h2>
-                    {% endif %}
-                    {% if event.is_awaiting_confirmation %}
-                        <h2>Sorry, the event host has not yet confirmed this event.</h2>
-                    {% endif %}
-                {% else %}
-                    <h2>We&rsquo;ll confirm this event soon! Come back later.</h2>
-                {% endif %}
-                <div>
-                    <a href="https://map.peoplepower.org/#zipcode={{args.zip}}&distance=50&sort=distance&f%5B%5D=launch">Search for another event</a>
-                </div>
-        
-            </div>
-        </div><!--grid-row-->
-
+  <div class="banding-black">
+    <div class="ak-grid-row titlerow">
+      <div class="ak-grid-col ak-grid-col-12-of-12">
+        {% if not update %}
+        <h2>{{ page.title }}</h2>
+        {% else %}
+        <h2>Update your RSVP:</h2>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+  <div class="ak-grid-row ak-grid-row-inverted">
+    {% if page.custom_fields.featured_image %}
+    <div class="ak-grid-col ak-grid-col-3-of-12">
+      <img class="ak-featured-img" src="{{page.custom_fields.featured_image}}">
+    </div>
     {% endif %}
-
+    
+    <div class="ak-grid-col {% if page.custom_fields.featured_image %}ak-grid-col-9-of-12{% else %}ak-grid-col-12-of-12{% endif %}">
+      {% if not update and form.signup_text %}
+      <div class="ak-page-content">
+        {{ form.signup_text|safe }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  <div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-6-of-12">
+      
+      <div id="event-search-results">
+        <!-- If you're embedding this page on your own site, remove everything from here... -->
+        {% with 1 as hide_map %}
+        {% include "./event_search_results.html" %}
+        {% endwith %}
+        <!-- ...to here -->
+      </div>
+      
+      
+      <ul class="compact" id="ak-errors"></ul>
+      
+    </div>
+    
+    <div class="ak-grid-col ak-grid-col-6-of-12">
+      <div class="subA">Signup for Event</div>
+      <div id="event-attend-form" class="{{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+        <div class="{{templateset.custom_fields.field_labels_class|default:"ak-labels-overlaid"}}">
+          {% if not update %}
+          {% include "./user_form_wrapper.html" %}
+          {% else %}
+          <div id="user-info">
+            {% include "./user_form_wrapper.html" %}
+            <script type="text/javascript">
+             $('#user-info input[name=email]').attr('disabled','disabled');
+            </script>
+            <!-- If they want to "update email", they should do a new signup instead. -->
+            <p>Need to sign up with another email address?  <a href="?" onclick="window.actionkit.args = {}; return actionkit.forms.logOut()">Click here.</a></p>
+          </div>
+          {% endif %}
+          
+        </div>
+        
+        {% if form.ground_rules|is_nonblank and not update %}
+        <div style="margin: 10px 0">
+          <input id="id_event_signup_ground_rules" type="checkbox" name="event_signup_ground_rules" value="1">
+          <label class="ak-checkbox-label" for="id_event_signup_ground_rules">
+            <strong>Required:</strong>  
+            I agree to <a href="#" onclick="$('#id_ground_rules_text').show(); $(this).before(this.innerHTML + ' (below)').hide(); return false;">the rules</a> for signing up for an event.
+          </label>
+        </div>
+        <blockquote id="id_ground_rules_text" class="nojs">
+          <div class="strong">Event ground rules:</div>
+          {% include_tmpl form.ground_rules %}
+        </blockquote>
+        {% else %}
+        <input type="hidden" name="event_signup_ground_rules" value="1">
+        {% endif %}
+        <div>
+          <button type="submit" class="ak-submit-button">{% if update %}Update RSVP{% else %}RSVP to attend{% endif %}</button>
+        </div>
+      </div>   
+      <div class="event-share">
+	<div class="subA">Share</div>
+	<div class="thanks-share-fb"><a class="buttonA3 icon-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://go.peoplepower.org/event/{{ campaign.local_name }}/{{event.id}}/signup/?source=fbshare" target="_blank"><span class="box"><span class="icon"></span>Post to Facebook</a></span></div>
+        <div class="thanks-share-twitter"><a class="buttonA3 icon-twitter" href="https://twitter.com/home?status=Join%20me%20for%20an%20%40ACLU%20People%20Power%20Action%20Event%20in%20{{ event.city_etc_no_postal }}%20https%3A//go.peoplepower.org/event/{{campaign.local_name}}/{{event.id}}/signup/?source=twshare" target="_blank"><span class="box"><span class="icon"></span>Share on Twitter</a></span></div>
+      </div>        
+    </div>
+  </div>
+  <div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+      {% if campaign.show_address1 %}
+      <div id="ak-map">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCqC-M0AKpFkQtigs-Eda4M4yvC0Xu8fKY&amp;q={{ event.address1|urlencode }},%20{{ event.city_etc|urlencode }}" frameborder="0" style="border: 0" width="100%"></iframe>
+        <!-- Static version: 
+             <img src="http://maps.google.com/maps/api/staticmap?sensor=false&size=500x300&markers={{ event.address1|urlencode }}, {{ event.city_etc|urlencode }}"> 
+           -->
+      </div>
+      {% endif %}
+    </div>
+  </div>    
+  {% else %}
+  
+  <div class="ak-grid-row">
+    <div class="ak-grid-col ak-grid-col-12-of-12">
+      {% if event.is_inactive or event.is_full or event.is_in_past or event.is_awaiting_confirmation %}
+      {% if event.is_inactive %}
+      <h2>Sorry, this event was cancelled.</h2>
+      {% endif %}
+      {% if event.is_full %}
+      <h2>Sorry, this event is full. <a href="/event/launch/search/">Search for another event to attend</a>, or <a href="/event/launch/create/">host your own</a>.</h2><h4>If you have already signed up to attend this event, here are the basic details:</h4>
+      <div id="event-search-results">
+        {% with 1 as hide_map %}
+        {% include "./event_search_results.html" %}
+        {% endwith %}
+      </div>
+      {% endif %}
+      {% if event.is_in_past %}
+      <h2>Sorry, it's too late to sign up for this event.</h2>
+      {% endif %}
+      {% if event.is_awaiting_confirmation %}
+      <h2>Sorry, the event host has not yet confirmed this event.</h2>
+      {% endif %}
+      {% else %}
+      <h2>We&rsquo;ll confirm this event soon! Come back later.</h2>
+      {% endif %}
+      <div>
+        <a href="https://map.peoplepower.org/#zipcode={{args.zip}}&distance=50&sort=distance&f%5B%5D=launch">Search for another event</a>
+      </div>
+      
+    </div>
+  </div><!--grid-row-->
+  
+  {% endif %}
+  
 </form>
 
 {% endblock %}
@@ -154,17 +154,17 @@
 {% block script_additions %}
 
 <script type="text/javascript">
-$( function () {
-    var have_events = $('#id_have_events').val(); 
-    if ( ! have_events ) {
-        var args = actionkit.utils.getArgs();
-        actionkit.forms.eventSearch(null, {
-            event_id: args.event_id, 
-            zip: args.zip, 
-            page: $('#id_page').val()
-        });
-    }                        
-} );
+ $( function () {
+     var have_events = $('#id_have_events').val(); 
+     if ( ! have_events ) {
+         var args = actionkit.utils.getArgs();
+         actionkit.forms.eventSearch(null, {
+             event_id: args.event_id, 
+             zip: args.zip, 
+             page: $('#id_page').val()
+         });
+     }                        
+ } );
 </script>
 
 {% endblock %}
