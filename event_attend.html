@@ -104,12 +104,7 @@
 <div class="ak-grid-row">
 <div class="ak-grid-col ak-grid-col-12-of-12">
 {% if campaign.show_address1 %}
-                <div id="ak-map">
-                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCqC-M0AKpFkQtigs-Eda4M4yvC0Xu8fKY&amp;q={{ event.address1|urlencode }},%20{{ event.city_etc|urlencode }}" frameborder="0" style="border: 0" width="100%"></iframe>
-                  <!-- Static version: 
-                      <img src="http://maps.google.com/maps/api/staticmap?sensor=false&size=500x300&markers={{ event.address1|urlencode }}, {{ event.city_etc|urlencode }}"> 
-                  -->
-                </div>
+                
                 {% endif %}
 </div>
 </div>    
