@@ -52,13 +52,8 @@
                     <p><span class="ak-event-distance">{{ event.distance_str }} away</a></span></p>
                    {% endif %}
 
-<div class="map-rawlink"><a href="http://www.google.com/maps/search/{{ event.address1|urlencode }},%20{{ event.city_etc|urlencode }}" target="_blank" class="buttonB1 icon-mapmarker">Get Map</a></div>
+<div class="map-rawlink"><a href="http://www.google.com/maps/search/{{ event.address1|urlencode }},%20{{ event.city_etc|urlencode }}" target="_blank" class="buttonB1 icon-mapmarker">Get Map from Google</a></div>
 <div class="map-getdir" style="display: none;">
-<form class="directions-form ak-styled-fields" action="http://maps.google.com/maps/" method="get">
-<input size="26" type="text" name="saddr" placeholder="Enter your street address">
-<input type="hidden" name="daddr" value="{{ event.address1 }}, {{ event.city_etc }}">
-<button type="submit" class="buttonA2 bgBlack">Get Directions</button>
-</form>
 </div> <!-- .map-getdir -->
 
 
