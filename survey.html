@@ -34,7 +34,7 @@
             
         </div>
         <div id="ak-survey-questions" class="ak-grid-col ak-grid-col-8-of-12">
-            <div class="ak-field-box ak-field-box-padded ak-styled-fields ak-labels-above {{templateset.custom_fields.field_errors_class|default:"ak-errs-below"}}">
+            <div class="ak-field-box ak-field-box-padded ak-styled-fields ak-labels-above {{templateset.custom_fields.field_errors_class|default:"ak-errs-above"}}">
 
                 {% autoescape off %}
                     {% for question in form.surveyquestion_set.all %}
