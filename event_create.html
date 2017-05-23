@@ -479,6 +479,8 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 	if (categorychoice == 'newmexico') {
 		$('#id_action_event_category_newmexico').prop('checked', true);
 		$('#event-categories').hide();
+		$('#id_event_title').val('ACLU of New Mexico and People Power Webinar');
+		$('#id_event_public_description').val('ACLU of New Mexico is hosting a People Power webinar so you can hear from our staff and other People Power activists from across New Mexico ready to continue the fight. We will unveil a New Mexico-specific resource webpage detailing ways you can collaborate directly with the ACLU of New Mexico to join ongoing projects and protect civil liberties throughout our state. Join us to watch a livestream of the webinar and meet with other People Power activists.');
 	} else {
 		$('#id_action_event_category_newmexico').closest('div').remove();
 	}
