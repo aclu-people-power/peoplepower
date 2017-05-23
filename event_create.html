@@ -468,7 +468,20 @@ $(window).load( function() {
 $('label[for="id_mobile_phone"]').html('Mobile phone*');
 	
 	$('#id_action_event_category_newmexico').closest('div').remove();
-	
+	function getParameterByName(name) {
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			results = regex.exec(location.search);
+		return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+
+
+	var categorychoice = getParameterByName("eventcategory");
+	if (categorychoice == 'newmexico') {
+		alert('new mexico')
+	} else {
+		
+	}
 });
 	
 </script>
