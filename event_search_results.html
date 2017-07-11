@@ -112,7 +112,7 @@
                 {% if campaign.show_public_description %}
                     {% if event.public_description %}
                         <p class="ak-event-description">
-                            {{ event.public_description }}
+                            {{ event.public_description|linebreaksbr }}
                         </p>
                     {% endif %}
                 {% endif %}
