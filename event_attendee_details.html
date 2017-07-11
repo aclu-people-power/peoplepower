@@ -62,7 +62,7 @@
     {% if event.public_description %}
         <div class="ak-event-description">
 		<div class="subB">Description:</div>
-            {{ event.public_description }}
+            {{ event.public_description|linebreaks }}
         </div>
     {% endif %}
 
