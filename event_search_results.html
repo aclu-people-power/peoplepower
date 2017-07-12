@@ -113,6 +113,7 @@
                     {% if event.public_description %}
                         <p class="ak-event-description">
                             {{ event.public_description|linebreaks }}
+                            {% if args.event_id = '8009'  %}<img src="https://s3.amazonaws.com/s3.peoplepower.org/images/photoevent.jpg" alt="People Power" style="width:100%;height:auto;" /><br>Kadhim with his wife Reham, son Ali, and teenage daughter Courtney. Photo by Sayrah Namaste.{% endif %} 
                         </p>
                     {% endif %}
                 {% endif %}
