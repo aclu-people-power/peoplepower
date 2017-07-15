@@ -82,8 +82,8 @@
 </div>
 {% endif %}
 <div style="margin-bottom: 20px;">
-<strong>Host:</strong>
-<div>{{ event.obj.creator }}</div>
+<strong>Host{{ event.host_signups|length|pluralize }}:</strong>
+<div>{% for host in event.obj.host_signups %}{{host.user}}{% if not forloop.last%}, {%endif%}{%endfor%}</div>
 </div>
 
 {% include "event_custom_field_categories.html" %}
