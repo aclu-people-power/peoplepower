@@ -72,7 +72,10 @@
                             <p>Need to sign up with another email address?  <a href="?" onclick="window.actionkit.args = {}; return actionkit.forms.logOut()">Click here.</a></p>
                         </div>
                         {% endif %}
-
+                        <!-- Allow for customization for a given event on the signup form -->
+                        {% if templateset.custom_fields.event_user_form_code %}
+                            {% include_tmpl templateset.custom_fields.event_user_form_code %}
+                        {% endif %}
                     </div>
             
                     {% if form.ground_rules|is_nonblank and not update %}
