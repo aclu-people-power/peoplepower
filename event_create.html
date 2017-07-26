@@ -110,7 +110,7 @@
             <div id="event-categories">
               <h3>Event categories</h3>
               {% with templateset.custom_fields.event_categories|load_json as categories_config %}
-              {% for category in categories_config %}
+              {% for category in categories_config %}{% if not categories_config|nth:category|nth:"hidden"|default:0 %}
               <div class="ak-err-below">
                 <input id="id_action_event_category_{{ category }}"
                        class="checkbox" type="checkbox"
@@ -123,7 +123,7 @@
                   {{ categories_config|nth:category|nth:"label" }}
                 </label>
               </div>
-              {% endfor %}
+              {% endif %}{% endfor %}
               {% endwith %}
             </div>
             {% endif %}
