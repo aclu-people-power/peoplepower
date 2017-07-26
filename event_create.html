@@ -106,7 +106,7 @@
                 </div>
             </div>
 
-            {% if templateset.custom_fields.event_categories and campaign.id = '2' %}
+            {% if templateset.custom_fields.event_categories and campaign.id == 2 %}
             <div id="event-categories">
               <h3>Event categories</h3>
               {% with templateset.custom_fields.event_categories|load_json as categories_config %}
