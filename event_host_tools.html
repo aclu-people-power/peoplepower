@@ -125,6 +125,11 @@
 
 {% block content %}
 
+{% if event and event.custom_fields.replacement_event_id %}
+<!-- Redirect this to a different event -->
+<meta http-equiv="refresh" content="0; url=/event/{{campaign.local_name}}/{{event.custom_fields.replacement_event_id}}/host/?akid={{args.akid}}">
+{% endif %}
+
 <div id="ak-confirmation" class="ak-confirmation">
 </div>
 
