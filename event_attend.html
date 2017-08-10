@@ -3,6 +3,11 @@
 
 {% block content %}
 
+{% if event and event.custom_fields.replacement_event_id %}
+<!-- Redirect this to a different event -->
+<meta http-equiv="refresh" content="0; url=/event/{{campaign.local_name}}/{{event.custom_fields.replacement_event_id}}/signup/?akid={{args.akid}}&zip={{args.zip}}">
+{% endif %}
+
 {% load_remember_me %}
 
 <form id="id_act" class="ak-form ak-styled-fields" name="act" method="POST" action="{% if update %}/update_action/{% else %}/act/{% endif %}" accept-charset="utf-8">
