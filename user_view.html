@@ -33,6 +33,7 @@
         {% record actionkit_user.id in user_dict %}
         {% record '"}' in user_dict %}
         {% with user_dict|join:""|load_json as user_dict %}
+
         {% withevents with "action" as campaign user_dict as host %}
         {% if events %}
         <h3>Events You're Hosting</h3>
@@ -49,6 +50,17 @@
         {% endif %}
         {% endwithevents %}
 
+        {% withevents with "voting_rights" as campaign user_dict as host %}
+        {% if events %}
+        <h3>Voting Rights Events</h3>
+        <ul class="ak-margin-none">
+          {% for event in events %}
+          <li><a href="/event/voting_rights/{{ event.id }}/host">{{ event.title }} ({% if event.obj.is_in_past %}occurred on {{ event.starts_at_full }}{% else %}{{ event.starts_at }}{% endif %})</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwithevents %}
+        
         {% withevents with "launch" as campaign user_dict as host %}
         {% if events %}
         <h3>Your Resistance Training livestream</h3>
