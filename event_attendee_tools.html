@@ -2,9 +2,9 @@
 
 {% block content %}
 
-{% if event and event.custom_fields.replacement_event_id %}
+{% if event and event.custom_fields.replacement_event_id and event.custom_fields.replacement_campaign_name %}
 <!-- Redirect this to a different event -->
-<meta http-equiv="refresh" content="0; url=/event/{{ action.event.campaign.name }}/{{event.custom_fields.replacement_event_id}}/attend/?akid={{args.akid}}">
+<meta http-equiv="refresh" content="0; url=/event/{{ event.custom_fields.replacement_campaign_name }}/{{event.custom_fields.replacement_event_id}}/attend/?akid={{args.akid}}">
 {% endif %}
 
 {% if signup and not event.is_inactive %}
