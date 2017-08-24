@@ -34,7 +34,7 @@
 
             {% include "./user_form_wrapper.html" %}
 
-            <button type="submit" class="full">{% if page.name in 'attend-march-11, david-cole-stream' %}Find events near me{%else%}Sign Up{%endif%}</button>
+            <button type="submit" class="full">{% if page.custom_fields.submit_button_name %}{{ page.custom_fields.submit_button_name }}{% elif page.name in 'attend-march-11, david-cole-stream' %}Find events near me{%else%}Sign Up{%endif%}</button>
 
         </div>
     </div>
