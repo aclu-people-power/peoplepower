@@ -32,15 +32,17 @@
                     </p>
                 {% endif %}
                 
-                {% if campaign.show_venue and event.venue %}
-                   
-                    <span class="ak-event-venue">{{ event.venue }}</span>
-                {% endif %}
+                {% right_now %} {% if now < event.obj.starts_at_utc|date_add:"days=7" %}
                 
-                {% if campaign.show_address1 %}
-                    <div class="ak-event-address1">{{ event.address1 }}</div>
-                {% endif %}
+					{% if campaign.show_venue and event.venue %}
+						<span class="ak-event-venue">{{ event.venue }}</span>
+					{% endif %}
 
+					{% if campaign.show_address1 %}
+						<div class="ak-event-address1">{{ event.address1 }}</div>
+					{% endif %}
+
+                {% endif %}
                 {% if campaign.show_city or campaign.show_state or campaign.show_zip %}
                     {% if campaign.show_zip %}
                         <div class="ak-event-city-etc">{{ event.city_etc }}</div>
