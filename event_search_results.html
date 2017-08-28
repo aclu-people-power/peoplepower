@@ -33,15 +33,12 @@
                 {% endif %}
                 
                 {% if campaign.show_venue and event.venue %}
-                   {% if not event.is_in_past %}
+                   
                     <span class="ak-event-venue">{{ event.venue }}</span>
-                     {% endif %}
                 {% endif %}
                 
                 {% if campaign.show_address1 %}
-                   {% if not event.is_in_past %}
                     <div class="ak-event-address1">{{ event.address1 }}</div>
-                    {% endif %}
                 {% endif %}
 
                 {% if campaign.show_city or campaign.show_state or campaign.show_zip %}
