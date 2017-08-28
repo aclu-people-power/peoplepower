@@ -36,7 +36,7 @@
                     <span class="ak-event-venue">{{ event.venue }}</span>
                 {% endif %}
                 
-                {% if campaign.show_address1 %}
+                {% if campaign.show_address1 and event.is_in_future %}
                     <div class="ak-event-address1">{{ event.address1 }}</div>
                 {% endif %}
 
