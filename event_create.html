@@ -508,6 +508,11 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 	} else {
 		$('#id_action_event_category_plannedparenthood').closest('div').hide();
 	}
+	if (categorychoice == 'daca') {
+		$('#id_action_event_category_daca').prop('checked', true);
+		$('#event-categories').hide();
+		$('#id_event_title').val('Save DACA Action');
+	}
 });
 	
 </script>
