@@ -135,12 +135,6 @@
                     {% endwith %}
                 </div>
                     {% endif %}
-                    {% if event.is_in_past %}
-                        <h2>Sorry, it's too late to sign up for this event.</h2>
-                    {% endif %}
-                    {% if event.is_awaiting_confirmation %}
-                        <h2>Sorry, the event host has not yet confirmed this event.</h2>
-                    {% endif %}
                 {% else %}
                     <h2>We&rsquo;ll confirm this event soon! Come back later.</h2>
                 {% endif %}
