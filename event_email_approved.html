@@ -4,12 +4,58 @@ Subject: Your event has been approved!
 <!-- If a campaign requires event approval, this email gets sent out to event hosts when their event is approved -->
 {% if campaign.id = 9 %}
 
-Test
+
+<p style="font-weight: 400; font-size: 17px; line-height: 130%;">{% if user.first_name %}</p>
+<p style="font-weight: 400; font-size: 17px; line-height: 130%;">{{ user.first_name|default:"Friend"|title }}:</p>
+<p style="font-weight: 400; font-size: 17px; line-height: 130%;">{%endif%}</p>
+
+<!-- If a campaign requires event approval, this email gets sent out to event hosts when their event is approved -->
+
+<p style="font-weight: 400; font-size: 17px; line-height: 130%;">Great news! We just got done reviewing your event and now you’re approved and ready to go. Here are the next steps for making your launch event on October 1 a big success:</p>
+
+
+
+<ol>
+  <li dir="ltr">
+    <p dir="ltr"><a style="font-weight:bold;text-decoration:underline;" href="https://docs.google.com/document/d/e/2PACX-1vQjUbkBlft-yoSR4tLMVAIchUzE2yoNiQG2w-LzRIcFgGLyTKtyezgxQgshTvg1OSXBcX00ppVvmmdc/pub"><strong>Read our event host guide.</strong></a> It tells you everything you need to know to host a successful and fun event.</p>
+
+     </li>
+  <li dir="ltr"><p><a style="font-weight:bold;text-decoration:underline;" href="https://docs.google.com/document/d/e/2PACX-1vQ6DMFvUtgVGZAfuysCwpcIfGNBboWiV4rOCFbyIU_LGtTZcUe3jNTe_pcNJ91Uiim7N_7KVhOLN-1N/pub">Join us on an orientation call.  
+    </a>This isn’t mandatory, but it’s strongly encouraged. We’ll talk about what to do before, during and after your event to make it a success.</p>
+  </li>
+  <li dir="ltr">
+    <p dir="ltr"><a style="font-weight:bold;text-decoration:underline;" href="http://{% client_domain %}{{ event.public_url }}?no_akid=1">Share your event!</a> People Power doesn’t work without the people! Invite your friends, family or coworkers on social media or via email. We need as many people to attend these events as possible, so we can grow our movement and win stronger voting rights.</p>
+<p>
+Here’s a link to your event RSVP page that you can spread around:<br>
+http://{% client_domain %}{{ event.public_url }}?no_akid=1</p>
+<table style="width: 95%; background-color: #f3f3f3; font-weight: 400; font-size: 17px; line-height: 130%; text-align: center; font-family: Helvetica, Arial, sans-serif;" cellspacing="20" cellpadding="0" align="center">
+<tbody>
+<tr>
+<td style="font-weight: 400; font-size: 17px; line-height: 130%; text-align: center; font-family: Helvetica, Arial, sans-serif;">
+<p style="font-weight: 400; font-size: 20px; line-height: 130%; text-align: center;"><a style="font-weight: bold; text-decoration: underline;" href="http://{% client_domain %}{{ event.public_url }}?no_akid=1&source=hostshare">{{ event.title }}</a><br /> {{ event.address1 }}, {{ event.city }}, {{ event.state }}<br />{{ event.starts_at_full }}</p>
+	<p style="text-align: center; margin-left: auto; margin-right: auto; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;"><strong><a style="font-family: sans-serif; font-size: 19px; background-color: #ef4134; border-top: 1px solid #ef4134; border-bottom: 2px solid #B2190E; width: 95%; max-width: 300px; margin: 12px auto; border-radius: 0; text-align: center; color: white; text-decoration: none; padding: 12px 5px 12px; font-weight: bold; display: block; letter-spacing: 0;" href="http://{% client_domain %}{{ event.public_url }}?no_akid=1&source=hostshare">Share your event &raquo;</a></strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</li>
+</ol>
+<p dir="ltr">If you have any questions, comments or concerns, just email our team at info@peoplepower.org. If you need to edit your event, view and message attendees, or cancel your event, please use this magic link to login to your host tools (don’t share it!): https://{% client_ssl_domain %}{{ signup.url }}
+</p>
+<p dir="ltr">Again, thank you so much for taking on this leadership role in our movement. None of this is possible without you!</p>
+  <p>- The People Power Team</p>
 
 
 
 {% else %}
-Test 2
+<p>Congratulations! Your "{{campaign_title}}" event has been approved and is now open for signups!</p>
+
+<p>You can start sharing your event at {% endfilter %} <a href="http://{% client_domain %}{{ event.public_url }}">http://{% client_domain %}{{ event.public_url }}</a> with potential attendees. </p> {% filter akid:user|number_links|cleanup_links %}
+
+<p>To use your event tools, visit <a href="https://{% client_ssl_domain %}{{ signup.url }}">https://{% client_ssl_domain %}{{ signup.url }}</a></p>
+
+<p>Thanks again!</p>
 
 {%endif%}
 
