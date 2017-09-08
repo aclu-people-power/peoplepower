@@ -51,7 +51,7 @@ http://{% client_domain %}{{ event.public_url }}?no_akid=1</p>
 {% else %}
 <p>Congratulations! Your "{{campaign_title}}" event has been approved and is now open for signups!</p>
 
-<p>You can start sharing your event at {% filter akid:user|number_links|cleanup_links %}<a href="http://{% client_domain %}{{ event.public_url }}">http://{% client_domain %}{{ event.public_url }}</a> with potential attendees. </p> {% endfilter %}
+<p>You can start sharing your event at {% filter akid:user|number_links|cleanup_links %}<a href="http://{% client_domain %}{{ event.public_url }}?no_akid=1">http://{% client_domain %}{{ event.public_url }}?no_akid=1</a> with potential attendees. </p> {% endfilter %}
 
 <p>To use your event tools, visit <a href="https://{% client_ssl_domain %}{{ signup.url }}">https://{% client_ssl_domain %}{{ signup.url }}</a></p>
 
