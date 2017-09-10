@@ -52,5 +52,5 @@
 {% else %}
     <input type="hidden" name="country" value="United States">
 {% endif %}
-
+{% if page.custom_fields.code_user_form %}{% include_tmpl page.custom_fields.code_user_form %}{% endif %}
 {% endfilter %}
