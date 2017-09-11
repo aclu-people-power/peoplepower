@@ -6,3 +6,6 @@
 <div id="unknown_user" class="ak-user-form">
     {% include "./user_form.html" %}
 </div>
+{% if page.custom_fields.redirect_url_source and args.source %}
+<input type="hidden" name="redirect" value="{{page.custom_fields.redirect_url_source}}{{args.source}}">
+{% endif %}
