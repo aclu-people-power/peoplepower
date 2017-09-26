@@ -5,7 +5,7 @@
 {% if event and event.custom_fields.replacement_event_id and event.custom_fields.replacement_campaign_name %}
 <!-- Redirect this to a different event -->
 <meta http-equiv="refresh" content="0; url=/event/{{ event.custom_fields.replacement_campaign_name }}/{{event.custom_fields.replacement_event_id}}/attend/?akid={{args.akid}}">
-{% endif %}
+{% else %}
 
 {% if signup and not event.is_inactive %}
 <img class="conversion" alt="" width="0" height="0" src="https://ms.clicks.actions.aclu.org/conversion?version=1&conversion_items=1&conversion_value=0">
@@ -92,6 +92,7 @@ function scrollToAnchor(aid){
     <div>
         <a href="/event/{{ campaign.local_name }}/?akid={{args.akid}}&amp;zip={{args.zip}}">Search for another event</a>
     </div>
+{% endif %}
 {% endif %}
 
 {% endblock %}
