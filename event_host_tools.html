@@ -138,6 +138,11 @@
     <!-- Title -->
     <div class="ak-grid-row">
         <div class="ak-grid-col ak-grid-col-12-of-12">
+            {% if event.is_in_past and event.starts_at > '2017-10-01'|load_datetime:"%Y-%m-%d" and event.starts_at < '2017-10-02'|load_datetime:"%Y-%m-%d" and campaign.local_name == 'voting_rights' %}
+                <h3>Thanks for hosting a Let People Vote Launch event. Now please 
+                <a href="https://go.peoplepower.org/signup/attendee-sign-form/?prefill=1&akid={{args.akid}}&action_event_id={{event.id}}">fill out this form to enter your attendees!</a></h3>
+                <br>
+            {% endif %}
             {% if campaign.use_title %}
                 <h2>{{ campaign.local_title }}: {{ event.title }}</h2>
             {% else %}
