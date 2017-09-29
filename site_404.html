@@ -1,4 +1,37 @@
 <html> 
+<head>
+{% if request.path|slice:"1:"|upper %}
+    {% include 'meta.html' with lpvstate=request.path|slice:"1:"|upper %}
+{% else %}
+    <title>Join the campaign to Let People Vote| ACLU People Power</title>
+	
+	<meta charset="utf-8">
+
+	<!-- Search Engine -->
+	<meta name="description" content="While ACLU lawyers protect our voting rights and fight voter suppression in the courts, People Power activists are going on offense in every state in the country to expand voting rights.">
+	<meta name="image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/aclu-default.png">
+	<!-- Schema.org for Google -->
+	<meta itemprop="name" content="Join the Campaign to Let People Vote | ACLU People Power">
+	<meta itemprop="description" content="">
+	<meta itemprop="image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/aclu-default.png">
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Join the Campaign to Let People Vote | ACLU People Power">
+	<meta name="twitter:description" content="While ACLU lawyers protect our voting rights and fight voter suppression in the courts, People Power activists are going on offense in every state in the country to expand voting rights.">
+	<meta name="twitter:site" content="@PeoplePower">
+	<meta name="twitter:image:src" content="https://s3.amazonaws.com/s3.peoplepower.org/images/aclu-default.png">
+	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+	<meta property="og:title" content="Join the Campaign to Let People Vote | ACLU People Power">
+	<meta property="og:description" content="While ACLU lawyers protect our voting rights and fight voter suppression in the courts, People Power activists are going on offense in every state in the country to expand voting rights.">
+	<meta property="og:image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/aclu-default.png">
+	<meta property="og:url" content="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ request.path|slice:"1:"|upper }}">
+	<meta property="og:site_name" content="People Power">
+	<meta property="og:type" content="website">
+
+	<!-- Theme Color for Chrome, Firefox and Opera Mobile -->
+	<meta name="theme-color" content="#86FAE8">
+{% endif %}
+</head>
 <body>
 <meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ request.path|slice:"1:"|upper }}">
 </body> 
