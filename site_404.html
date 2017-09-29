@@ -1,11 +1,5 @@
 <html> 
-<body> 
-<p>
-    Sorry, the URL you tried to load doesn't exist.  Check that it's typed
-correctly.
-<br><br>
-{{ request.get_full_path }}<br>
-{{ request.path|slice:"1:" }}
-</p> 
+<body>
+<meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=={{ request.path|slice:"1:" }}">
 </body> 
 </html> 
