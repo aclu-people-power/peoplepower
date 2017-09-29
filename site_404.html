@@ -1,5 +1,6 @@
 <html> 
 <head>
+
 {% if request.path|slice:"1:"|upper %}
     {% include 'meta.html' with lpvstate=request.path|slice:"1:"|upper %}
 {% else %}
@@ -33,6 +34,7 @@
 {% endif %}
 </head>
 <body>
-<meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ request.path|slice:"1:"|upper }}">
+{% with source=request.GET.source akid=request.GET.akid %}
+<meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ request.path|slice:"1:"|upper }}&source={{source}}&akid={{akid}}">
 </body> 
 </html> 
