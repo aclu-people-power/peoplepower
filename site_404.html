@@ -35,7 +35,7 @@
 </head>
 <body>
 {% with source=request.GET.source akid=request.GET.akid %}
-<meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ request.path|slice:"1:"|upper }}&source={{source}}&akid={{akid}}">
+<meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ request.path|slice:"1:"|upper }}&source={{ request.path }}&akid={{akid}}">
 {%endwith%}
 </body> 
 </html> 
