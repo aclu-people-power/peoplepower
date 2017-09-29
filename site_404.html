@@ -34,10 +34,6 @@
 {% endif %}
 </head>
 <body>
-{% with source=request.GET.source akid=request.GET.akid %}
-{{ request.path }}
-<br>{{ source }}
-<meta http-equiv="refresh" content="5000;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ request.path|slice:"1:"|upper }}&source={{ request.path }}&akid={{akid}}">
-{%endwith%}
+<meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ request.path|slice:"1:"|upper }}">
 </body> 
 </html> 
