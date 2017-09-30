@@ -170,8 +170,8 @@
                 <p>
                     By submitting this form, you are agreeing to receive
                     periodic updates from People Power and other ACLU channels. Read our <a href="https://go.peoplepower.org/signup/privacy/">Privacy Policy</a>. 
-                    {% now "jS F Y H:i" %}
-                    {% if now < "30th September 2017 22:17"|date %}yes{%else%}no{%endif%}
+                    {% now|date:"U" %}
+                    {% if now|date:"U" < 1506810072 %}yes{%else%}no{%endif%}
                 </p>
             </div>
         </div>
