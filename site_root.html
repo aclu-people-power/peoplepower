@@ -1,19 +1,12 @@
 {% load actionkit_tags %}
 
 
-{% if not request.GET.override %}
+{% if request.GET.override %}
+
 <!DOCTYPE html>
-<html lang="en-US">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Watch: ACLU People Power 'Let People Vote' Launch</title>
-        <link rel="shortcut icon" type="image/x-icon" href="https://peoplepower.org/assets/favicon.ico" />
-        <link rel="icon" type="image/png" href="https://peoplepower.org/assets/favicon-196x196.png" sizes="196x196" />
-        <link rel="icon" type="image/png" href="https://peoplepower.org/assets/favicon-96x96.png" sizes="96x96" />
-        <link rel="icon" type="image/png" href="https://peoplepower.org/assets/favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="https://peoplepower.org/assets/favicon-16x16.png" sizes="16x16" />
-        <link rel="icon" type="image/png" href="https://peoplepower.org/assets/favicon-128.png" sizes="128x128" />
+<html>
+<head>
+	   <title>Join the campaign to Let People Vote| ACLU People Power</title>
 	
 	<meta charset="utf-8">
 
@@ -21,166 +14,115 @@
 	<meta name="description" content="While ACLU lawyers protect our voting rights and fight voter suppression in the courts, People Power activists are going on offense in every state in the country to expand voting rights.">
 	<meta name="image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/aclu-default.png">
 	<!-- Schema.org for Google -->
-	<meta itemprop="name" content="Watch: ACLU People Power 'Let People Vote' Launch">
+	<meta itemprop="name" content="Join the Campaign to Let People Vote | ACLU People Power">
 	<meta itemprop="description" content="While ACLU lawyers protect our voting rights and fight voter suppression in the courts, People Power activists are going on offense in every state in the country to expand voting rights.">
 	<meta itemprop="image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/aclu-default.png">
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Watch: ACLU People Power 'Let People Vote' Launch">
+	<meta name="twitter:title" content="Join the Campaign to Let People Vote | ACLU People Power">
 	<meta name="twitter:description" content="While ACLU lawyers protect our voting rights and fight voter suppression in the courts, People Power activists are going on offense in every state in the country to expand voting rights.">
 	<meta name="twitter:site" content="@PeoplePower">
 	<meta name="twitter:image:src" content="https://s3.amazonaws.com/s3.peoplepower.org/images/aclu-default.png">
 	<!-- Open Graph general (Facebook, Pinterest & Google+) -->
-	<meta property="og:title" content="Watch: ACLU People Power 'Let People Vote' Launch">
+	<meta property="og:title" content="Join the Campaign to Let People Vote | ACLU People Power">
 	<meta property="og:description" content="While ACLU lawyers protect our voting rights and fight voter suppression in the courts, People Power activists are going on offense in every state in the country to expand voting rights.">
 	<meta property="og:image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/aclu-default.png">
+	<meta property="og:url" content="https://vote.peoplepower.org/signup/join_lpv_homepage/">
 	<meta property="og:site_name" content="People Power">
 	<meta property="og:type" content="website">
-        <link rel="stylesheet" type="text/css" href="https://peoplepower.org/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="https://peoplepower.org/css/style.css">
-        <link rel="stylesheet" type="text/css" href="https://peoplepower.org/let-people-vote/styles.css">
-        <!-- <link rel="stylesheet" type="text/css" href="https://peoplepower.org/let-people-vote/styles.css"> -->
-    </head>
-    <body class="people-stream">
-       <div id="alert" class="alert">Lead the movement to 'Let People Vote' in your state. <a href="https://go.peoplepower.org/signup/host_new?source=streampage">Create an event</a></div>
-        <div class="hero">
-            <div class="video-wrap">
-                <div id="video" class="video">
-                    <img src="https://peoplepower.org/images/video_play.png" alt="Click to watch video stream" />
-                </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="sidebar">
-                <div class="logo col-sm-4 col-xs-12">
-                    <img src="https://peoplepower.org/let-people-vote/img/logo.svg" alt="ACLU People Power Logo" />
-                    <h4>Join the resistance.</h4>
-                </div>
+	<!-- Theme Color for Chrome, Firefox and Opera Mobile -->
+	<meta name="theme-color" content="#86FAE8">
 
-                <div class="col-sm-4 col-xs-12">
-                <form name="act" id="signup-form" method="post" action="https://go.peoplepower.org/act/">
-                    <div id="join-us-form">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 form-group">
-                                <label for="email">Email</label>
-                                <input id="email" class="form-control" type="text" name="email" placeholder="Email" required />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-12 col-md-6 form-group">
-                                <label for="first-name">First Name</label>
-                                <input id="first-name" class="form-control" type="text" name="first_name" placeholder="First Name" required />
-                            </div>
-                            <div class="col-xs-6 col-sm-12 col-md-6 form-group">
-                                <label for="last-name">Last Name</label>
-                                <input id="last-name" class="form-control" type="text" name="last_name" placeholder="Last Name" required />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-12 col-md-6 form-group">
-                                <label for="zip">Zip Code</label>
-                                <input id="zip" class="form-control" type="text" name="zip" placeholder="Zip Code" required />
-                            </div>
-                            <div class="col-xs-6 col-sm-12 col-md-6 form-group">
-                                <label for="phone-number">Phone Number</label>
-                                <input id="phone-number" class="form-control" type="text" name="mobile_phone" placeholder="Phone Number" required />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <input type="hidden" name="country" value="United States" />
-                                <input type="hidden" name="page" value="join_lpv_stream_page">
-                                <input class="btn btn-primary btn-block" type="submit" value="JOIN THE MOVEMENT">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                </div>
+	<!-- Font Awesome Icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+	<!-- Normalize.css -->
+	<link rel="stylesheet" type="text/css" href="https://peoplepower.org/let-people-vote/normalize.css">
+	<!-- Action Kit Styles -->
+	<link rel="stylesheet" type="text/css" href="https://peoplepower.org/let-people-vote/actionkit.css">
+	<!-- Main Styles -->
+	<link rel="stylesheet" type="text/css" href="https://peoplepower.org/let-people-vote/styles.css">
 
-                <div class="visible-xs-block col-xs-12 height-2em">
-                </div>
-                <div class="col-sm-3 col-sm-offset-1 col-xs-12">
-                    <h2>Get Involved</h2>
-                    <p>While ACLU lawyers protect our voting rights and fight voter suppression in the courts, People Power activists are going on offense to expand voting rights in every state in the country. Find your state plan now.</p>
-                    <select onChange="window.location.href=this.value">
-                        <option value="#">Select your state</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=AK">Alaska</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=AL">Alabama</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=AR">Arkansas</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=AZ">Arizona</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=CA">California</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=CO">Colorado</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=CT">Connecticut</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=DC">Washington, DC</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=DE">Delaware</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=FL">Florida</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=GA">Georgia</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=HI">Hawaii</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=IA">Iowa</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=ID">Idaho</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=IL">Illinois</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=IN">Indiana</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=KS">Kansas</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=KY">Kentucky</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=LA">Louisiana</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=MA">Massachusetts</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=MD">Maryland</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=ME">Maine</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=MI">Michigan</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=MN">Minnesota</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=MO">Missouri</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=MS">Mississippi</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=MT">Montana</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=NC">North Carolina</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=ND">North Dakota</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=NE">Nebraska</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=NH">New Hampshire</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=NJ">New Jersey</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=NM">New Mexico</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=NV">Nevada</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=NY">New York</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=OH">Ohio</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=OK">Oklahoma</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=OR">Oregon</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=PA">Pennsylvania</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=RI">Rhode Island</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=SC">South Carolina</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=SD">South Dakota</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=TN">Tennessee</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=TX">Texas</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=UT">Utah</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=VA">Virginia</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=VT">Vermont</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=WA">Washington</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=WI">Wisconsin</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=WV">West Virginia</option>
-                        <option value="https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state=WY">Wyoming</option>
-                    </select>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="daca-call">
-                <h3>TELL CONGRESS: PASS A CLEAN DREAM ACT <span style="color: #e47b08;">CALL <a href="tel:18448892111">1-844-889-DACA</a></span></h3>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="row privacy-policy">
-                <p>Contact us: <a href="mailto:info@peoplepower.org" class="bold">info@peoplepower.org</a>.</p>
-                <p>
+	<!-- Support for Mobile Screens -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicon -->
+	<link rel="icon" href="https://peoplepower.org/let-people-vote/favicon.ico">
+
+	<!-- Google Analytics -->
+
+	<!-- Facebook Pixel Code -->
+
+	<!-- Twitter universal website tag code -->
+
+	<!-- Action Kit Init -->
+	<script type="text/javascript">
+	 actionkit.forms.contextRoot = 'http://peoplepower.actionkit.com/context/';
+	  actionkit.forms.initPage();
+	  actionkit.forms.initForm('act')
+	</script>
+
+</head>
+<body>
+
+	<div id="splash-body">
+		<div id="splash-container">
+			<img src="https://peoplepower.org/let-people-vote/img/logo.svg" alt="ACLU People Power" />
+			<h2>While ACLU lawyers protect our voting rights and fight voter suppression in the courts, People Power activists are going on offense to expand voting rights in every state in the country.</h2>
+			<hr />
+			<h2>Find out how to get involved in your area.</h2>
+			<div class="action-network">
+				<script>
+				console.log("The load_remember_me snippet for Remember Me is disabled by config.")
+				</script>
+				<form class="action_form" name="act" method="POST" action="https://vote.peoplepower.org/act/" accept-charset="utf-8">
+				    <div class="ak-grid-row">
+				        <div id="signup-form" class="ak-grid-col ak-grid-col-6-of-12 ak-styled-fields ak-labels-overlaid ak-errs-below">
+				            <ul class="compact" id="ak-errors"></ul>
+				            <div id="known_user">
+				                Not <span id="known_user_name"></span>? <a href="https://vote.peoplepower.org?" onclick="return actionkit.forms.logOut()">Click here.</a>
+				            </div>
+				            <div id="unknown_user" class="ak-user-form">
+				                <div id="ak-fieldbox-email" class="required">
+				                    <input type="text" name="email" id="id_email" class="ak-userfield-input" placeholder="Email *" autocomplete="email" required>
+				                </div>
+				                <div id="ak-fieldbox-zip" class="required">
+				                    <input type="text" name="zip" id="id_zip" class="ak-userfield-input" autocomplete="postal-code" placeholder="Zip *" required>
+				                </div>
+				                <input type="hidden" name="country" value="United States">
+				            </div>
+				            <button type="submit" class="full">I'm in</button>
+				        </div>
+				    </div>
+				    <input type="hidden" name="page" value="join_lpv_homepage">
+				</form>
+			</div>
+		</div>
+		<div id="protest">
+			<img src="https://peoplepower.org/let-people-vote/img/protester-01.png" />
+		</div>
+		<div id="liberty">
+			<img src="https://peoplepower.org/let-people-vote/img/liberty-statue.png" />
+		</div>
+	</div>
+	<div class="signup-footer">
+	<p>
                     By submitting this form, you are agreeing to receive
                     periodic updates from People Power and other ACLU channels. Read our <a href="https://go.peoplepower.org/signup/privacy/">Privacy Policy</a>. 
                     
                 </p>
-            </div>
-        </div>
-    </body>
+		<p>ACLU People Power is partnering with a broad group of national, state and local organizations and activist groups on the Let People Vote campaign.  Many of the campaign’s calls to action were developed by partners, and this work will be advanced hand-in-hand with organizations such as the League of Women Voters, Common Cause, Kentuckians For The Commonwealth, Voice of the Experienced (VOTE), Restore the Vote Coalition, the NAACP, Nebraskans for Civic Reform; Latino American Commission, the Bus Project, MoveOn, Keystone Votes Coalition, Utahns for Responsive Government, Citizen Action of Wisconsin, VICE Impact, and many, many others.</p>
+		<p>By submitting this form, you are agreeing to receive periodic updates from People Power and other ACLU channels.</p>
+	</div>
 
-    <script type="text/javascript" src="https://peoplepower.org/js/respond.min.js"></script>
-    <script type="text/javascript" src="https://peoplepower.org/js/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="https://go.peoplepower.org/resources/actionkit.js"></script>
-    <script type="text/javascript" src="https://peoplepower.org/js/stream.js"></script>
-    
+	<!-- Initialize jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+	<!-- Call Main JS File -->
+	<script src="https://peoplepower.org/let-people-vote/js/main.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	window.history.pushState("string", "Title", "https://vote.peoplepower.org/getinvolved");
+	</script>
+</body>
 </html>
 
 {% else %}
