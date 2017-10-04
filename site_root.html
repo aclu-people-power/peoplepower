@@ -1,7 +1,7 @@
 {% load actionkit_tags %}
 
 
-{% if request.GET.override %}
+{% if not request.GET.override %}
 
 <!DOCTYPE html>
 <html>
