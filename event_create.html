@@ -58,7 +58,6 @@
                             <label for="id_event_starts_at">Start date/time</label>
                             {% include "./date_picker.html" %}
                         </div>
-                        {% if campaign.id == 9 %}<p style="font-weight:200;width: 65%;margin-left: 35%;">Note: If you're hosting a launch event, it must be on 10/1 at 7pm ET / 6pm CT / 5pm MT / 4pm PT.</p>{% endif %}
 
 
                         <script type="text/javascript">
@@ -195,7 +194,7 @@
                             will see this text before signing up
                         </span>
                     </label>
-                    <textarea id="id_event_public_description" name="event_public_description">{% if campaign.id == 9 %}Trump is engaging in an assault on voting rights. We’re going to respond by going on offense at the state and local levels to expand access to the ballot and make our democracy more representative. Join us at a launch event on Sunday, October 1 as we kickoff a big new push to Let People Vote.{% endif %}</textarea>
+                    <textarea id="id_event_public_description" name="event_public_description">{% if campaign.id == 9 %}Trump is engaging in an assault on voting rights. We’re going to respond by going on offense at the state and local levels to expand access to the ballot and make our democracy more representative. Join us as we kickoff a big new push to Let People Vote.{% endif %}</textarea>
                 </div>
 
                 <div>
