@@ -35,6 +35,6 @@
 </head>
 <body>
 
-<meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={% if request.path|slice:"1:"|upper|length > 2 %}{{ request.path|slice:"1:3"|upper }}{% else %}{{ request.path|slice:"1:"|upper }}{% endif %}{% if request.GET.source %}&source={{request.GET.source}}{% endif %}">
+<meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={% if request.path|slice:"1:"|upper|length > 2 %}{{ request.path|slice:"1:3"|upper }}{% else %}{{ request.path|slice:"1:"|upper }}{% endif %}{% if request.GET.source %}&source={{request.GET.source}}{% endif %}{% if request.GET.akid %}&akid={{request.GET.akid}}{% endif %}">
 </body> 
 </html> 
