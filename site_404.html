@@ -34,6 +34,6 @@
 {% endif %}
 </head>
 <body>
-<meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ request.path|slice:"1:"|upper.strip("/") }}{% if request.GET.source %}&source={{request.GET.source}}{% endif %}">
+<meta http-equiv="refresh" content="0;url=https://vote.peoplepower.org/cms/thanks/join_lpv_homepage?state={{ request.path|slice:"1:"|upper }}{% if request.GET.source %}&source={{request.GET.source}}{% endif %}">
 </body> 
 </html> 
