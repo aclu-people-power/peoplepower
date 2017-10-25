@@ -184,15 +184,8 @@
                 <h3>Event description</h3>
                 <div class="ak-errs-below">
                     <label for="id_event_public_description">
-                        Public description<span class="ak-required-flag">*</span>
-                        <br><span class="ak-normal">
-                            {% if campaign.allow_private %}
-                                For public events, people
-                            {% else %}
-                                People
-                            {% endif %}
-                            will see this text before signing up
-                        </span>
+                        Provide a description of your event:<br>
+                        What issue is your event about? What actions will you be taking at the event? Add any other compelling context to motivate people to sign up.
                     </label>
                     <textarea id="id_event_public_description" name="event_public_description">{% if campaign.id == 9 %}Trump is engaging in an assault on voting rights. We’re going to respond by going on offense at the state and local levels to expand access to the ballot and make our democracy more representative. Join us as we kickoff a big new push to Let People Vote.{% endif %}</textarea>
                 </div>
