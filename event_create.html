@@ -507,6 +507,12 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 		$('#event-categories').hide();
 		$('#id_event_title').val('Save DACA Action');
 	}
+	if (categorychoice == 'smallbusiness') {
+		$('#id_action_event_category_smallbusiness').prop('checked', true);
+		$('#event-categories').hide();
+		$('#id_event_title').val('#OpenToAll Business Canvass');
+		$('#id_event_public_description').val('Five years ago, Dave Mullins and Charlie Craig walked into Masterpiece Cakeshop, a Colorado bakery, to purchase a cake for their wedding reception. But the bakery’s owner refused to serve them solely because they’re a same-sex couple. On December 5, the ACLU will be at the Supreme Court, arguing on behalf of Dave and Charlie that businesses that open their doors to the public do not have a constitutional right to discriminate. It’s our chance to show that communities across the country stand for equality and fairness and against discrimination – we’ll meet up to distribute posters and then go out to local businesses and ask them to display a sign showing that they are #OpenToAll to support Dave and Charlie!');
+	}
 });
 	
 </script>
