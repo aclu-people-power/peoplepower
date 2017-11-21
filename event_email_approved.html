@@ -2,8 +2,7 @@ Subject: Your event has been approved!
 
 {% load actionkit_tags %}
 <!-- If a campaign requires event approval, this email gets sent out to event hosts when their event is approved -->
-{% if campaign.id = 9 %}
-
+{% if event.custom_fields.event_category|force_list|contains:"daca" %}
 
 <p style="font-weight: 400; font-size: 17px; line-height: 130%;">{% if user.first_name %}</p>
 <p style="font-weight: 400; font-size: 17px; line-height: 130%;">{{ user.first_name|default:"Friend"|title }}:</p>
@@ -11,41 +10,42 @@ Subject: Your event has been approved!
 
 <!-- If a campaign requires event approval, this email gets sent out to event hosts when their event is approved -->
 
-<p style="font-weight: 400; font-size: 17px; line-height: 130%;">Great news! We just got done reviewing your event and now you’re approved and ready to go. Here are the next steps for making your launch event on October 1 a big success:</p>
+<p dir="ltr">Thanks so much for posting your meeting with your Member of Congress to the People Power map and for taking the time to organize your community members to lobby for a clean Dream Act. </p>
 
-
+<p dir="ltr"><strong>Here are your next steps:</strong></p>
 
 <ol>
   <li dir="ltr">
-    <p dir="ltr"><a style="font-weight:bold;text-decoration:underline;" href="https://docs.google.com/document/d/e/2PACX-1vQjUbkBlft-yoSR4tLMVAIchUzE2yoNiQG2w-LzRIcFgGLyTKtyezgxQgshTvg1OSXBcX00ppVvmmdc/pub"><strong>Read our event host guide.</strong></a> It tells you everything you need to know to host a successful and fun event.</p>
-
-     </li>
-  <li dir="ltr"><p><a style="font-weight:bold;text-decoration:underline;" href="https://docs.google.com/document/d/e/2PACX-1vQ6DMFvUtgVGZAfuysCwpcIfGNBboWiV4rOCFbyIU_LGtTZcUe3jNTe_pcNJ91Uiim7N_7KVhOLN-1N/pub">Join us on an orientation call.  
-    </a>This isn’t mandatory, but it’s strongly encouraged. We’ll talk about what to do before, during and after your event to make it a success.</p>
+    <p dir="ltr"><strong>Call your Member of Congress&rsquo;s local district office to set up your meeting</strong>. It may take a few tries to lock down a time, but be persistent. </p>
   </li>
   <li dir="ltr">
-    <p dir="ltr"><a style="font-weight:bold;text-decoration:underline;" href="http://{% client_domain %}{{ event.public_url }}?no_akid=1">Share your event!</a> People Power doesn’t work without the people! Invite your friends, family or coworkers on social media or via email. We need as many people to attend these events as possible, so we can grow our movement and win stronger voting rights.</p>
-<p>
-Here’s a link to your event RSVP page that you can spread around:<br>
-http://{% client_domain %}{{ event.public_url }}?no_akid=1</p>
-<table style="width: 95%; background-color: #f3f3f3; font-weight: 400; font-size: 17px; line-height: 130%; text-align: center; font-family: Helvetica, Arial, sans-serif;" cellspacing="20" cellpadding="0" align="center">
-<tbody>
-<tr>
-<td style="font-weight: 400; font-size: 17px; line-height: 130%; text-align: center; font-family: Helvetica, Arial, sans-serif;">
-<p style="font-weight: 400; font-size: 20px; line-height: 130%; text-align: center;"><a style="font-weight: bold; text-decoration: underline;" href="http://{% client_domain %}{{ event.public_url }}?no_akid=1&source=hostshare">{{ event.title }}</a><br /> {{ event.address1 }}, {{ event.city }}, {{ event.state }}<br />{{ event.starts_at_full }}</p>
-	<p style="text-align: center; margin-left: auto; margin-right: auto; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;"><strong><a style="font-family: sans-serif; font-size: 19px; background-color: #ef4134; border-top: 1px solid #ef4134; border-bottom: 2px solid #B2190E; width: 95%; max-width: 300px; margin: 12px auto; border-radius: 0; text-align: center; color: white; text-decoration: none; padding: 12px 5px 12px; font-weight: bold; display: block; letter-spacing: 0;" href="http://{% client_domain %}{{ event.public_url }}?no_akid=1&source=hostshare">Share your event &raquo;</a></strong></p>
-</td>
-</tr>
-</tbody>
-</table>
-
-</li>
+    <p dir="ltr">After you schedule your meeting,  <a href="https://{% client_ssl_domain %}{{ signup.url }}" style="font-weight: bold;text-decoration: underline;">update your event details</a>. Use the tool to &ldquo;email all event attendees&rdquo; to update anyone who had RSVPed on the new event date and time.</p>
+  </li>
 </ol>
-<p dir="ltr">If you have any questions, comments or concerns, just email our team at info@peoplepower.org. If you need to edit your event, view and message attendees, or cancel your event, please use this magic link to login to your host tools (don’t share it!): https://{% client_ssl_domain %}{{ signup.url }}
-</p>
-<p dir="ltr">Again, thank you so much for taking on this leadership role in our movement. None of this is possible without you!</p>
-  <p>- The People Power Team</p>
 
+<ol start="3">
+  <li dir="ltr">
+    <p dir="ltr"><strong>Recruit your friends and family to join </strong>- post your event link on your own social media and invite your friends and family. &nbsp;</p>
+  </li>
+</ol>
+<p dir="ltr"><strong>Here are resources for your meeting:</strong></p>
+<ul>
+  <li dir="ltr">
+    <p dir="ltr"><strong><a href="https://gdoc.pub/doc/e/2PACX-1vSUHvliSubpLCue749xA68BHq_SUVsa5SAxzDv91dClR0n5xI4zZtTrV--vSFQ2rCk13AR4jvnIJXbd">Immigration talking points and &ldquo;leave-behind&rdquo; for the Member of Congress&rsquo;s staff.</a></strong><a href="https://gdoc.pub/doc/e/2PACX-1vSUHvliSubpLCue749xA68BHq_SUVsa5SAxzDv91dClR0n5xI4zZtTrV--vSFQ2rCk13AR4jvnIJXbd"> </a>Familiarize yourself with ACLU&rsquo;s talking points on a clean DREAM Act. If you&rsquo;re able, print out a copy to leave behind with the staffer you meet with. </p>
+  </li>
+</ul>
+
+<ul>
+  <li dir="ltr">
+    <p dir="ltr"><strong><a href="https://gdoc.pub/doc/e/2PACX-1vQ1QwADRUve1914TAzv8bMq9pIBh-og6L6_xkwvS_8-FkhB3jJJtsd66v3N7UfA-lT6CaqyBIdIn9ZT">Lobby visit guide.</a></strong><a href="https://gdoc.pub/doc/e/2PACX-1vQ1QwADRUve1914TAzv8bMq9pIBh-og6L6_xkwvS_8-FkhB3jJJtsd66v3N7UfA-lT6CaqyBIdIn9ZT"></a> Use this as a reference on how to schedule your meeting, prepare your team, and have an effective conversation with your district office.</p>
+  </li>
+</ul>
+
+<p dir="ltr">If you have any questions, just reply to this email or email us directly at <a href="mailto:info@peoplepower.org">info@peoplepower.org</a>. </p>
+
+<p dir="ltr">Thanks so much for stepping up to meet with your Member of Congress to demand a clean DREAM Act by the end of the year. As a constituent, you have the people power to persuade them to support our Dreamer community.</p>
+
+<p dir="ltr">- ACLU People Power Team</p>
 
 
 {% else %}
