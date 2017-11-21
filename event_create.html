@@ -187,7 +187,13 @@
                         Provide a description of your event:<br>
                         What issue is your event about? What actions will you be taking at the event? Add any other compelling context to motivate people to sign up.
                     </label>
-                    <textarea id="id_event_public_description" name="event_public_description">{% if campaign.id == 9 %}Trump is engaging in an assault on voting rights. We’re going to respond by going on offense at the state and local levels to expand access to the ballot and make our democracy more representative. Join us as we kickoff a big new push to Let People Vote.{% endif %}</textarea>
+                    <textarea id="id_event_public_description" name="event_public_description">{% if request.GET.eventcategory == 'daca' %}Join us for a meeting with staff of [Rep/Senator NAME] to urge that he supports a clean Dream Act by the end of the year. 800,000 young immigrants who know no other home than the United States are at risk of being deported unless Congress passes the Dream Act, and our Member of Congress will play a key role in this vote.
+ 
+In our visit we will follow an agenda and talking points from ACLU People Power and share our personal stories about why immigration is important to us.
+ 
+[Enter additional event details here – if you’re huddling before the meeting, if your event time is TBD and will be changed as soon as the meeting is scheduled, or anything else you want to share about your visit.]
+ 
+Together our community can help young immigrants by demanding a \u0023DreamActNow!{% endif %}</textarea>
                 </div>
 
                 <div>
@@ -506,14 +512,6 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 		$('#id_action_event_category_daca').prop('checked', true);
 		$('#event-categories').hide();
 		$('#id_event_title').val('Meeting with lawmakers at district office to demand a clean Dream Act');
-		$('#id_event_public_description').val('Join us for a meeting with staff of [Rep/Senator NAME] to urge that he supports a clean Dream Act by the end of the year. 800,000 young immigrants who know no other home than the United States are at risk of being deported unless Congress passes the Dream Act, and our Member of Congress will play a key role in this vote.
- 
-In our visit we will follow an agenda and talking points from ACLU People Power and share our personal stories about why immigration is important to us.
- 
-[Enter additional event details here – if you’re huddling before the meeting, if your event time is TBD and will be changed as soon as the meeting is scheduled, or anything else you want to share about your visit.]
- 
-Together our community can help young immigrants by demanding a \u0023DreamActNow!');
-
 	}
 	if (categorychoice == 'smallbusiness') {
 		$('#id_action_event_category_smallbusiness').prop('checked', true);
