@@ -46,6 +46,28 @@
             <div id="ak-event-info">
                 <h3>Event information</h3>
                 <div>
+
+                    {% if request.GET.eventcategory == 'daca' %}
+                    {% with page.custom_fields.extra_json_data|load_json as targets %}
+                    {% if user and user.location and user.location.us_district and targets %}
+                    {% with user_state=user.state user_us_district=user.location.us_district %}
+                    <div>
+                      <label for="id_event_target">Which Member of Congress are you planning a meeting for? <span class="ak-required-flag">*</span></label>
+
+                      <select id="id_event_target" type="text" name="action_event_target">
+                        {% for target in targets.senate|nth:user_state %}
+                        <option>{{ target.title }} {{ target.nickname|default:target.first }} {{ target.last }}</option>
+                        {% endfor %}
+                        {% for target in targets.house|nth:user_us_district %}
+                        <option>{{ target.title }} {{ target.nickname|default:target.first }} {{ target.last }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    {% endwith %}
+                    {% endif %}
+                    {% endwith %}
+                    {% endif %}
+
                     {% if campaign.use_title %}
                         <div>
                             <label for="id_event_title">Event name<span class="ak-required-flag">*</span></label>
@@ -488,7 +510,28 @@ $( function () {
             break;
         }
     }
-} );
+ } );
+
+
+ var renderDacaTargets = function() {
+     var target = $("#id_event_target").val();
+     if (!$('#id_event_title').data("original-value")) {
+         $('#id_event_title').data("original-value", $('#id_event_title').val());
+     }
+     if (!$('#id_event_public_description').data("original-value")) {
+         $('#id_event_public_description').data("original-value", $('#id_event_public_description').val());
+     }
+
+     $('#id_event_title').val(
+         $("#id_event_title").data("original-value").replace(/\[Rep\/Senator NAME\]/g, target)
+     );
+     $('#id_event_public_description').val(
+         $("#id_event_public_description").data("original-value")
+                                          .replace(/\[Rep\/Senator NAME\]/g, target)
+                                          .replace(/\[Rep\/Senator NAME\]/g, target)
+     );
+ };
+ 
 $(window).load( function() {
 $('label[for="id_mobile_phone"]').html('Mobile phone*');
 	
@@ -519,6 +562,11 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 		$('#id_event_title').val('#OpenToAll Business Canvass');
 		$('#id_event_public_description').val('Five years ago, Dave Mullins and Charlie Craig walked into Masterpiece Cakeshop, a Colorado bakery, to purchase a cake for their wedding reception. But the bakery’s owner refused to serve them solely because they’re a same-sex couple. On December 5, the ACLU will be at the Supreme Court, arguing on behalf of Dave and Charlie that businesses that open their doors to the public do not have a constitutional right to discriminate. It’s our chance to show that communities across the country stand for equality and fairness and against discrimination – we’ll meet up to distribute posters and then go out to local businesses and ask them to display a sign showing that they are #OpenToAll to support Dave and Charlie!');
 	}
+
+        if (categorychoice == 'daca') {
+            renderDacaTargets();
+            $("#id_event_target").change(renderDacaTargets);
+        }
 });
 	
 </script>
