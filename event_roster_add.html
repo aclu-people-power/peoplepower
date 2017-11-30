@@ -1,0 +1,98 @@
+{% load actionkit_tags %}
+<!-- event_roster_add.html: add attendees for host page -->
+<style>
+  #more-attendees {display: none}
+  #more-attendees .data-entry table {width:100%}
+  #more-attendees .data-entry table input {width:96%}
+  #more-attendees .data-entry table th {text-transform: capitalize}
+  #more-attendees .data-entry table th, #more-attendees table.data-entry td {text-align:center}
+</style>
+<div class="ak-clearfix">
+    <form name="attendees-add" id="attendees-add" method="post" action="/event/{{campaign.local_name}}/{{event.id}}/manage_signups" accept-charset="utf-8">
+      <input name="required" value="event_attendees_notified" type="hidden">
+      <div id='more-attendees'>
+          <h3>
+            {% if attendees %}Additional {% endif %}Attendees
+          </h3>
+          <div class='data-entry'>
+          </div>
+	  <div>
+	    <input id="id_event_attendees_notified" type='checkbox' name='event_attendees_notified' value="1">
+	    <label class="ak-checkbox-label" for="id_event_attendees_notified">
+	      <strong>Required:</strong> I acknowledge that attendees added through this form will be subscribed to {% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}'s mailing list, and that they have been notified of this.
+	    </label>
+	  </div>
+          <input type='button' data-count='5' class='more-rows ak-btn-short' value="More Rows">
+          <input type='submit' name="add-attended" value="Save Attendees" class="change-role ak-btn-short">
+        </div>
+        <script>
+fields = [{name: 'page', type: 'hidden', value: "{{event.campaign.signup_page.name}}"},
+          {name: 'event_id', type: 'hidden', value: "{{event.id}}"},
+          {name: 'source', type: 'hidden', value: "event_host"},
+          {name: 'skip_confirmation', type: 'hidden', value: "1"},
+          {name: 'name', type: 'text', value: ''},
+          {name: 'email', type: 'text', value: ''},
+          {name: 'phone', type: 'text', value: ''}];
+
+var formTable = function(fields, fieldPrefix, emptyRows){
+    this.fields = fields;
+    this.fieldPrefix = fieldPrefix;
+    this.emptyRows = emptyRows;
+    this.$table = $("<table/>");
+
+    this.row = function(){
+        var $row = $( "<tr />" );
+        for (field in this.fields){
+                var $field = $( "<input />",
+                                {type: this.fields[field].type,
+                                 name: this.fieldPrefix + this.fields[field].name,
+                                 value: this.fields[field].value}
+                              );
+            if(this.fields[field].type == 'hidden'){
+                $row.append( $field );
+            } else {
+                $row.append( $("<td />").append($field) );
+            }
+        }
+        return $row;
+    }
+
+    this.header = function(){
+        var $header = $("<tr />");
+        for (field in this.fields){
+            if(this.fields[field].type != 'hidden'){
+                var title = this.fields[field]['title'] || this.fields[field]['name'];
+                $header.append($("<th />").text(title));
+            }
+        }
+        return $header
+    }
+
+    this.build = function(){
+        this.$table.append($("<thead/>").append(this.header()));
+        this.addRows(this.emptyRows);
+        return this.$table;
+    }
+
+    this.clearEmptyRows = function(){
+        this.$table.find('tbody tr').each(function(index){
+            var filledFields = $(this).find("input[type!=hidden]").filter(function(index){
+                return $(this).val().length != 0;
+            });
+            if ( filledFields.length == 0 )
+                $(this).remove();
+        });
+    }
+
+    this.addRows = function(count){
+        var $row = this.row();
+        for( var x=0;x<count;x++ ){
+            this.$table.append( $row.clone() );
+        }
+    }
+}
+
+          </script>
+    </form>
+</div>
+<!-- End event_roster_add.html -->

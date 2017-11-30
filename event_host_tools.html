@@ -40,12 +40,21 @@
             targetEl = $('div.contact-attendees');
         else if ( this.id == 'invite-friends-link' )
             targetEl = $('#taf');
+	else if ( this.id == 'add-attendees-link' )
+            targetEl = $('#more-attendees');
+
         // console.log(targetEl);
         // Unhide email form if needed
         if ( /^email-/.test(this.id) ) {
             var emailButton = targetEl.closest('form').find('input[type="submit"].email');
             handleEmail.apply(emailButton, []);
         }
+        if(this.id == 'add-attendees-link'){
+            $('.signup-list-controls').slideUp('fast');
+            $('#more-attendees').slideDown('fast');
+            actionkit.forms.initValidation('attendees-add');
+	}
+
         // Highlight
         targetEl.addClass('target');
         // Allow jump to #foo to happen
@@ -114,6 +123,17 @@
             actionkit.forms.initValidation('manage-host');
         if ($('#manage-attendee').length)
             actionkit.forms.initValidation('manage-attendee');
+	var attendeeTable = new formTable(fields, 'attendee_', 5);
+        $('#more-attendees .data-entry').append(attendeeTable.build());
+        $('#more-attendees input.more-rows').click(
+            function(e){attendeeTable.addRows($(e.target).data('count'))}
+        );
+        // when adding attendees, clear empty rows
+        $('#more-attendees input[type=submit]').click(function(e){
+            attendeeTable.clearEmptyRows()
+            return true;
+        });
+        
         $(window).load(function() {
             updateConfirmationMessage();
         });
@@ -185,6 +205,10 @@
                             (Available after people sign up for your event.)
                         </li>
                         {% endif %}
+                        {% if event.is_in_past %}
+                        <li class="if-js"><a class="jump-link" id="add-attendees-link" href="#attendees-add">Add Attendees</a></li>
+                        {% endif %}
+
                         {% if event.is_open_for_signup and page.pagefollowup.send_taf %}
                         <li class="if-js"><a class="jump-link" id="invite-friends-link" href="#invite-friends">Invite friends</a></li>
                         {% endif %}
@@ -221,6 +245,8 @@
                 <!-- Optional no attendees message, e.g., "go use the Invite Folks tool at right" -->
             {% endif %}
 
+            {% include './event_roster_add.html' %}
+            
             <!-- Invite -->
             {% if event.is_open_for_signup %}
                 <div class="ak-margin-top-2 ak-clearfix">
