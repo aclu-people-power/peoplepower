@@ -43,11 +43,19 @@
             <h2>
                 {% if page.followup.send_taf and args.taf %}
                     {% filter ak_text:"tell_your_friends_banner" %}
-                    Now take the next step.
+                    	{% if page.custom_fields.after_action_heading %}
+							{{ page.custom_fields.after_action_heading }}
+						{% else %}Now take the next step.
+						{% endif %}
                     {% endfilter %}
                 {% else %}
                     {% filter ak_text:"notaf_thanks_banner" %}
-                    Now take the next step.
+				{% if page.custom_fields.after_action_heading %}
+					{{ page.custom_fields.after_action_heading }}
+				{% else %}Now take the next step.
+				{% endif %}
+				
+                    
                     {% endfilter %}
                 {% endif %}
             </h2>
