@@ -566,6 +566,13 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 		$('#id_event_title').val('#OpenToAll Business Canvass');
 		$('#id_event_public_description').val('Five years ago, Dave Mullins and Charlie Craig walked into Masterpiece Cakeshop, a Colorado bakery, to purchase a cake for their wedding reception. But the bakery’s owner refused to serve them solely because they’re a same-sex couple. On December 5, the ACLU will be at the Supreme Court, arguing on behalf of Dave and Charlie that businesses that open their doors to the public do not have a constitutional right to discriminate. It’s our chance to show that communities across the country stand for equality and fairness and against discrimination – we’ll meet up to distribute posters and then go out to local businesses and ask them to display a sign showing that they are #OpenToAll to support Dave and Charlie!');
 	}
+	
+	if (categorychoice == 'betterboundaries') {
+		$('#id_action_event_category_betterboundaries').prop('checked', true);
+			$('#id_action_event_category_votingRights').prop('checked', true);
+		$('#event-categories').hide();
+		$('#id_event_public_description').val('Better Boundaries is addressing the problem of gerrymandering in Utah through a redistricting ballot initiative for the 2018 election. We need citizens across the state to get involved and collect petitions to gather enough signatures to get the issue on the 2018 ballot! The deadline for petitions is April 15, 2018.');
+	}
 
         if (categorychoice == 'daca' && $("#id_event_target").length) {
             renderDacaTargets();
