@@ -573,6 +573,16 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 		$('#event-categories').hide();
 		$('#id_event_public_description').val('Better Boundaries is addressing the problem of gerrymandering in Utah through a redistricting ballot initiative for the 2018 election. We need citizens across the state to get involved and collect petitions to gather enough signatures to get the issue on the 2018 ballot! The deadline for petitions is April 15, 2018.');
 	}
+	
+	if (categorychoice == 'gathermarchact') {
+		$('#id_action_event_category_gathermarchact').prop('checked', true);
+			$('#id_action_event_category_protestrally').prop('checked', true);
+		$('#event-categories').hide();
+		$('#id_event_public_description').val('One year ago, many of us marched in the streets, united by sadness, anger and resolve. We knew then--and we still know now--that the fight for civil liberties and civil rights can’t be stamped out by one election or one man. On the anniversary of the largest grassroots mobilization in U.S. history -- the Women’s March -- let’s gather together to strategize for 2018, march together in solidarity, and commit to collective action. We’ll meet in advance of our local Women’s March and then take to the streets together! 
+');
+	}
+	
+
 
         if (categorychoice == 'daca' && $("#id_event_target").length) {
             renderDacaTargets();
