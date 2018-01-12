@@ -168,6 +168,12 @@
 
 {% block script_additions %}
 <script type="text/javascript">
+	$(document).ready(function() {
+        if (!$(".eventdisplayitem")[0]){
+			$('.eventdisplaytrue').hide();
+			$('.eventdisplayfalse').show();
+		}
+    });
     $(document).ready(function() {
         $('.ak-emailalt').on('click', function() {
             $(this).parent('p').toggleClass('active');
