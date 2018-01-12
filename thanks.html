@@ -27,7 +27,10 @@
             <h2>
                 <img src="/media/modern/stance-supportive.svg" width="34" class="ak-checkmark-icon" alt="&#10003;">
                 {% filter ak_text:"noshare_thanks_banner" %}
-                Thanks!
+                {% if page.custom_fields.after_action_heading %}
+							{{ page.custom_fields.after_action_heading }}
+						{% else %}Thanks!
+						{% endif %}
                 {% endfilter %}
             </h2>
             <div>
