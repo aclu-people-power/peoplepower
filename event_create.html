@@ -44,6 +44,34 @@
             </div>
 
             <div id="ak-event-info">
+				{% if request.GET.eventcategory == 'gathermarchact' %}
+				<table width="100%" border="0" cellpadding="10" cellspacing="0">
+			  <tbody>
+				<tr>
+				  <td>
+					<p style="font-size:17px"><strong>Step 1: Create your Gather, March, Act event using the form below.</strong> Then look out for an email to confirm your event details. <a href="http://www.powertothepolls.com/anniversary.html">Suggested start time 1.5 hrs before your local Women’s March.</a></p>
+				  </td>
+				
+				</tr>
+				<tr>
+				  <td>
+					<p style="font-size:17px"><strong>Step 2: <a href="https://s3.amazonaws.com/s3.peoplepower.org/images/Host_Guide__Gather_March_Act_1.pdf">Download the Gather, March, Act Guide</a>.</strong> This guide provides an agenda for your gathering and next steps for taking action. (<a href="https://s3.amazonaws.com/s3.peoplepower.org/images/Host_Guide__Gather_March_Act_Translation.pdf">Ve/Descarga en Español</a>)</p>
+				  </td>
+				  <td style="width:300px;" class="hidemobile">
+				<a class="buttonA3" href="https://s3.amazonaws.com/s3.peoplepower.org/images/Host_Guide__Gather_March_Act_1.pdf" target="_blank"><span class="box">Download the guide</span></a>	
+			   </td>
+				</tr>
+				<tr>
+				  <td>
+					<p style="font-size:17px"><strong>Step 3: <a href="https://s3.amazonaws.com/s3.peoplepower.org/images/LetPeopleVotePoster.pdf">Download and print the ACLU People Power march poster.</a></strong></p>
+				  </td>
+				  <td style="width:300px;" class="hidemobile">
+				<a class="buttonA3" href="https://s3.amazonaws.com/s3.peoplepower.org/images/LetPeopleVotePoster.pdf" target="_blank"><span class="box">Download the poster</span></a>	
+			   </td>
+				</tr>
+			  </tbody>
+			</table>
+				{% endif %}
                 <h3>Event information</h3>
                 <div>
 
