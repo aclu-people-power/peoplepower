@@ -4,8 +4,8 @@
 {% block content %}
 
 {% if event and event.custom_fields.replacement_event_id and event.custom_fields.replacement_campaign_name %}
-<!-- Redirect this to a different event
-<meta http-equiv="refresh" content="0; url=/event/{{event.custom_fields.replacement_campaign_name}}/{{event.custom_fields.replacement_event_id}}/signup/?akid={{args.akid}}&zip={{args.zip}}"> -->
+<!-- Redirect this to a different event -->
+<meta http-equiv="refresh" content="0; url=/event/{{event.custom_fields.replacement_campaign_name}}/{{event.custom_fields.replacement_event_id}}/signup/?akid={{args.akid}}&zip={{args.zip}}">
 {% endif %}
 
 {% load_remember_me %}
