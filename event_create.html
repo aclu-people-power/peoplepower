@@ -595,8 +595,22 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 	if (categorychoice == 'betterboundaries') {
 		$('#id_action_event_category_betterboundaries').prop('checked', true);
 			$('#id_action_event_category_votingRights').prop('checked', true);
+
 		$('#event-categories').hide();
 		$('#id_event_public_description').val('Better Boundaries is addressing the problem of gerrymandering in Utah through a redistricting ballot initiative for the 2018 election. We need citizens across the state to get involved and collect petitions to gather enough signatures to get the issue on the 2018 ballot! The deadline for petitions is April 15, 2018.');
+	}
+
+	
+		if (categorychoice == 'promotethevote') {
+		$('#id_action_event_category_promotethevote').prop('checked', true);
+			$('#id_action_event_category_votingRights').prop('checked', true);
+		$('#event-categories').hide();
+							$('#id_event_title').val('Promote the Vote Kickoff Meeting');
+
+		$('#id_event_public_description').val('Democracy only works when everyone can participate. By making voting more accessible, secure and fair, our democracy will better serve all Americans and our laws will better reflect the will of the people. Everyone – Republicans, Democrats and Independents – deserves to have their vote secure and counted. Join us on on February 21st, when Michiganders across the state are coming together to learn about how we can get to work improving our state’s voting system to ensure it prioritizes voters and removes barriers for working families.');
+	} else {
+					$('#id_action_event_category_promotethevote').hide();
+
 	}
 	
 	if (categorychoice == 'gathermarchact') {
