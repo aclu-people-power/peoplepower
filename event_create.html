@@ -177,6 +177,15 @@
               </div>
               {% endif %}{% endfor %}
               {% endwith %}
+				            {% if request.user.is_authenticated %}
+				
+				<div class="ak-err-below">
+                <input id="id_action_event_category_promotethevote" class="checkbox" type="checkbox" name="action_event_category" value="promotethevote">
+                <label for="id_action_event_category_promotethevote" class="ak-checkbox-label ak-event-category-checkbox-label">
+                  Promote The Vote (staff only)
+                </label>
+              </div>
+{% endif %}
             </div>
             {% endif %}
             
@@ -282,16 +291,7 @@ Together our community can help young immigrants by demanding a #DreamActNow!{% 
                          class="ak-checkbox-label ak-event-category-checkbox-label">
                     Add the Planned Parenthood category
                   </label>
-					<input id="id_action_event_category_promotethevote"
-                         class="checkbox" type="checkbox"
-                         name="action_event_category"
-                         value="plannedparenthood"
-                         {% if event and event.custom_fields.category and event.custom_fields.category|force_list|contains:"promotethevote" %}checked{% endif %}
-                  >
-                  <label for="id_action_event_category_promotethevote"
-                         class="ak-checkbox-label ak-event-category-checkbox-label">
-                    Add the Promote the Vote category
-                  </label>
+					
                 </div>
               </div>    
             {% endif %}
@@ -620,7 +620,11 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 
 		$('#id_event_public_description').val('Democracy only works when everyone can participate. By making voting more accessible, secure and fair, our democracy will better serve all Americans and our laws will better reflect the will of the people. Everyone – Republicans, Democrats and Independents – deserves to have their vote secure and counted. Join us on on February 21st, when Michiganders across the state are coming together to learn about how we can get to work improving our state’s voting system to ensure it prioritizes voters and removes barriers for working families.');
 	} else {
+		            {% if not request.user.is_authenticated %}
+
 					$('#id_action_event_category_promotethevote').hide();
+					 
+					 {% endif %}
 
 	}
 	
