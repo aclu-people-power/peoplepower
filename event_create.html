@@ -177,15 +177,7 @@
               </div>
               {% endif %}{% endfor %}
               {% endwith %}
-				            {% if request.user.is_authenticated %}
-				
-				<div class="ak-err-below">
-                <input id="id_action_event_category_promotethevote" class="checkbox" type="checkbox" name="action_event_category" value="promotethevote">
-                <label for="id_action_event_category_promotethevote" class="ak-checkbox-label ak-event-category-checkbox-label">
-                  Promote The Vote (staff only)
-                </label>
-              </div>
-{% endif %}
+				           
             </div>
             {% endif %}
             
@@ -622,7 +614,7 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 	} else {
 		            {% if not request.user.is_authenticated %}
 
-					$('#id_action_event_category_promotethevote').hide();
+		$('#id_action_event_category_promotethevote').closest('div').hide();
 					 
 					 {% endif %}
 
