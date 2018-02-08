@@ -84,7 +84,10 @@
         <div class="ak-page-footer">
             <div class="ak-page-footer-contents">
 <a href="https://www.aclu.org/" class="footer-pp-logo"><img src="https://s3.amazonaws.com/s3.peoplepower.org/images/peoplepowerblacklogo-new.svg" alt="People Power | ACLU" /></a>
-<div class="footer-fineprint">				
+<div class="footer-fineprint">
+{% if page.custom_fields.custom_disclaimer %}
+<span>{{ page.custom_fields.custom_disclaimer }}</span>
+{% endif %}				
 <span>{% ifequal page.type "Unsubscribe" %}By submitting this form, you will be unsubscribed from People Power.{% else %}
 {% if not filename|split:'.'|nth:0 = "thanks" %}
 By submitting this form, you are agreeing to receive periodic updates from People Power and other ACLU channels.
