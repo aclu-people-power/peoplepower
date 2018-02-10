@@ -272,19 +272,24 @@ Together our community can help young immigrants by demanding a #DreamActNow!{% 
                   <label>&nbsp;</label>
                   <input type="text" name="action_replacement_campaign_name" {% if event.custom_fields.replacement_campaign_name %}value="{{ event.custom_fields.replacement_campaign_name }}"{% endif %} placeholder="Enter the campaign name for the replacement event (action, voting_rights)"/>
                 </div>
-                <div class="ak-err-below">
-                  <input id="id_action_event_category_plannedparenthood"
+
+                {% with templateset.custom_fields.event_categories|load_json as categories_config %}
+                {% for category in categories_config %}{% if categories_config|nth:category|nth:"hidden"|default:0 %}
+                <div style="margin-top: 10px" class="ak-err-below">
+                  <input id="id_action_event_category_{{ category }}"
                          class="checkbox" type="checkbox"
                          name="action_event_category"
-                         value="plannedparenthood"
-                         {% if event and event.custom_fields.category and event.custom_fields.category|force_list|contains:"plannedparenthood" %}checked{% endif %}
+                         value="{{ category }}"
+                         {% if event and event.custom_fields.category and event.custom_fields.category|force_list|contains:category %}checked{% endif %}
                   >
-                  <label for="id_action_event_category_plannedparenthood"
+                  <label for="id_action_event_category_{{ category }}"
                          class="ak-checkbox-label ak-event-category-checkbox-label">
-                    Add the Planned Parenthood category
+                    Add the {{ categories_config|nth:category|nth:"label" }} category
                   </label>
-					
                 </div>
+                {% endif %}{% endfor %}
+                {% endwith %}
+                
               </div>    
             {% endif %}
 
