@@ -594,6 +594,7 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 	}
 	if (categorychoice == 'netneutrality') {
 		$('<input id="id_action_event_category_netneutrality" class="checkbox" type="checkbox" name="action_event_category" value="netneutrality" checked style="visibility:hidden;">').insertAfter($( "#id_event_directions" ));
+		$( "p" ).insertAfter( "#id_event_directions" );
 		$('#event-categories').hide();
 		$('#id_event_title').val('Freedom to Surf: Save Net Neutrality Action');
 	}
