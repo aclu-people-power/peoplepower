@@ -593,7 +593,7 @@ $('label[for="id_mobile_phone"]').html('Mobile phone*');
 		$('#id_event_title').val('Meeting with [Rep/Senator NAME] at district office to demand a clean Dream Act');
 	}
 	if (categorychoice == 'netneutrality') {
-		$('#id_event_directions').insertAfter('<input id="id_action_event_category_netneutrality" class="checkbox" type="checkbox" name="action_event_category" value="netneutrality" checked style="visibility:hidden;">')
+		$('<input id="id_action_event_category_netneutrality" class="checkbox" type="checkbox" name="action_event_category" value="netneutrality" checked style="visibility:hidden;">').insertAfter('#id_event_directions')
 		$('#event-categories').hide();
 		$('#id_event_title').val('Freedom to Surf: Save Net Neutrality Action');
 	}
