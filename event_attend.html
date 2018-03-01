@@ -28,6 +28,12 @@
             </div>
         </div>
 </div>
+	
+	{% if event.id == 12738 %}
+	<div class="ak-grid-row">
+	<img src="https://s3.amazonaws.com/s3.peoplepower.org/images/FBeventCover-1920x1080.png" style="width:100%;" />
+	</div>
+	{% endif %}
 
         <div class="ak-grid-row ak-grid-row-inverted">
             {% if page.custom_fields.featured_image %}
