@@ -28,12 +28,7 @@
             </div>
         </div>
 </div>
-	
-	{% if event.id == 12738 %}
-	<div class="ak-grid-row">
-	<img src="https://s3.amazonaws.com/s3.peoplepower.org/images/FBeventCover-1920x1080.png" style="width:100%;" />
-	</div>
-	{% endif %}
+
 
         <div class="ak-grid-row ak-grid-row-inverted">
             {% if page.custom_fields.featured_image %}
@@ -121,7 +116,11 @@
                        href="/share/link?type=tw&amp;page_name={{ event.campaign.signup_page.name }}&amp;append=../{{ event.id }}&amp;action_id={{action.id}}&amp;akid={{akid}}&amp;tweet={% if page.followup.twitter_message %}{% include_tmpl page.followup.twitter_message %}{% else %}Join me for an @ACLU People Power Action Event in {{ event.city_etc_no_postal }}{% endif %}" target="_blank">
                       <span class="box"><span class="icon"></span>Share on Twitter</a></span>
                   </div>
-
+{% if event.id == 12738 %}
+	<div class="ak-grid-row">
+	<img src="https://s3.amazonaws.com/s3.peoplepower.org/images/FBeventCover-1920x1080.png" style="width:100%;" />
+	</div>
+	{% endif %}
 	        </div>
             </div>
         </div>
