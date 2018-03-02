@@ -1,4 +1,13 @@
 {% load actionkit_tags %}
+
+{% if page.custom_fields.migration_redirect_url %}
+<!DOCTYPE html>
+<html> 
+<body> 
+	<meta http-equiv="refresh" content="0;url={{page.custom_fields.migration_redirect_url}}">
+</body> 
+</html> 
+{% else %}
 <!DOCTYPE html>
 <html lang="{{page.lang.iso_code|default:'en'}}"{% if page.lang.is_rtl %} dir="rtl"{% endif %}>
 <head>
@@ -159,3 +168,4 @@ By submitting this form, you are agreeing to receive periodic updates from Peopl
 	</script>
 </body>
 </html>
+{% endif %}
