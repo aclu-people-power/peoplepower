@@ -55,7 +55,13 @@
     {% load_css %}
         //s3.amazonaws.com/peoplepower.org/assets/peoplepowerstyle.css?={% now "U" %}
     {% end %}
-    {% block css_additions %}{% endblock %}
+    {% block css_additions %}
+        {% ifequal page.custom_fields.read_more "On" %}
+            {% load_css %}
+                //s3.amazonaws.com/s3.peoplepower.org/images/readMore.css
+            {% end %}
+        {% endifequal %}
+    {% endblock %}
 
     {% load_ak_context context %}
     {% load_js %}
@@ -147,6 +153,56 @@ By submitting this form, you are agreeing to receive periodic updates from Peopl
             }
         });
     </script>
+
+    {% ifequal page.custom_fields.read_more "On" %}
+    <script type="text/javascript">
+        $(document).ready( function() {
+            pinStory();
+            readMore();
+
+            function pinStory() {
+                console.log("Mic check");
+
+                var pitch, epoch, paneX, paneY, attSpan;
+                pitch = $('#signup-story');
+                epoch = pitch.height();
+                paneX = window.innerWidth;
+                paneY = window.innerHeight;
+                attSpan = paneY - 250;
+
+                if ( paneX <= 720 && epoch >= attSpan ) {
+                    var pin;
+                    pin = paneY - 300;
+                    $(pitch).height(pin+"px");
+                    console.log("Epoch set to "+pin+"px!");
+                    $(pitch).after('<div class="readMore"><h4>Read More <img src="https://s3.amazonaws.com/s3.peoplepower.org/images/readMore.svg" /></h4></div>');
+                }
+            }
+
+            function readMore() {
+                 var readMore, arrows, story, storyHeight;
+                 readMore = $('.readMore');
+                 arrows = $('.readMore img');
+                 story = $('#signup-story');
+                 storyHeight = $(story).height();
+
+                $('.readMore').click(function() {
+                  if ( !$(story).hasClass('unpinned') ) {
+                    story.animate({
+                      height: $(story).get(0).scrollHeight
+                    }, 1000, function(){ $(this).height('auto'); });
+                    arrows.css({transform: 'rotate(180deg)'});
+                    $(story).addClass('unpinned');
+                  } else {
+                    story.animate({ height: storyHeight }, 500);
+                    arrows.css({transform: 'rotate(0deg)'});
+                    $(story).removeClass('unpinned');
+                  }
+                });
+            }
+        });
+    </script>
+    {% endifequal %}
     
     
 <!-- SiteCatalyst code version: AppMeasurement 1.6.1 Copyright 1996-2017 Adobe, Inc. -->
