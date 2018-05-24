@@ -219,7 +219,8 @@ By submitting this form, you are agreeing to receive periodic updates from Peopl
 <script>
 	$(window).load( function() {
 		$('id_comment').parent().hide();
-	$('label[for="id_mobile_phone"]').html('Phone number*');
+		$('id_comment').hide();
+		$('label[for="id_mobile_phone"]').html('Phone number*');
 		$("label:contains('Hidden')").hide();
 	});
 	</script>
