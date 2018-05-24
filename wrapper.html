@@ -9,8 +9,7 @@
 </html> 
 {% else %}
 <!DOCTYPE html>
-<html lang="{{page.lang.iso_code|default:'en'}}"{% if page.lang.is_rtl %} dir="rtl"{% endif %}>
-<head>
+<html lang="{{page.lang.iso_code|default:'en'}}"{% if page.lang.is_rtl %} dir="rtl"{% endif %}><head>
     <meta charset="utf-8">
     <script>startTime=new Date()</script>
     <meta name="application-name" content="People Power"/>
@@ -25,7 +24,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     {% if event.is_open_for_signup %}
-    <title>People Power Action Event in {{ event.city_etc_no_postal }}</title>
+    
+<title>People Power Action Event in {{ event.city_etc_no_postal }}</title>
     {% else %}
     <title>{% block title %}{{ page.title }} | {% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}{% endblock %}</title>
     <meta property="og:type" content="article">
@@ -218,6 +218,7 @@ By submitting this form, you are agreeing to receive periodic updates from Peopl
 <!-- End SiteCatalyst code -->
 <script>
 	$(window).load( function() {
+		$('id_comment').parent().hide();
 	$('label[for="id_mobile_phone"]').html('Phone number*');
 		$("label:contains('Hidden')").hide();
 	});
