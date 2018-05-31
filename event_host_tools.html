@@ -189,6 +189,8 @@
                         {% if user_is_manager %}
                         <li>{% if campaign.require_email_confirmation and not event.host_is_confirmed %}
 <p style="text-align: center;margin-left: auto;margin-right:auto;"><strong><a style="font-family: PeoplePower, Arial, sans-serif; font-size: 24px; background-color: #ef4134; border-top: 1px solid #ef4134; border-bottom: 2px solid #B2190E; width: 100%; max-width: 300px; margin: 12px auto; border-radius: 0; text-align: center; color: white; text-decoration: none; padding: 12px 5px 12px; font-weight: 400; display: block; letter-spacing: 0;text-transform:uppercase;" onclick="$.get('/event/{{campaign.local_name}}/{{event.id}}/modify/confirm/'); $(this).text('Confirmed');" href="#">Click here to confirm</a></strong></p>
+							{% else %}
+							<strong>Your event is confirmed!</strong>
                             {% endif %}
                         </li>
                         {% endif %}
