@@ -141,6 +141,10 @@
                     <h2>Sorry, this event was cancelled.</h2>
                 {% elif event.is_in_past %}
                     <h2>Sorry, it's too late to sign up for this event.</h2>
+		    {% right_now %}
+		    {% if event.starts_at_utc|date_add:"days=1" >= now %}
+		      {% include "./event_search_results.html" %}
+		    {% endif %}		
                 {% elif event.is_awaiting_confirmation %}
                     <h2>Sorry, the event host has not yet confirmed this event.</h2>
                 {% elif event.is_full %}
