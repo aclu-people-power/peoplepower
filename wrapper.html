@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	{% ifequal page.type 'Event' %}
-		<title>{{ event.title }} in {{ event.city_etc_no_postal }}</title>
+		<title>{{ event.title }} in {{ event.city_etc_no_postal }}</title> 
 		<meta property="og:image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/aclu-rsvpnow.png" />
 		<meta name="description" property="og:description"
           content="{% block description %}{% if page.followup.share_description_value %}{% include_tmpl page.followup.share_description_value %}{% else %}We're organizing grassroots volunteers to fight for civil rights and liberties.{% endif %}{% endblock %}">
