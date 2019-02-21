@@ -23,9 +23,17 @@
 <meta name="application-name" content="People Power"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	{% ifequal page.type 'Event' %}
+		<title>{{ event.title }} in {{ event.city_etc_no_postal }}</title>
+		<meta property="og:image" content="https://s3.amazonaws.com/s3.peoplepower.org/images/aclu-rsvpnow.png" />
+		<meta name="description" property="og:description"
+          content="{% block description %}{% if page.followup.share_description_value %}{% include_tmpl page.followup.share_description_value %}{% else %}We're organizing grassroots volunteers to fight for civil rights and liberties.{% endif %}{% endblock %}">
+	{% endifequal %}
+	
     {% if event.is_open_for_signup %}
     
-<title>People Power Action Event in {{ event.city_etc_no_postal }}</title>
+	<title>People Power Action Event in {{ event.city_etc_no_postal }}</title>
     {% else %}
     <title>{% block title %}{{ page.title }} | {% filter ak_text:"org_name" %}{% client_name %}{% endfilter %}{% endblock %}</title>
     <meta property="og:type" content="article">
